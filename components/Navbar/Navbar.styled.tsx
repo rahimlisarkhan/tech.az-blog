@@ -25,7 +25,7 @@ export const MenuList = styled(Box)`
 export const MenuItemStyle = styled(MenuItem)`
     font-size:16px;
     text-transform:lowercase;
-    color:${({ theme, activeItem }: MenuItemProps) => activeItem ? theme.colors.green : theme.colors.white};
+    color:${({ theme, activeItem }: MenuItemProps) => activeItem ? theme.colors.green : theme.colors.white} !important;
     font-weight:${({ activeItem }: MenuItemProps) => activeItem ? "bold" : "500"};
     letter-spacing: 2px;
     transition: all .2s;
