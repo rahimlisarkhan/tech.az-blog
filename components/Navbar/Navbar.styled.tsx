@@ -1,14 +1,15 @@
 import { Box, MenuItem } from "@mui/material";
+import React from "react";
 import styled from "styled-components";
 
 
 
 type MenuItemProps = {
-    activeItem: string,
-    theme: {
-        colors: {
-            white: string
-            green: string
+    activeItem?: string,
+    theme?: {
+        colors?: {
+            white?: string
+            green?: string
         }
     }
 }
@@ -30,7 +31,7 @@ export const MenuItemStyle = styled(MenuItem)`
     transition: all .2s;
     
     &:hover{
-        border-bottom:2px solid ${({ theme }) => theme.colors.green};
+        border-bottom:2px solid ${({ theme }:MenuItemProps) => theme.colors.green};
         transform:scale(0.95)
     }
 `
