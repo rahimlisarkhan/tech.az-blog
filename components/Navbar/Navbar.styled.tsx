@@ -21,14 +21,13 @@ export const MenuList = styled(Box)`
     margin-top:10px
 `
 
-
 export const MenuItemStyle = styled(MenuItem)`
-    font-size:16px;
+    font-size:16px !important;
     text-transform:lowercase;
     color:${({ theme, activeItem }: MenuItemProps) => activeItem ? theme.colors.green : theme.colors.white} !important;
-    font-weight:${({ activeItem }: MenuItemProps) => activeItem ? "bold" : "500"};
-    letter-spacing: 2px;
-    transition: all .2s;
+    font-weight:${({ activeItem }: MenuItemProps) => activeItem ? "bold" : "500"} !important;
+    letter-spacing: 2px !important;
+    transition: all .2s !important;
     
     &:hover{
         border-bottom:2px solid ${({ theme }:MenuItemProps) => theme.colors.green};
