@@ -12,9 +12,9 @@ export const FooterStyled = styled.header`
 export const FooterContainer = styled(Container).attrs(() => ({
     maxWidth: "lg"
 }))`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     height: 60px;
 
     img{
