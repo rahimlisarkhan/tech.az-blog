@@ -12,12 +12,11 @@ export const HeaderStyled:any = styled.header`
 export const HeaderContainer:any = styled(Container).attrs(() => ({
     maxWidth: "lg"
 }))`
-    display: flex;
+    display: flex !important;
     height: 80px;
-    justify-content: space-between;
+    justify-content: space-between !important;
     border-bottom:1px solid ${({ theme, mode}: any) => mode ? theme.colors.whiteGray :""} !important;
-
-    align-items: center;
+    align-items: center !important;
 
 `
 
