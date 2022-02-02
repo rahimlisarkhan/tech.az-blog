@@ -1,36 +1,14 @@
 import { Typography } from "@mui/material";
 import styled, { css } from "styled-components";
+import { ThemeProps, TypographProps } from "../../interfaces/theme";
 
-type Props = {
-    color?:string
-    font?:string,
-    bold?:string,
-    center?:string,
-    margin?:string,
-    theme?:{
-        colors:{
-            textBlack:string
-            grayText1:string
-            textGreenLight:string
-            mainRed:string
-            grayText2:string
-            white:string
-            green:string
-        }
-        font:{
-            size :{
-                medium:string
-            }
-        }
-    }
-}
 
 export const TypographyText = styled(Typography).attrs(() => ({
     variant: "h6",
     component: "div"
 }))`
     padding: 0 !important;
-    ${({ theme, font, color, bold, center, margin }:Props) => css`
+    ${({ theme, font, color, bold, center, margin,text }:TypographProps<ThemeProps>) => css`
         color:${() => {
             switch (color) {
                 case "dark":
@@ -56,7 +34,7 @@ export const TypographyText = styled(Typography).attrs(() => ({
         margin:${margin ? `${margin}px 2px` : "10px 3px"} !important;
         font-weight:${bold && `bold`} !important;
         line-height: 1.3 !important;
-        text-transform: capitalize !important;
+        text-transform:${text ? "lowercase" : "capitalize"}!important;
         display: flex;
         align-items: center;
         text-align:${center ? `center` : "none"} !important;

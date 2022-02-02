@@ -11,6 +11,7 @@ export const colors = {
     bgGreenHover:"#a3dd24",
     dark:"#232526",
     green:"#a3dd24",
-    white:"#fefefe"
+    white:"#fefefe",
+    whiteGray:"#e6e6e6"
 }
 

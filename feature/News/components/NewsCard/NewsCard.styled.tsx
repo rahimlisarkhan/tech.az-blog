@@ -1,5 +1,6 @@
 import { Box, Grid } from "@mui/material";
 import styled from "styled-components";
+import { ThemeProps } from "../../../../interfaces/theme";
 
 
 type Props = {
@@ -12,6 +13,7 @@ export const NewsCardStyled = styled(Grid).attrs(({ col }: Props) => ({
     xs: 12,
     md: col
 }))`
+    padding-right: 16px !important;
 
 `
 
@@ -19,18 +21,12 @@ export const Card = styled(Box)`
 border-radius:5px;
 height:${({ height }: Props) => height ? `${height}px` : "300px"} !important;
 margin-bottom:16px;
-box-shadow:  0 0 5px .5px ${({ theme }) => theme.colors.blackGrey};
+box-shadow:  0 0 5px .3px ${({ theme }) => theme.colors.blackGrey};
 overflow: hidden;
 transition: all .3s;
 position: relative;
 
-/* &:nth-child(1){
-    margin-right: 0 !important;
-} */
 
-&:nth-child(odd){
-    margin-right: 16px;
-}
 
 cursor: pointer;
 
@@ -58,7 +54,6 @@ export const  CardTitleContent = styled(Box)`
 `
 
 export const  CardTitle = styled(Box)`
-    height:${({col}:Props)=>col===12 ? "132px" : "95px"};
     border-left: 3px solid ${({theme})=>theme.colors.green};
     padding-left:15px;
     display: flex;

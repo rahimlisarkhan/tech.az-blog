@@ -3,28 +3,26 @@ import { MenuList, MenuItemStyle } from "./Navbar.styled"
 import { router } from "../../utils/route"
 
 
-// type MenuListProp = {
-//     id:string,
-//     title:string,
-//     href:string,
-// }
+type Props = {
+    mode?: string | Boolean
+}
 
-export const Navbar: React.FC = () => {
-    let { push,asPath } = useRouter()
+export const Navbar: React.FC<Props> = ({ mode }) => {
+    let { push, asPath } = useRouter()
 
 
     const isActive = (href?: string): string => {
-        if(href === asPath){
+        if (href === asPath) {
             return "true"
         }
         return ""
     }
 
-    // activeItem={isActive(item.href)}
+    // 
     return (
         <MenuList>
             {Object.values(router.menu).map((item) => {
-                return <MenuItemStyle key={`menu-id-${item.id}`} 
+                return <MenuItemStyle mode={mode} key={`menu-id-${item.id}`} activeItem={isActive(item.href)}
                     onClick={() => push(item.href)}>
                     {item.title}
                 </MenuItemStyle>

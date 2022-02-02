@@ -1,17 +1,14 @@
 import { Box, MenuItem } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
+import { ThemeProps } from "../../interfaces/theme";
 
 
 
 type MenuItemProps = {
     activeItem?: string,
-    theme?: {
-        colors?: {
-            white?: string
-            green?: string
-        }
-    }
+    mode?: string
+    theme?: ThemeProps
 }
 
 
@@ -20,17 +17,25 @@ export const MenuList = styled(Box)`
     width: 70%;
     margin-top:10px
 `
-
-export const MenuItemStyle = styled(MenuItem)`
+export const MenuItemStyle:any = styled(MenuItem)`
     font-size:16px !important;
     text-transform:lowercase;
-    color:${({ theme, activeItem }: MenuItemProps) => activeItem ? theme.colors.green : theme.colors.white} !important;
+    color:${({ theme, activeItem, mode }: MenuItemProps) => {
+        if (mode) {
+            return theme.colors.dark
+        }
+
+        if (activeItem) {
+            return theme.colors.green
+        }
+        return theme.colors.white
+    }} !important;
     font-weight:${({ activeItem }: MenuItemProps) => activeItem ? "bold" : "500"} !important;
     letter-spacing: 2px !important;
     transition: all .2s !important;
     
     &:hover{
-        border-bottom:2px solid ${({ theme }:MenuItemProps) => theme.colors.green};
+        border-bottom:2px solid ${({ theme }: MenuItemProps) => theme.colors.green};
         transform:scale(0.95)
     }
 `

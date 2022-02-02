@@ -1,0 +1,40 @@
+{
+    "news":[
+        {
+            "id":"003",
+            "title":"Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
+            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views":"6",
+            "slug":"powerbank-title-new",
+            "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
+            "type":"news"
+        },
+        {
+            "id":"004",
+            "title":"Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
+            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views":"6",
+            "slug":"powerbank-title-new",
+            "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
+            "type":"news"
+        },
+        {
+            "id":"005",
+            "title":"Dover Street Market и Nike показали велюровые кеды Dunk Low",
+            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views":"6",
+            "slug":"powerbank-title-new",
+            "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
+            "type":"news"
+        },
+        {
+            "id":"006",
+            "title":"Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
+            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views":"6",
+            "slug":"powerbank-title-new",
+            "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
+            "type":"news"
+        }
+    ]
+}

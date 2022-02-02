@@ -5,8 +5,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Router from 'next/router'
 import NProgress from 'nprogress'
-// import { Provider } from "react-redux";
-// import { store } from "../store";
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 
 Router.events.on('routeChangeStart', (url) => {
     NProgress.start()
@@ -16,12 +16,12 @@ Router.events.on('routeChangeError', () => NProgress.done())
 
 export const AppProvider = ({ children }) => {
     return (
-        // <Provider store={store}>
+        <Provider store={store}>
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
                 {children}
                 <ToastContainer />
             </ThemeProvider >
-        // </Provider>
+        </Provider>
     )
 }
