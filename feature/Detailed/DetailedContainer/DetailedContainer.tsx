@@ -1,9 +1,12 @@
 import React from "react"
-
-
+import { DetailedContainerStyled} from "./DetailedContainer.styled"
+import NewsContent from "../components/NewsContent";
 
 export const DetailedContainer: React.FC = () => {
     return (
-        <h1>Xeberler</h1>
+        <DetailedContainerStyled>
+          {/* <TitleContent/> */}
+          <NewsContent/>
+        </DetailedContainerStyled>
     )
 }

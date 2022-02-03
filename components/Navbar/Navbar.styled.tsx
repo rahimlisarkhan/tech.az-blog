@@ -15,6 +15,7 @@ type MenuItemProps = {
 export const MenuList = styled(Box)`
     display: flex;
     width: 70%;
+    justify-content: center;
     margin-top:10px
 `
 export const MenuItemStyle:any = styled(MenuItem)`
