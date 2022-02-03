@@ -33,11 +33,12 @@ export const NewsContent = () => {
                 <TypographyText font="20" color="white" bold="true">
                     Son yuklemeler
                 </TypographyText>
-                <NewsCard height="200" />
-                <NewsCard height="200" />
-                <NewsCard height="200" />
-                <NewsCard height="200" />
-                <NewsCard height="200" />
+                <NewsCard height={200} />
+                <NewsCard height={200} />
+                <NewsCard height={200} />
+                <NewsCard height={200} />
+                <NewsCard height={200} />
+                <NewsCard height={200} />
             </SuggestedContentStyled>
         </Fragment>
     )
