@@ -5,11 +5,11 @@ import { useRouter } from "next/router"
 
 type Props = {
     height?: number | string
-    col: number,
-    cover_image: string,
-    title: string,
-    slug: string,
-    type: string
+    col?: number,
+    cover_image?: string,
+    title?: string,
+    slug?: string,
+    type?: string
 }
 
 export const NewsCard: React.FC<Props> = ({ height, col, cover_image, title, slug, type }) => {
