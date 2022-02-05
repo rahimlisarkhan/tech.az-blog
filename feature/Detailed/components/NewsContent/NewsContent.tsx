@@ -1,44 +1,60 @@
 import { Fragment } from "react"
-import { NewsContentStyled, SuggestedContentStyled, VideoContent } from "./NewsContent.styled"
+import { NewsContentStyled, SuggestedContentStyled, VideoContent,ImageContent } from "./NewsContent.styled"
 import TitleContent from "../../components/TitleContent";
 import Image from "../../../../components/Image"
 import TypographyText from "../../../../components/Typograph";
 import ReactPlayer from "react-player";
 import NewsCard from "../../../News/components/NewsCard"
+import NewsImageSlider from "../../components/NewsImageSlider"
+import { useSelector } from "../../../../hooks/useSelector";
 
 export const NewsContent = () => {
+
+  let newsData = useSelector(state => state.home.mixNews)
+  let newsSlug = useSelector(state => state.home.newsSlug)
+  let appMode = useSelector(state => state.home.appMode)
+
+  
+  const colorMode = () => {
+      if(appMode){
+          return "black"
+      }
+
+      return "white"
+  }
+
+
     return (
         <Fragment>
             <NewsContentStyled>
                 <TitleContent />
-                <Image cover="true" src="https://www.cnet.com/a/img/iJxo9AIxiXHqVoqm6nGISKtKwPI=/2020/08/18/b7168aea-9f7e-47bb-9f31-4cb8ad92fbc7/lg-note-20-ultra-5g-iphone-11-se-google-pixel-4a-lg-velvet-6133.jpg" height="500" alt="news name" />
-                <TypographyText font="18" color="white">
-                    В сети появились фотографии четырёх новых расцветок New Balance 2002R. Предполагается, что в продажу кроссовки поступят весной или летом этого года.
-                    Модель 2002 была выпущена в 2010 году, но популярность получила спустя десять лет. 2002R — обновлённая версия с улучшенной амортизацией и сетчатыми вставками для вентиляции.
-                    Кроссовки появятся в четырёх цветах: зелёном, тёмно-голубом, насыщенном розовом и лавандовом.
+                <ImageContent>
+                    <Image cover="true" src={newsSlug?.cover_image} height="500" alt="news name" />
+                </ImageContent>
+                <TypographyText font="18" color={colorMode()}>
+                    {newsSlug?.content.slice(0,1800)}
                 </TypographyText>
                 <VideoContent>
-                    <ReactPlayer  url="https://www.youtube.com/watch?v=6p3U-uWUNps" />
+                    <ReactPlayer  url={newsSlug?.video_link} />
                 </VideoContent>    
-                <TypographyText font="18" color="white">
-                    В сети появились фотографии четырёх новых расцветок New Balance 2002R. Предполагается, что в продажу кроссовки поступят весной или летом этого года.
-                    Модель 2002 была выпущена в 2010 году, но популярность получила спустя десять лет. 2002R — обновлённая версия с улучшенной амортизацией и сетчатыми вставками для вентиляции.
-                    Кроссовки появятся в четырёх цветах: зелёном, тёмно-голубом, насыщенном розовом и лавандовом.
-                    Модель 2002 была выпущена в 2010 году, но популярность получила спустя десять лет. 2002R — обновлённая версия с улучшенной амортизацией и сетчатыми вставками для вентиляции.
-                    Кроссовки появятся в четырёх цветах: зелёном, тёмно-голубом, насыщенном розовом и лавандовом.
+                <TypographyText font="18" color={colorMode()}>
+                    {newsSlug?.content.slice(1800,3000)}
+                </TypographyText>
+                <NewsImageSlider images={newsSlug?.news_images}/>
+                <TypographyText font="18" color={colorMode()}>
+                    {newsSlug?.content.slice(3000)}
                 </TypographyText>
             </NewsContentStyled>
             
             <SuggestedContentStyled>
-                <TypographyText font="20" color="white" bold="true">
+                <TypographyText font="20" color={colorMode()} bold="true">
                     Son yuklemeler
                 </TypographyText>
-                <NewsCard height={200} />
-                <NewsCard height={200} />
-                <NewsCard height={200} />
-                <NewsCard height={200} />
-                <NewsCard height={200} />
-                <NewsCard height={200} />
+                {newsData?.map((news,index)=>{
+                    if(index < 5){
+                        return <NewsCard height={200} {...news}/>
+                    }
+                })}
             </SuggestedContentStyled>
         </Fragment>
     )

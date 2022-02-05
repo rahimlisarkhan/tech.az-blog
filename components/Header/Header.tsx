@@ -19,7 +19,6 @@ const Header: React.FC<Props> = () => {
         dispatch(setAppMode())
     }
 
-    console.log(mode);
 
     return (
         <HeaderStyled mode={mode ? mode : ""}>

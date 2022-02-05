@@ -5,31 +5,44 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import TypographyText from "../../../../components/Typograph"
 import { TagContent, TitleContentStyled } from './TitleContent.styled';
+import { useSelector } from '../../../../hooks/useSelector';
 
 
 export const TitleContent = () => {
 
+  let appMode = useSelector(state => state.home.appMode)
+  let newsSlug = useSelector(state => state.home.newsSlug)
+
+
+    const colorMode = () => {
+        if(appMode){
+            return "black"
+        }
+  
+        return "white"
+    }
+
     return (
         <TitleContentStyled>
-            <TypographyText font="24" color="white" bold="true">
-                В сети появились характеристики и фотографии планшетов серии Samsung Galaxy Tab S8
+            <TypographyText font="24" color={colorMode()} bold="true">
+               {newsSlug?.title}
             </TypographyText>
             <TagContent>
-                <TypographyText font="14" color="white">
+                <TypographyText font="14" color={colorMode()}>
                     <PersonIcon />
-                    Cemil Huseynzade
+                    {newsSlug?.owner}
                 </TypographyText>
-                <TypographyText font="14" color="white">
+                <TypographyText font="14" color={colorMode()}>
                     <LocalOfferIcon />
-                    Elm Texnologiya
+                    {newsSlug?.tag?.map(item=> ` ${item.title} `)}
                 </TypographyText>
-                <TypographyText font="14" color="white">
+                <TypographyText font="14" color={colorMode()}>
                     <EventNoteIcon />
-                    2022-07-09
+                    {newsSlug?.created_at}
                 </TypographyText>
-                <TypographyText font="14" color="white">
+                <TypographyText font="14" color={colorMode()}>
                     <VisibilityIcon />
-                    48 baxış
+                    {newsSlug?.views} baxış
                 </TypographyText>
             </TagContent>
         </TitleContentStyled>

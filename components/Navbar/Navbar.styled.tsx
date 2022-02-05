@@ -1,12 +1,11 @@
 import { Box, MenuItem } from "@mui/material";
-import React from "react";
 import styled from "styled-components";
 import { ThemeProps } from "../../interfaces/theme";
 
 
 
 type MenuItemProps = {
-    activeItem?: string,
+    active?: string,
     mode?: string
     theme?: ThemeProps
 }
@@ -21,17 +20,17 @@ export const MenuList = styled(Box)`
 export const MenuItemStyle:any = styled(MenuItem)`
     font-size:16px !important;
     text-transform:lowercase;
-    color:${({ theme, activeItem, mode }: MenuItemProps) => {
+    color:${({ theme, active, mode }: MenuItemProps) => {
         if (mode) {
             return theme.colors.dark
         }
 
-        if (activeItem) {
+        if (active) {
             return theme.colors.green
         }
         return theme.colors.white
     }} !important;
-    font-weight:${({ activeItem }: MenuItemProps) => activeItem ? "bold" : "500"} !important;
+    font-weight:${({ active }: MenuItemProps) => active ? "bold" : "500"} !important;
     letter-spacing: 2px !important;
     transition: all .2s !important;
     

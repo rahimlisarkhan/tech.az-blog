@@ -17,8 +17,6 @@ const Layout = ({ children, title = 'tech.az | blog' }: Props) => {
 
   let mode = useSelector(state=>state.home.appMode)
 
-  console.log(mode);
-  
   return (
 
     <Fragment>

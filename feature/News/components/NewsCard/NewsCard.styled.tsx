@@ -8,13 +8,13 @@ type Props = {
     height?: number | string
 }
 
-export const NewsCardStyled = styled(Grid).attrs(({ col }: Props) => ({
+export const NewsCardStyled = styled(Grid).attrs(({ col = 12 }: Props) => ({
     item: true,
     xs: 12,
     md: col
 }))`
     padding-right: 16px !important;
-
+    cursor: pointer !important;
 `
 
 export const Card = styled(Box)`

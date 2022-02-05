@@ -22,7 +22,7 @@ export const Navbar: React.FC<Props> = ({ mode }) => {
     return (
         <MenuList>
             {Object.values(router.menu).map((item) => {
-                return <MenuItemStyle mode={mode} key={`menu-id-${item.id}`} activeItem={isActive(item.href)}
+                return <MenuItemStyle mode={mode} key={`menu-id-${item.id}`} active={isActive(item.href)}
                     onClick={() => push(item.href)}>
                     {item.title}
                 </MenuItemStyle>

@@ -3,6 +3,8 @@ import { theme } from "../styles/theme";
 import GlobalStyle from "../styles/global";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { Provider } from "react-redux";
