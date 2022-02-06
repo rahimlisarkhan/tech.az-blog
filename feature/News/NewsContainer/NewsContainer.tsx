@@ -1,29 +1,41 @@
 import { NewsContainerStyled, MoreNewsContent, MoreButton } from "./NewsContainer.styled"
 import NewsCard from "../components/NewsCard"
 import { getMixNews } from "../../../services/MixNews"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Loading from "../../../components/Loading"
+import { useSelector } from "../../../hooks/useSelector"
+import { fillAppMode } from "../../../store/slices/home/homeSlices"
 import { useDispatch } from "../../../hooks/useDispatch"
-import { fillMixData } from "../../../store/slices/home/homeSlices"
 
-export const NewsContainer = ({ data }: any) => {
+export const NewsContainer = ({ newsData }: any) => {
+    let appMode = useSelector(state => state.home.appMode)
     let dispatch = useDispatch()
 
+    useEffect(() =>{
+      dispatch(fillAppMode())
+    },[])
+
+    
+    let [data, setData] = useState(newsData)
+
     let [nextPageCount, setNextPageCount] = useState(1)
-    let [loading, setloading] = useState(false)
+    let [loading, setLoading] = useState(false)
 
     const onPage = async () => {
+        setLoading(true)
         setNextPageCount(prev => prev += 1)
 
         let { data: { result: { news } } } = await getMixNews(nextPageCount)
-        console.log(news.news);
 
-        dispatch(fillMixData(news.news))
-
+        if (news) {
+            setLoading(false)
+            setData([...data, ...news.news])
+        }
     }
 
     return (
         <NewsContainerStyled>
-
+            {loading && <Loading />}
             {data?.map((item, index) => {
                 if (index === 0) {
                     return <NewsCard key={`mixnews-id-${item.id}`} col={12} height="460" {...item} />
@@ -39,10 +51,9 @@ export const NewsContainer = ({ data }: any) => {
 
             })}
 
-            {/* {loading && <h1>Loading...</h1> } */}
             <MoreNewsContent>
-                <MoreButton onClick={onPage}>
-                    See 10 more news
+                <MoreButton mode={appMode ? "true" : ""} onClick={onPage}>
+                    Daha 10 xəbər
                 </MoreButton>
             </MoreNewsContent>
         </NewsContainerStyled>

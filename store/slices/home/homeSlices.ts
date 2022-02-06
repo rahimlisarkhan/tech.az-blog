@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 const initialState = {
   appMode: false,
   mixNews: [],
-  newsSlug:null
+  newsSlug: null
 }
 
 export const homeSlice = createSlice({
@@ -13,6 +13,14 @@ export const homeSlice = createSlice({
   reducers: {
     setAppMode: (state) => {
       state.appMode = !state.appMode
+      localStorage.setItem("appMode", `${state.appMode}`)
+    },
+    fillAppMode: (state) => {
+      let mode = localStorage.getItem("appMode")
+
+      console.log(mode);
+
+      state.appMode = mode === "true" ? true : false
     },
     fillMixData: (state, action: PayloadAction<any>) => {
       state.mixNews = [...state.mixNews, ...action.payload]
@@ -24,6 +32,6 @@ export const homeSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setAppMode,fillMixData,fillNewsSlug } = homeSlice.actions
+export const { setAppMode, fillMixData, fillNewsSlug,fillAppMode } = homeSlice.actions
 
 export default homeSlice.reducer

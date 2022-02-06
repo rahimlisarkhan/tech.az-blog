@@ -1,76 +1,133 @@
 {
-    "news":[
-        {
-            "id":"014",
-            "title":"Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
-            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
-            "views":"6",
-            "slug":"powerbank-title-new",
-            "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
-            "type":"news"
+    "news": [{
+            "id": "014",
+            "title": "Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
+            "short_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views": "6",
+            "tag": [{
+                    "title": "beseriyyet"
+                }
+                    
+            ],
+            "slug": "powerbank-title-new",
+            "cover_image": "https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
+            "type": "news"
         },
         {
-            "id":"015",
-            "title":"Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
-            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
-            "views":"6",
-            "slug":"powerbank-title-new",
-            "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
-            "type":"news"
+            "id": "015",
+            "title": "Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
+            "short_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views": "6",
+            "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
+            "slug": "powerbank-title-new",
+            "cover_image": "https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
+            "type": "news"
         },
         {
-            "id":"016",
-            "title":"Dover Street Market и Nike показали велюровые кеды Dunk Low",
-            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
-            "views":"6",
-            "slug":"powerbank-title-new",
-            "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
-            "type":"news"
+            "id": "016",
+            "title": "Dover Street Market и Nike показали велюровые кеды Dunk Low",
+            "short_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views": "6",
+            "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
+            "slug": "powerbank-title-new",
+            "cover_image": "https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
+            "type": "news"
         },
         {
-            "id":"026",
-            "title":"Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
-            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
-            "views":"6",
-            "slug":"powerbank-title-new",
-            "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
-            "type":"news"
+            "id": "026",
+            "title": "Блогер Создал «Мобильный» Power Bank Условной Ёмкостью 27 Млн МА·ч",
+            "short_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views": "6",
+            "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
+            "slug": "powerbank-title-new",
+            "cover_image": "https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
+            "type": "news"
         },
         {
-            "id":"017",
-            "title":"Dover Street Market и Nike показали велюровые кеды Dunk Low",
-            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
-            "views":"6",
-            "slug":"powerbank-title-new",
-            "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
-            "type":"news"
+            "id": "017",
+            "title": "Dover Street Market и Nike показали велюровые кеды Dunk Low",
+            "short_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views": "6",
+            "tag": [{
+                    "title": "beseriyyet"
+                },
+                {
+                    "title": "trend"
+                }
+            ],
+            "slug": "powerbank-title-new",
+            "cover_image": "https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
+            "type": "news"
         },
         {
-            "id":"018",
-            "title":"Dover Street Market и Nike показали велюровые кеды Dunk Low",
-            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
-            "views":"6",
-            "slug":"powerbank-title-new",
-            "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
-            "type":"news"
+            "id": "018",
+            "title": "Dover Street Market и Nike показали велюровые кеды Dunk Low",
+            "short_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views": "6",
+            "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
+            "slug": "powerbank-title-new",
+            "cover_image": "https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
+            "type": "news"
         },
         {
-            "id":"019",
-            "title":"Dover Street Market и Nike показали велюровые кеды Dunk Low",
-            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
-            "views":"6",
-            "slug":"powerbank-title-new",
-            "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
-            "type":"news"
+            "id": "019",
+            "title": "Dover Street Market и Nike показали велюровые кеды Dunk Low",
+            "short_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views": "6",
+            "tag": [{
+                    "title": "beseriyyet"
+                },
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
+            "slug": "powerbank-title-new",
+            "cover_image": "https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
+            "type": "news"
         },
         {
-            "id":"020",
-            "title":"Dover Street Market и Nike показали велюровые кеды Dunk Low",
-            "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
-            "views":"6",
-            "slug":"powerbank-title-new",
-            "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
-            "type":"news"
+            "id": "020",
+            "title": "Dover Street Market и Nike показали велюровые кеды Dunk Low",
+            "short_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
+            "views": "6",
+            "tag": [{
+                    "title": "beseriyyet"
+                },
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
+            "slug": "powerbank-title-new",
+            "cover_image": "https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
+            "type": "news"
         }
     ]
 }

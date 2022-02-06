@@ -17,6 +17,7 @@ Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
 export const AppProvider = ({ children }) => {
+
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>

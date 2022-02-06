@@ -26,11 +26,11 @@ export const MoreButton = styled(Button).attrs(() => ({
     width: 200px;
     text-transform: lowercase;
     font-size: 18px;
-    border-color: ${({ theme }) => theme.colors.green} !important;
-    color: ${({ theme }) => theme.colors.green} !important;
+    border-color: ${({ theme, mode }) => mode ? theme.colors.dark : theme.colors.green} !important;
+    color: ${({ theme, mode }) => mode ? theme.colors.dark : theme.colors.green} !important;
 
     &:hover{
-        color: ${({ theme }) => theme.colors.dark} !important;
-        background-color: ${({ theme }) => theme.colors.green} !important;
+        background-color: ${({ theme, mode }) => mode ? theme.colors.dark : theme.colors.green} !important;
+        color: ${({ theme, mode }) => mode ? theme.colors.white : theme.colors.dark} !important;
     }
 `

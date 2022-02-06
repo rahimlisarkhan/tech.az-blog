@@ -6,12 +6,12 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import TypographyText from "../../../../components/Typograph"
 import { TagContent, TitleContentStyled } from './TitleContent.styled';
 import { useSelector } from '../../../../hooks/useSelector';
+import { convertNormalDate } from '../../../../helper/timeConvert';
 
 
-export const TitleContent = () => {
+export const TitleContent = ({newsSlug}) => {
 
   let appMode = useSelector(state => state.home.appMode)
-  let newsSlug = useSelector(state => state.home.newsSlug)
 
 
     const colorMode = () => {
@@ -38,7 +38,7 @@ export const TitleContent = () => {
                 </TypographyText>
                 <TypographyText font="14" color={colorMode()}>
                     <EventNoteIcon />
-                    {newsSlug?.created_at}
+                    {convertNormalDate(newsSlug?.created_at)}
                 </TypographyText>
                 <TypographyText font="14" color={colorMode()}>
                     <VisibilityIcon />

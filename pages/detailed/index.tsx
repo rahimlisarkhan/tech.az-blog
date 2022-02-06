@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import Layout from '../../components/Layout'
+import Loading from '../../components/Loading'
 import { useDispatch } from '../../hooks/useDispatch'
 import { useSelector } from '../../hooks/useSelector'
 import { getMixNews, getMixNewsSlug } from '../../services/MixNews'
@@ -12,21 +13,11 @@ const DetailedContainer = dynamic(() => import('../../feature/Detailed/DetailedC
 
 
 const DetailedPage: NextPage = ({ news,newsSlug }: any) => {
-  let newsData = useSelector(state => state.home.mixNews)
-  let dispatch = useDispatch()
-
-  let { query: { slug } } = useRouter()
-
-
-  useEffect(() => {
-    dispatch(fillNewsSlug(newsSlug))
-    !newsData.length && dispatch(fillMixData(news))
-
-  }, [])
 
   return (
-    <Layout title={`${slug}`}>
-      <DetailedContainer />
+    <Layout title={`${newsSlug.title}`}>
+      {/* <Loading/> */}
+      <DetailedContainer newsSlug={newsSlug} newsData={news} />
     </Layout>
   )
 }

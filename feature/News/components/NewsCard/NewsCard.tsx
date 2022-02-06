@@ -1,7 +1,7 @@
 import { NewsCardStyled, Card, CardTitleContent, CardTitle } from "./NewsCard.styled"
 import Image from "../../../../components/Image"
 import TypographyText from "../../../../components/Typograph"
-import { useRouter } from "next/router"
+import { Router, useRouter } from "next/router"
 import { router } from "../../../../utils/route"
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 
 export const NewsCard: React.FC<Props> = ({ height, col, cover_image, title, slug, type }) => {
 
-    let { push, asPath } = useRouter()
+    let { push, asPath, pathname } = useRouter()
 
     const changePage = (): void => {
         push(`detailed?slug=${slug}`)
@@ -42,7 +42,7 @@ export const NewsCard: React.FC<Props> = ({ height, col, cover_image, title, slu
                             {type} • 12 минут назад
                         </TypographyText>
                         <TypographyText color="white" margin="0" font={dynamicFont()} bold="true">
-                            {`${title?.slice(0, asPath !== router.menu.home.href ? 40 : 60)}...`}
+                            {`${title?.slice(0, pathname === router.detailed.href ? 40 : 60)}...`}
                         </TypographyText>
                     </CardTitle>
                 </CardTitleContent>

@@ -24,6 +24,7 @@ export const NewsImageSlider = ({images}:any) => {
         slidesToScroll: 1,
         swipeToSlide:true,
         focusOnSelect:true,
+        centerMode:true,
         nextArrow: <NextArrow/>,
         prevArrow: <h1>Prev</h1>,
       };

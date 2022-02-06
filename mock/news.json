@@ -6,6 +6,13 @@
             "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
             "views":"6",
             "slug":"powerbank-title-new",
+                 "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
             "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
             "type":"news"
         },
@@ -15,6 +22,13 @@
             "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
             "views":"6",
             "slug":"powerbank-title-new",
+                 "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
             "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
             "type":"news"
         },
@@ -24,6 +38,15 @@
             "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
             "views":"6",
             "slug":"powerbank-title-new",
+                 "tag": [{
+                    "title": "beseriyyet"
+                },
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
             "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
             "type":"news"
         },
@@ -33,6 +56,13 @@
             "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
             "views":"6",
             "slug":"powerbank-title-new",
+                 "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
             "cover_image":"https://wylsa.com/wp-content/uploads/2021/09/iphone-13-pro-7.jpg",
             "type":"news"
         },
@@ -42,6 +72,15 @@
             "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
             "views":"6",
             "slug":"powerbank-title-new",
+                 "tag": [{
+                    "title": "beseriyyet"
+                },
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
             "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
             "type":"news"
         },
@@ -51,6 +90,13 @@
             "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
             "views":"6",
             "slug":"powerbank-title-new",
+                 "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
             "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
             "type":"news"
         },
@@ -60,6 +106,15 @@
             "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
             "views":"6",
             "slug":"powerbank-title-new",
+                 "tag": [{
+                    "title": "beseriyyet"
+                },
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
             "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
             "type":"news"
         },
@@ -69,6 +124,13 @@
             "short_desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,",
             "views":"6",
             "slug":"powerbank-title-new",
+                 "tag": [
+                {
+                    "title": "elm"
+                }, {
+                    "title": "trend"
+                }
+            ],
             "cover_image":"https://wylsa.com/wp-content/uploads/2022/02/dover-street-market-nike-dunk-low-velvet-black-white-official-first-look-1-copy.jpg",
             "type":"news"
         }

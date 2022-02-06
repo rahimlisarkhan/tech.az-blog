@@ -1,5 +1,9 @@
 
 export const router = {
+    detailed:{
+        id:"010",
+        href:"/detailed",
+    },
     menu: {
         home: {
             id: "001",

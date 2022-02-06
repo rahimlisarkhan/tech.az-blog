@@ -4,9 +4,8 @@ import Layout from '../../components/Layout'
 
 const NewsContainer = dynamic(()=>import('../../feature/News/NewsContainer'))
 
-
 const ArticlePage:NextPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
+  <Layout title="Haqqımızda | tech.az">
       <NewsContainer/>
   </Layout>
 )
