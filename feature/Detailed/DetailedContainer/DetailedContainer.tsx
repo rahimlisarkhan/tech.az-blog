@@ -4,7 +4,7 @@ import NewsContent from "../components/NewsContent";
 import { useDispatch } from "../../../hooks/useDispatch";
 import { fillAppMode } from "../../../store/slices/home/homeSlices";
 
-export const DetailedContainer: React.FC = ({ newsSlug , newsData }: any) => {
+export const DetailedContainer: React.FC<any> = ({ data , newsData }) => {
 
   let dispatch = useDispatch()
 
@@ -14,7 +14,7 @@ export const DetailedContainer: React.FC = ({ newsSlug , newsData }: any) => {
 
   return (
     <DetailedContainerStyled>
-      <NewsContent newsSlug={newsSlug} newsData={newsData} />
+      <NewsContent data={data} newsData={newsData} />
     </DetailedContainerStyled>
   )
 }

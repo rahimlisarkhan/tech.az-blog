@@ -6,13 +6,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 const NewsContainer = dynamic(() => import('../../feature/News/NewsContainer'))
 
-
 const ArticlePage: NextPage = ({ news }: any) => {
 
   let { t } = useTranslation("menu")
 
   return (
-
     <Layout title={`${t("article")} | tech.az`}>
       <NewsContainer newsData={news} />
     </Layout>

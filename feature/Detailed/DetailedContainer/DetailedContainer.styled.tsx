@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 
 
-export const DetailedContainerStyled = styled(Grid).attrs(()=>({
+export const DetailedContainerStyled:any = styled(Grid).attrs(()=>({
     container:true,
 }))`
 `

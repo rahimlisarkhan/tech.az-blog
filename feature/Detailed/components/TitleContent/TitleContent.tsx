@@ -9,7 +9,7 @@ import { useSelector } from '../../../../hooks/useSelector';
 import { convertNormalDate } from '../../../../helper/timeConvert';
 
 
-export const TitleContent = ({newsSlug}) => {
+export const TitleContent = ({newsSlug}:any) => {
 
   let appMode = useSelector(state => state.home.appMode)
 
