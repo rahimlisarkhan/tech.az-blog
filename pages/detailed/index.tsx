@@ -9,6 +9,8 @@ const DetailedContainer = dynamic(() => import('../../feature/Detailed/DetailedC
 
 const DetailedPage: NextPage = ({ news,newsSlug }: any) => {
 
+  
+
   return (
     <Layout title={`${newsSlug.title}`}>
       <DetailedContainer newsSlug={newsSlug} newsData={news} />

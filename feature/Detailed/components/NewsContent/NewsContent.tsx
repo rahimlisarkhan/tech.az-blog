@@ -13,7 +13,7 @@ export const NewsContent = ({ newsSlug, newsData }: any) => {
 
     let appMode = useSelector(state => state.home.appMode)
     let similarData = newsData?.filter((item)=>{
-        if(item.tag.findIndex(x => x.title ===newsSlug.tag[0].title )){
+        if(item.tag.findIndex(x => x.title ===newsSlug?.tag[0].title )){
             return true
         }
         return false
