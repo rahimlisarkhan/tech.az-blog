@@ -1,6 +1,7 @@
 import { useRouter } from "next/router"
 import { MenuList, MenuItemStyle } from "./Navbar.styled"
 import { router } from "../../utils/route"
+import { useTranslation } from "next-i18next"
 
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 
 export const Navbar: React.FC<Props> = ({ mode }) => {
     let { push, asPath } = useRouter()
-
+    let { t } = useTranslation("menu");
 
     const isActive = (href?: string): string => {
         if (href === asPath) {
@@ -24,7 +25,7 @@ export const Navbar: React.FC<Props> = ({ mode }) => {
             {Object.values(router.menu).map((item) => {
                 return <MenuItemStyle mode={mode} key={`menu-id-${item.id}`} active={isActive(item.href)}
                     onClick={() => push(item.href)}>
-                    {item.title}
+                    {t(item.title)}
                 </MenuItemStyle>
             })}
         </MenuList>

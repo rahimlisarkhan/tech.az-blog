@@ -45,7 +45,7 @@ export const  CardTitleContent = styled(Box)`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0000003b;
+    background-color: #00000053;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

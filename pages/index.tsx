@@ -8,10 +8,10 @@ const NewsContainer = dynamic(() => import('../feature/News/NewsContainer'))
 
 const HomePage: NextPage = ({ news }: any) => {
 
-  // const { t } = useTranslation("menu");
+  const { t } = useTranslation("menu");
 
   return (
-    <Layout title={`Əsas | tech.az`}>
+    <Layout title={`${t("home")} | tech.az`}>
       <NewsContainer newsData={news} />
     </Layout>
   )
@@ -22,7 +22,7 @@ export default HomePage
 
 export const getServerSideProps: GetServerSideProps = async ({locale}) => {
   
-  // let languages = { ...await serverSideTranslations("az", ['common', 'menu']) }
+  let languages = { ...await serverSideTranslations(locale, ['common', 'menu']) }
   let { data: { result: { news } } } = await getMixNews()
 
   if (!news) {
@@ -31,10 +31,11 @@ export const getServerSideProps: GetServerSideProps = async ({locale}) => {
     }
   }
 
+
   
   return {
     props: {
-      // ...languages,
+      ...languages,
       news: news
     }
   }

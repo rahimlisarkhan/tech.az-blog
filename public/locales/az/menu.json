@@ -1,12 +1,7 @@
 {
     "home": "Əsas",
-    "restaurants": "Restoranlar",
-    "about us": "Haqqımızda",
-    "how it works": "Necə işləyirik",
-    "faqs": "FAQ's",
-    "profile":"Profil",
-     "basket":"Sənin Səbətin",
-     "orders":"Sifarişləriniz",
-     "checkout":"Ödəniş",
-     "login":"Çıxış"
+    "news": "Xəbər",
+    "video": "Video",
+    "article": "Məqalə",
+    "about": "Haqqımızda"
 }
