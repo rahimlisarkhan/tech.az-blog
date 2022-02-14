@@ -10,15 +10,17 @@ type Props = {
     cover_image?: string,
     title?: string,
     slug?: string,
-    type?: string
+    type?: string,
+    file_abs_url?:string
 }
 
-export const NewsCard: React.FC<Props> = ({ height, col, cover_image, title, slug, type }) => {
+export const NewsCard: React.FC<Props> = ({ height, col, cover_image, title, slug, type,file_abs_url }) => {
 
     let { push, asPath, pathname } = useRouter()
+    const contentType = file_abs_url?.split('/')[4]
 
     const changePage = (): void => {
-        push(`detailed?slug=${slug}`)
+        push(`detailed?${contentType}=${slug}`)
     }
 
     const dynamicFont = () => {

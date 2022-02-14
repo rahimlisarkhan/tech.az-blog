@@ -6,13 +6,16 @@ import styled from "styled-components";
 
 export const NewsContentStyled = styled(Grid).attrs(() => ({
     item: true,
-    xs: 8
+    md: 8,
+    xs:12
 }))`
 `
 
+
 export const SuggestedContentStyled = styled(Grid).attrs(() => ({
     item: true,
-    xs: 4
+    xs: 12,
+    md:4
 }))`
 padding-top:120px;
 padding-left:40px;
@@ -22,7 +25,7 @@ export const SimilarNewsContentStyled = styled(Grid).attrs(() => ({
     item: true,
     xs: 12
 }))`
-margin: 50px 0;
+margin: 50px 0 !important;
 `
 
 export const VideoContent = styled(Box)`

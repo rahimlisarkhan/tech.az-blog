@@ -2,12 +2,15 @@ import { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Layout from '../../components/Layout'
 
-const NewsContainer = dynamic(()=>import('../../feature/News/NewsContainer'))
+const AboutContainer = dynamic(() => import('../../feature/About/AboutContainer'))
 
-const ArticlePage:NextPage = () => (
-  <Layout title="Haqqımızda | tech.az">
-      <NewsContainer/>
-  </Layout>
-)
+const AboutPage: NextPage = () => {
 
-export default ArticlePage
+  return (
+    <Layout title="Haqqımızda | tech.az">
+      <AboutContainer />
+    </Layout>
+  )
+}
+
+export default AboutPage

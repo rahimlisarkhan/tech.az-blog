@@ -15,11 +15,12 @@ export const MenuList = styled(Box)`
     display: flex;
     width: 70%;
     justify-content: center;
-    margin-top:10px
+    margin-top:10px;
 `
 export const MenuItemStyle:any = styled(MenuItem)`
     font-size:16px !important;
     text-transform:lowercase;
+    margin:0 15px !important;
     color:${({ theme, active, mode }: MenuItemProps) => {
         if (mode) {
             return theme.colors.dark

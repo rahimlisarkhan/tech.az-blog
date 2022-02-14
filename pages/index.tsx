@@ -4,15 +4,19 @@ import { getMixNews } from '../services/MixNews'
 import { GetServerSideProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+
 const NewsContainer = dynamic(() => import('../feature/News/NewsContainer'))
 
-const HomePage: NextPage = ({ news }: any) => {
+
+const HomePage: NextPage = ({ news: { results, next } }: any) => {
 
   const { t } = useTranslation("menu");
 
+  // console.log(props);
+
   return (
     <Layout title={`${t("home")} | tech.az`}>
-      <NewsContainer newsData={news} />
+      <NewsContainer newsData={results} nextPage={next} />
     </Layout>
   )
 }
@@ -20,23 +24,22 @@ const HomePage: NextPage = ({ news }: any) => {
 export default HomePage
 
 
-export const getServerSideProps: GetServerSideProps = async ({locale}) => {
-  
-  let languages = { ...await serverSideTranslations(locale, ['common', 'menu']) }
-  let { data: { result: { news } } } = await getMixNews()
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
-  if (!news) {
+  let languages = { ...await serverSideTranslations(locale, ['common', 'menu']) }
+
+  let data = await getMixNews()
+
+  if (!data) {
     return {
       notFound: true
     }
   }
-
-
   
   return {
     props: {
       ...languages,
-      news: news
+      news: data.data
     }
   }
 

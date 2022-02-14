@@ -4,30 +4,32 @@ import Slider from "react-slick";
 import Image from "../../../../components/Image"
 import { SliderImage } from "./NewsImageSlider.styled";
 
-const NextArrow = (props)=>{
+const NextArrow = (props) => {
     const { className, style, onClick } = props;
-    return <p  className={className}
-    style={{ ...style, display: "block" }}
-    onClick={onClick}><IconButton/></p>
+    return <p className={className}
+        style={{ ...style, display: "block" }}
+        onClick={onClick}><IconButton /></p>
 }
 
 
-export const NewsImageSlider = ({images}:any) => {
+export const NewsImageSlider = ({ images }: any) => {
 
     let [nav1, setNav1] = useState(0);
     let [nav2, setNav2] = useState(0);
+
+
 
     const slider2Settings = {
         dots: true,
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
-        swipeToSlide:true,
-        focusOnSelect:true,
-        centerMode:true,
-        nextArrow: <NextArrow/>,
+        swipeToSlide: true,
+        focusOnSelect: true,
+        centerMode: true,
+        nextArrow: <NextArrow />,
         prevArrow: <h1>Prev</h1>,
-      };
+    };
     return (
         <>
             <Slider
@@ -35,10 +37,10 @@ export const NewsImageSlider = ({images}:any) => {
                 ref={slider => (setNav1(slider))}
                 arrows={false}
             >
-                {images?.map(item =>{
-                    return  <SliderImage>
-                    <Image cover="true" height="450" src={item.image} />
-                </SliderImage>
+                {images?.map(item => {
+                    return <SliderImage>
+                        <Image cover="true" height="450" src={item.image} />
+                    </SliderImage>
                 })}
                 {/* {this.props.images.map((image, index) => (
           <div class='carousel-image' key={index}>
@@ -52,9 +54,9 @@ export const NewsImageSlider = ({images}:any) => {
                 asNavFor={nav1}
                 ref={slider => (setNav2(slider))}
                 {...slider2Settings}
-        
+
             >
-               <SliderImage>
+                <SliderImage>
                     <Image cover="true" height="150" src={"https://i.insider.com/60117b551d2df20018b71117?width=1136&format=jpeg"} />
                 </SliderImage>
                 <SliderImage>

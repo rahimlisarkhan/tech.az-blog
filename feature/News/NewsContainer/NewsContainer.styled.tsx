@@ -29,6 +29,10 @@ export const MoreButton = styled(Button).attrs(() => ({
     border-color: ${({ theme, mode }) => mode ? theme.colors.dark : theme.colors.green} !important;
     color: ${({ theme, mode }) => mode ? theme.colors.dark : theme.colors.green} !important;
 
+    &:disabled {
+        background-color: ${({ theme, mode }) => mode ? theme.colors.grayText : theme.colors.grayText} !important;
+    }
+
     &:hover{
         background-color: ${({ theme, mode }) => mode ? theme.colors.dark : theme.colors.green} !important;
         color: ${({ theme, mode }) => mode ? theme.colors.white : theme.colors.dark} !important;

@@ -7,29 +7,37 @@ import { useSelector } from "../../../hooks/useSelector"
 import { fillAppMode } from "../../../store/slices/home/homeSlices"
 import { useDispatch } from "../../../hooks/useDispatch"
 
-export const NewsContainer = ({ newsData }: any) => {
+export const NewsContainer = ({ newsData, nextPage }: any) => {
     let appMode = useSelector(state => state.home.appMode)
     let dispatch = useDispatch()
 
-    useEffect(() =>{
-      dispatch(fillAppMode())
-    },[])
+    console.log(newsData);
 
-    
+
+    useEffect(() => {
+        dispatch(fillAppMode())
+    }, [])
+
+
     let [data, setData] = useState(newsData)
 
     let [nextPageCount, setNextPageCount] = useState(1)
+    let [nextPageUrl, setNextPageUrl] = useState(nextPage)
     let [loading, setLoading] = useState(false)
+
 
     const onPage = async () => {
         setLoading(true)
-        setNextPageCount(prev => prev += 1)
+        setNextPageCount(prev => nextPageUrl && prev + 1)
 
-        let { data: { result: { news } } } = await getMixNews(nextPageCount)
+        let res = await getMixNews(nextPageCount)
 
-        if (news) {
+        if (res) {
             setLoading(false)
-            setData([...data, ...news.news])
+            // setData([...data, ...res.data.results])
+            console.log(res.data.next);
+            
+            setNextPageUrl(res.data.next)
         }
     }
 
@@ -52,7 +60,7 @@ export const NewsContainer = ({ newsData }: any) => {
             })}
 
             <MoreNewsContent>
-                <MoreButton mode={appMode ? "true" : ""} onClick={onPage}>
+                <MoreButton disabled={nextPage ? false : true} mode={appMode ? "true" : ""} onClick={onPage}>
                     Daha 10 xəbər
                 </MoreButton>
             </MoreNewsContent>

@@ -22,7 +22,7 @@ export const TypographyText = styled(Typography).attrs(() => ({
                 case "white":
                     return theme.colors.white;
                 case "green":
-                    return theme.colors.textGreenLight;
+                    return theme.colors.green;
                 case "lime":
                     return theme.colors.green;
                 default:

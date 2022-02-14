@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-family:'Open Sans', sans-serif;
-        background-image:url("/image/icons\ _\ graphics/Asset 1.png"), url("/image/icons\ _\ graphics/Asset 1.png") ,linear-gradient(${colors.dark} 85%,${colors.dark} 20% ) ;
+        /* background-image:url("/image/icons\ _\ graphics/Asset 1.png"), url("/image/icons\ _\ graphics/Asset 1.png") ,linear-gradient(${colors.dark} 85%,${colors.dark} 20% ) ; */
+        background-image:linear-gradient(${colors.dark} 85%,${colors.dark} 20% ) ;
         background-repeat: repeat-y, repeat-y;
         background-position: left,right;
     }
@@ -22,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
 /* Track */
 *::-webkit-scrollbar-track {
   background:  ${colors.dark}; 
-  /* background:  ${colors.darkBlue_3};  */
 }
  
 /* Handle */
