@@ -57,7 +57,8 @@ export const NewsCard: React.FC<Props> = ({sm, height, col, cover_image, title, 
     return (
         <NewsCardStyled sm={sm} col={col} onClick={changePage}>
             <Card height={height}>
-                <Image src={cover_image} alt={title} cover="true" />
+                {/* <Image src={cover_image} alt={title} cover="true" /> */}
+                <Image src={"/image/techaz.jfif"} alt={title} cover="true" />
                 <CardTitleContent col={col}>
                     <CardTitle >
                         <TypographyText color="white" font={"13"} bold="true">
