@@ -34,7 +34,7 @@ export const TitleContent = ({ newsSlug }: any) => {
                 </TypographyText>
                 <TypographyText font="14" color={colorMode()}>
                     <LocalOfferIcon />
-                    {newsSlug?.tag?.map((item,index) => <strong key={index}> ` ${item.title} `</strong>)}
+                    {newsSlug?.tag?.map((item,index) => <strong key={index}> {item.title}</strong>)}
                 </TypographyText>
                 <TypographyText font="14" color={colorMode()}>
                     <EventNoteIcon />
