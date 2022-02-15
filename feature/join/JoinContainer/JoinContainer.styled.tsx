@@ -34,6 +34,6 @@ export const Field = styled(TextField).attrs(()=>({
     color:"success",
     variant:"filled"
 }))`
-margin:10px 0;
+margin:10px 0 !important;
 `
 
