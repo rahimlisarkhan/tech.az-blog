@@ -20,9 +20,9 @@ import { Axios } from '../utils/axios';
 
 // });
 
-export const getMixNews = async (offpage: number = 1) => {
+export const getDataNews = async (patch,offpage: number = 1) => {
 
-    let url = `/mixdata/?limit=3&offset=${offpage}`
+    let url = `/${patch}/?limit=8&offset=${offpage}`
 
     try {
         const res = await Axios.get(url)
@@ -46,5 +46,18 @@ export const getNewsSlug = async (query) => {
         return res
     } catch ({ message }) {
         toast.error(message)
+    }
+}
+
+
+export const addJoin =  async (form) => {
+
+    try {
+        const res = await Axios.post("/join/",form)
+        console.log(res);
+        
+        toast.success("Uğurlu əməliyyat!")
+    } catch ({ message }) {
+        toast.error("Zəhmət olmasa xanaları düzgün doldurun...")
     }
 }

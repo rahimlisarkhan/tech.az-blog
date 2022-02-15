@@ -19,12 +19,12 @@ export const TechContent = () => {
     return (
         <TechContentStyled>
             <TechContentRow>
-                <TechContentInfo md="3">
+                <TechContentInfo lg="3">
                     <TypographyText font="65" color={colorMode()} bold="true" text="true">
                         tech.az media
                     </TypographyText>
                 </TechContentInfo>
-                <TechContentInfo md="9">
+                <TechContentInfo lg="9">
                     <TechCard mode={appMode ? "true" : ""}>
                         <Image width="100" height="110" src="/image/icons _ graphics/Asset 6.png" alt="techaz" />
                         <TypographyText font="25" color={colorMode()} text="true">

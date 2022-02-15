@@ -4,18 +4,21 @@ import TypographyText from "../../../../components/Typograph"
 import { Box } from "@mui/material"
 import { useRouter } from "next/router"
 import { useSelector } from "../../../../hooks/useSelector"
+import { breakpoint } from "../../../../styles/breakpoint"
+import { useMediaQuery } from "react-responsive"
 
 export const CompaniesContent = ({ data: { title, data }, reverse }: any) => {
+    const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop })
     let appMode = useSelector(state => state.home.appMode)
 
     let { push } = useRouter();
 
     return (
         <CompaniesContentStyled>
-            <CompaniesRow reverse={reverse}>
+            <CompaniesRow reverse={reverse} desktop={!isDesktopOrLaptop ? "true" : ""}>
                 <CompaniesInfo bgChangeColor={appMode ? "true" : ""} >
                     {data.map(({ id, title, href, img }: any) => (
-                        <CompaniesCard key={`company-id-${id}`} onClick={() => push(href)}>
+                        <CompaniesCard desktop={!isDesktopOrLaptop ? "true" : ""} key={`company-id-${id}`} onClick={() => push(href)}>
                             <Image width="170" height="70" alt={title} src={img} />
                         </CompaniesCard>
                     ))}

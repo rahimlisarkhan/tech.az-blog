@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Layout from '../../components/Layout'
-import { getMixNews, getNewsSlug } from '../../services/MixNews'
+import { getDataNews, getNewsSlug } from '../../services/MixNews'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const DetailedContainer = dynamic(() => import('../../feature/Detailed/DetailedContainer'))
@@ -26,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, query }) 
 
   let [queryKeyValue] = Object.entries(query)
 
-  let data = await getMixNews()
+  let data = await getDataNews("mixdata")
 
   let res = await getNewsSlug(queryKeyValue)
 

@@ -1,11 +1,12 @@
-import { NewsContainerStyled, MoreNewsContent, MoreButton } from "./NewsContainer.styled"
+import { NewsContainerStyled, MoreNewsContent } from "./NewsContainer.styled"
 import NewsCard from "../components/NewsCard"
-import { getMixNews } from "../../../services/MixNews"
+import { getDataNews } from "../../../services/MixNews"
 import { useEffect, useState } from "react"
 import Loading from "../../../components/Loading"
 import { useSelector } from "../../../hooks/useSelector"
 import { fillAppMode } from "../../../store/slices/home/homeSlices"
 import { useDispatch } from "../../../hooks/useDispatch"
+import ButtonOutlined from "../../../components/ButtonOutlined"
 
 export const NewsContainer = ({ newsData, nextPage }: any) => {
     let appMode = useSelector(state => state.home.appMode)
@@ -30,7 +31,7 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
         setLoading(true)
         setNextPageCount(prev => nextPageUrl && prev + 1)
 
-        let res = await getMixNews(nextPageCount)
+        let res = await getDataNews(nextPageCount)
 
         if (res) {
             setLoading(false)
@@ -46,23 +47,23 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             {loading && <Loading />}
             {data?.map((item, index) => {
                 if (index === 0) {
-                    return <NewsCard key={`mixnews-id-${item.id}`} col={12} height="460" {...item} />
+                    return <NewsCard key={`mixnews-id-${index}`} col={12} height="460" {...item} />
                 }
 
                 if (index === 3 || index === 4 || index === 5 ||
                     index === 8 || index === 9 || index === 10 ||
                     index === 13 || index === 14 || index === 15) {
-                    return <NewsCard key={`mixnews-id-${item.id}`} col={4} height="468"  {...item} />
+                    return <NewsCard key={`mixnews-id-${index}`} col={4} height="468"  {...item} />
                 }
 
-                return <NewsCard key={`mixnews-id-${item.id}`} col={6}  {...item} />
+                return <NewsCard key={`mixnews-id-${index}`} col={6}  {...item} />
 
             })}
 
             <MoreNewsContent>
-                <MoreButton disabled={nextPage ? false : true} mode={appMode ? "true" : ""} onClick={onPage}>
+                <ButtonOutlined disabled={nextPage ? false : true} mode={appMode ? "true" : ""} onClick={onPage}>
                     Daha 10 xəbər
-                </MoreButton>
+                </ButtonOutlined>
             </MoreNewsContent>
         </NewsContainerStyled>
     )

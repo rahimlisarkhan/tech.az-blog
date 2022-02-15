@@ -6,13 +6,13 @@ import styled from "styled-components";
 
 export const ErrorContent = styled(Grid).attrs(() => ({
     item: true,
-    md: 12
+    xs: 12
 }))`
 
 display: flex;
 justify-content: center;
 align-items: center;
-flex-direction: column;
+flex-direction: column !important;
 `
 
 export const ErrorButton = styled(Button).attrs(() => ({

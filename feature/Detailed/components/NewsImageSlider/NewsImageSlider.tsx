@@ -12,11 +12,13 @@ const NextArrow = (props) => {
 }
 
 
-export const NewsImageSlider = ({ images }: any) => {
+export const NewsImageSlider = ({ images, url }: any) => {
 
     let [nav1, setNav1] = useState(0);
     let [nav2, setNav2] = useState(0);
 
+
+    console.log(images);
 
 
     const slider2Settings = {
@@ -37,16 +39,11 @@ export const NewsImageSlider = ({ images }: any) => {
                 ref={slider => (setNav1(slider))}
                 arrows={false}
             >
-                {images?.map(item => {
-                    return <SliderImage>
-                        <Image cover="true" height="450" src={item.image} />
+                {images?.map((item, index) => {
+                    return <SliderImage key={`slide-nav-1-${index}`}>
+                        <Image cover="true" height="450" src={url + item.image} />
                     </SliderImage>
                 })}
-                {/* {this.props.images.map((image, index) => (
-          <div class='carousel-image' key={index}>
-            <img src={`${this.props.imgUrl}${image.image}`} />
-          </div>
-        ))} */}
 
             </Slider>
             <br />
@@ -56,23 +53,11 @@ export const NewsImageSlider = ({ images }: any) => {
                 {...slider2Settings}
 
             >
-                <SliderImage>
-                    <Image cover="true" height="150" src={"https://i.insider.com/60117b551d2df20018b71117?width=1136&format=jpeg"} />
-                </SliderImage>
-                <SliderImage>
-                    <Image cover="true" height="150" src={"https://i.pcmag.com/imagery/reviews/01pr6hmgqz7A5wX5hSQWqRs-1.fit_lim.size_625x365.v1632764534.jpg"} />
-                </SliderImage>
-                <SliderImage>
-                    <Image cover="true" height="150" src={"https://i5.walmartimages.com/asr/821904e1-ee25-4e1c-a732-61ab857c07a7.d752787231d8292db51105ff96ed65e9.jpeg"} />
-                </SliderImage>
-                <SliderImage>
-                    <Image cover="true" height="150" src={"https://i5.walmartimages.com/asr/821904e1-ee25-4e1c-a732-61ab857c07a7.d752787231d8292db51105ff96ed65e9.jpeg"} />
-                </SliderImage>
-                {/* {this.props.images.map((image, index) => (
-          <div class='carousel-image' key={index}>
-            <img src={`${this.props.imgUrl}${image.image}`} />
-          </div>
-        ))} */}
+                {images?.map((item, index) => {
+                    return <SliderImage key={`slide-nav-2-${index}`}>
+                        <Image cover="true" height="150" src={url + item.image} />
+                    </SliderImage>
+                })}
 
             </Slider>
         </>

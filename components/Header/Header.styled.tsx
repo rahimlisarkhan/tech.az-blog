@@ -1,3 +1,4 @@
+import { Box } from "@material-ui/core";
 import { Button, Container } from "@mui/material";
 import styled from "styled-components";
 
@@ -28,4 +29,9 @@ export const ModeButton:any = styled(Button).attrs((props:any) => ({
         fill: ${({ theme, mode }: any) => mode ? theme.colors.dark : theme.colors.green}} !important;
     }
 
+`
+
+
+export const MenuActions = styled(Box)`
+/* width: 20%; */
 `

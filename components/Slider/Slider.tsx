@@ -8,13 +8,38 @@ import { SliderImage } from "./Slider.styled";
 export const SliderContent = ({ content, data,slidesToShow = 4 }) => {
 
     const slider2Settings = {
-        dots: true,
-        infinite: true,
-        slidesToShow,
-        slidesToScroll: 1,
         swipeToSlide: true,
+        slidesToScroll: 3,
         centerMode:true,
         focusOnSelect: true,
+        slidesToShow,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow:2,
+                slidesToScroll: 2,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false
+              }
+            }
+          ]
     };
     return (
         <Slider
@@ -25,7 +50,6 @@ export const SliderContent = ({ content, data,slidesToShow = 4 }) => {
                     {content(item)}
                 </SliderImage>
             })}
-
 
         </Slider>
     )

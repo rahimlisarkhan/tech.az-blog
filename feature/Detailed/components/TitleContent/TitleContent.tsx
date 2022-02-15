@@ -9,23 +9,23 @@ import { useSelector } from '../../../../hooks/useSelector';
 import { convertNormalDate } from '../../../../helper/timeConvert';
 
 
-export const TitleContent = ({newsSlug}:any) => {
+export const TitleContent = ({ newsSlug }: any) => {
 
-  let appMode = useSelector(state => state.home.appMode)
+    let appMode = useSelector(state => state.home.appMode)
 
 
     const colorMode = () => {
-        if(appMode){
+        if (appMode) {
             return "black"
         }
-  
+
         return "white"
     }
 
     return (
         <TitleContentStyled>
             <TypographyText font="24" color={colorMode()} bold="true">
-               {newsSlug?.title}
+                {newsSlug?.title}
             </TypographyText>
             <TagContent>
                 <TypographyText font="14" color={colorMode()}>
@@ -34,7 +34,7 @@ export const TitleContent = ({newsSlug}:any) => {
                 </TypographyText>
                 <TypographyText font="14" color={colorMode()}>
                     <LocalOfferIcon />
-                    {newsSlug?.tag?.map(item=> ` ${item.title} `)}
+                    {newsSlug?.tag?.map((item,index) => <strong key={index}> ` ${item.title} `</strong>)}
                 </TypographyText>
                 <TypographyText font="14" color={colorMode()}>
                     <EventNoteIcon />

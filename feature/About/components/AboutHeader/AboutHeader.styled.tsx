@@ -31,7 +31,7 @@ padding:100px 0;
 export const AboutHeaderInfo = styled(Grid).attrs(() => ({
     item: true,
     xs: 12,
-    md: 6
+    lg: 6
 }))`
  animation: ${rotate} 5s linear infinite alternate;
 `

@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 import Layout from '../components/Layout'
-import { getMixNews } from '../services/MixNews'
+import { getDataNews } from '../services/MixNews'
 import { GetServerSideProps, NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
   let languages = { ...await serverSideTranslations(locale, ['common', 'menu']) }
 
-  let data = await getMixNews()
+  let data = await getDataNews("mixdata")
 
   if (!data) {
     return {

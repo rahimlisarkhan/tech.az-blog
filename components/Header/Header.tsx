@@ -1,4 +1,4 @@
-import { HeaderStyled, HeaderContainer, ModeButton } from "./Header.styled"
+import { HeaderStyled, HeaderContainer, ModeButton, MenuActions } from "./Header.styled"
 import React, { useState } from 'react'
 import Image from "../Image"
 import Navbar from "../Navbar"
@@ -9,11 +9,20 @@ import { useDispatch } from "../../hooks/useDispatch";
 import { useSelector } from "../../hooks/useSelector";
 import { useRouter } from "next/router";
 import { router } from "../../utils/route";
+import { useMediaQuery } from 'react-responsive'
+import { breakpoint } from "../../styles/breakpoint";
+import MenuIcon from '@mui/icons-material/Menu';
+import { Box } from "@mui/material";
+import NavbarMobile from "../NavbarMobile"
+import Drawer from "../Drawer"
+import ButtonOutlined from "../ButtonOutlined";
 
 type Props = {
 }
 
 const Header: React.FC<Props> = () => {
+    const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop })
+    let [open, setOpen] = useState(false);
 
     let mode = useSelector(state => state.home.appMode)
     let dispatch = useDispatch()
@@ -23,14 +32,31 @@ const Header: React.FC<Props> = () => {
         dispatch(setAppMode())
     }
 
+    const handleClick = () => {
+        setOpen(!open)
+    }
+
     return (
         <HeaderStyled mode={mode ? mode : ""}>
             <HeaderContainer mode={mode ? mode : ""} >
                 <Image onClick={() => push(router.menu.home.href)} src={`/image/${mode ? "logo-black" : "logo"}.png`} width="165" cover="true" height="32" />
-                <Navbar mode={mode ? mode : ""} />
-                <ModeButton mode={mode ? mode : ""} onClick={handleMode}>
-                    {mode ? <NightsStayIcon /> : <Brightness4Icon />}
-                </ModeButton>
+                {isDesktopOrLaptop && <Navbar mode={mode ? mode : ""} />}
+                {/* <Navbar mode={mode ? mode : ""} /> */}
+                <MenuActions>
+                    {isDesktopOrLaptop && <ButtonOutlined mode={mode ? "true" : ""} onClick={() => push("/join")}>
+                        bizə qoşul
+                    </ButtonOutlined>}
+                    <ModeButton mode={mode ? mode : ""} onClick={handleMode}>
+                        {mode ? <NightsStayIcon /> : <Brightness4Icon />}
+                    </ModeButton>
+                    {!isDesktopOrLaptop && <ModeButton mode={mode ? mode : ""} onClick={handleClick}>
+                        <MenuIcon />
+                    </ModeButton>}
+                </MenuActions>
+                <Drawer isOpen={open} setIsOpen={handleClick}>
+                    <NavbarMobile closeMenu={handleClick} />
+                </Drawer>
+
             </HeaderContainer>
         </HeaderStyled>
     )

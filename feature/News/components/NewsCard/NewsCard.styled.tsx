@@ -11,7 +11,8 @@ type Props = {
 export const NewsCardStyled = styled(Grid).attrs(({ col = 12 }: Props) => ({
     item: true,
     xs: 12,
-    md: col
+    // sm:6,
+    lg: col
 }))`
     padding-right: 16px !important;
     cursor: pointer !important;
@@ -39,22 +40,22 @@ cursor: pointer;
     }
 `
 
-export const  CardTitleContent = styled(Box)`
+export const CardTitleContent = styled(Box)`
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #00000053;
+    background-image:linear-gradient(#00000034 10%,#00000099 50%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding:${({col}:Props)=>col===12 ? "60px" : "40px"}
+    padding:${({ col }: Props) => col === 12 ? "60px" : "40px"}
 
 `
 
-export const  CardTitle = styled(Box)`
-    border-left: 3px solid ${({theme})=>theme.colors.green};
+export const CardTitle = styled(Box)`
+    border-left: 3px solid ${({ theme }) => theme.colors.green};
     padding-left:15px;
     display: flex;
     flex-direction: column;

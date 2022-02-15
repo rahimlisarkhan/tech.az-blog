@@ -8,7 +8,8 @@ export const  TitleContentStyled = styled(Box)`
 
 export const TagContent = styled(Box)`
 display: flex;
-width:90%;
+width:80%;
+flex-wrap:wrap;
 align-items: center;
 margin-top:10px;
 justify-content: space-between;

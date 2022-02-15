@@ -8,11 +8,16 @@ import SliderContent from "../../../../components/Slider"
 import NewsCard from "../../../News/components/NewsCard"
 import NewsImageSlider from "../../components/NewsImageSlider"
 import { useSelector } from "../../../../hooks/useSelector";
+import { useMediaQuery } from 'react-responsive'
+import { breakpoint } from "../../../../styles/breakpoint";
+import { Grid } from "@mui/material";
 
 export const NewsContent = ({ newsSlug, newsData }: any) => {
 
+    const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop })
+
     console.log(newsSlug);
-    
+    let url = "http://34.125.112.115"
 
     let appMode = useSelector(state => state.home.appMode)
 
@@ -36,7 +41,7 @@ export const NewsContent = ({ newsSlug, newsData }: any) => {
             <NewsContentStyled>
                 <TitleContent newsSlug={newsSlug} />
                 <ImageContent>
-                    <Image cover="true" src={"http://34.125.112.115"+newsSlug?.cover_image} height="500" alt="news name" />
+                    <Image cover="true" src={url + newsSlug?.cover_image} height="500" alt="news name" />
                 </ImageContent>
                 <TypographyText font="18" color={colorMode()}>
                     {newsSlug?.content.slice(0, 1800)}
@@ -48,21 +53,23 @@ export const NewsContent = ({ newsSlug, newsData }: any) => {
                 <TypographyText font="18" color={colorMode()}>
                     {newsSlug?.content.slice(1800, 3000)}
                 </TypographyText>
-                {newsSlug?.news_images && <NewsImageSlider images={newsSlug?.news_images} /> }
+                {newsSlug?.news_images?.length && <NewsImageSlider url={url} images={newsSlug?.news_images || newsSlug?.videos_images} />}
                 <TypographyText font="18" color={colorMode()}>
                     {newsSlug?.content.slice(3000)}
                 </TypographyText>
             </NewsContentStyled>
 
-            <SuggestedContentStyled>
+            <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
                 <TypographyText font="20" color={colorMode()} bold="true">
                     Son yükləmələr
                 </TypographyText>
-                {newsData?.filter(item => item.id !==newsSlug.id)?.map((news, index) => {
-                    if (index < 10) {
-                        return <NewsCard height={200} {...news} />
-                    }
-                })}
+                <Grid container={true}>
+                    {newsData?.filter(item => item.id !== newsSlug.id)?.map((news, index) => {
+                        if (index < 10) {
+                            return <NewsCard sm={6} key={`last-upload-${index}`} height={200} {...news} />
+                        }
+                    })}
+                </Grid>
             </SuggestedContentStyled>
             <SimilarNewsContentStyled>
                 <TypographyText font="20" color={colorMode()} bold="true">

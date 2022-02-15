@@ -1,24 +1,26 @@
 import { Box } from "@material-ui/core";
 import { Grid } from "@mui/material";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 
 
 export const NewsContentStyled = styled(Grid).attrs(() => ({
     item: true,
-    md: 8,
-    xs:12
+    lg: 8,
+    xs: 12
 }))`
 `
 
 
-export const SuggestedContentStyled = styled(Grid).attrs(() => ({
+export const SuggestedContentStyled:any = styled(Grid).attrs(() => ({
     item: true,
     xs: 12,
-    md:4
+    lg: 4
 }))`
-padding-top:120px;
-padding-left:40px;
+${({ desktop }: any) => css`
+    padding-top:${desktop ? "120px" : "0"};
+    padding-left:${desktop ? "40px" : "0"};
+`}
 `
 
 export const SimilarNewsContentStyled = styled(Grid).attrs(() => ({
