@@ -41,7 +41,8 @@ export const NewsContent = ({ newsSlug, newsData }: any) => {
             <NewsContentStyled>
                 <TitleContent newsSlug={newsSlug} />
                 <ImageContent>
-                    <Image cover="true" src={url + newsSlug?.cover_image} height="500" alt="news name" />
+                {/* <Image cover="true" src={url + newsSlug?.cover_image} height="500" alt="news name" /> */}
+                    <Image cover="true" src={"/image/techaz.jpg"} height="500" alt="news name" />
                 </ImageContent>
                 <TypographyText font="18" color={colorMode()}>
                     {newsSlug?.content.slice(0, 1800)}
