@@ -41,13 +41,13 @@ export const AboutHeaderButton:any = styled(Button).attrs(() => ({
 }))`
 
     ${({theme,mode}:any)=>css`
-        background-color: ${mode ? theme.colors.dark : theme.colors.green};
-        color: ${mode ? theme.colors.white : theme.colors.dark};
-        font-size:25px;
-        text-transform: lowercase;
+        background-color: ${mode ? theme.colors.dark : theme.colors.green} !important;
+        color: ${mode ? theme.colors.white : theme.colors.dark} !important;
+        font-size:25px !important ;
+        text-transform: lowercase !important;
 
         &:hover{
-            background-color: ${mode ? theme.colors.green : theme.colors.bgGreen};
+            background-color: ${mode ? theme.colors.green : theme.colors.bgGreen} !important;
         }
     `}
 `
