@@ -26,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, query }) 
 
   let [queryKeyValue] = Object.entries(query)
 
-  let data = await getDataNews("mixdata")
+  let data = await getDataNews("mixdata",null)
 
   let res = await getNewsSlug(queryKeyValue)
 

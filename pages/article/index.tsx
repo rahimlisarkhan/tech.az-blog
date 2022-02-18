@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
   let languages = { ...await serverSideTranslations(locale, ['common', 'menu']) }
 
-  let data = await getDataNews("articles")
+  let data = await getDataNews("articles",null)
 
   if (!data) {
     return {

@@ -20,7 +20,7 @@ import { Axios } from '../utils/axios';
 
 // });
 
-export const getDataNews = async (patch,offpage) => {
+export const getDataNews = async (patch:string | null,offpage:string | null) => {
 
     let url = offpage ? offpage : patch
 
