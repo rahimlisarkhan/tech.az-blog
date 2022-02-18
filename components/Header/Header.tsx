@@ -22,7 +22,7 @@ type Props = {
 
 const Header: React.FC<Props> = () => {
     const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop })
-    const isMobile = useMediaQuery({ minWidth: breakpoint.mobile })
+    const isMobile = useMediaQuery({ maxWidth: breakpoint.mobile })
     let [open, setOpen] = useState(false);
 
     let mode = useSelector(state => state.home.appMode)
@@ -44,7 +44,7 @@ const Header: React.FC<Props> = () => {
                 {isDesktopOrLaptop && <Navbar mode={mode ? mode : ""} />}
                 {/* <Navbar mode={mode ? mode : ""} /> */}
                 <MenuActions>
-                    {isDesktopOrLaptop && <ButtonOutlined mode={mode ? "true" : ""} onClick={() => push("/join")}>
+                    {!isMobile && <ButtonOutlined mode={mode ? "true" : ""} onClick={() => push("/join")}>
                         bizə qoşul
                     </ButtonOutlined>}
                     <ModeButton mode={mode ? mode : ""} onClick={handleMode}>

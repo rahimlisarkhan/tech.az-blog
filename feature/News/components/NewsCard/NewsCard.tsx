@@ -6,6 +6,7 @@ import { router } from "../../../../utils/route"
 import { convertNormalDate } from "../../../../helper/timeConvert"
 import { useMediaQuery } from "react-responsive"
 import { breakpoint } from "../../../../styles/breakpoint"
+import Grow from '@mui/material/Grow';
 
 type Props = {
     height?: number | string
@@ -55,6 +56,11 @@ export const NewsCard: React.FC<Props> = ({sm, height, col, cover_image, title, 
     }
 
     return (
+        <Grow
+        in={true}
+        style={{ transformOrigin: '0 0 10' }}
+        timeout={2000}
+    >
         <NewsCardStyled sm={sm} col={col} onClick={changePage}>
             <Card height={height}>
                 {/* <Image src={cover_image} alt={title} cover="true" /> */}
@@ -71,5 +77,7 @@ export const NewsCard: React.FC<Props> = ({sm, height, col, cover_image, title, 
                 </CardTitleContent>
             </Card>
         </NewsCardStyled>
+    </Grow>
+
     )
 }

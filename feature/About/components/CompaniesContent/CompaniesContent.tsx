@@ -8,17 +8,17 @@ import { breakpoint } from "../../../../styles/breakpoint"
 import { useMediaQuery } from "react-responsive"
 
 export const CompaniesContent = ({ data: { title, data }, reverse }: any) => {
-    const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop })
+    const isMobile = useMediaQuery({ maxWidth: breakpoint.mobile })
     let appMode = useSelector(state => state.home.appMode)
 
     let { push } = useRouter();
 
     return (
         <CompaniesContentStyled>
-            <CompaniesRow reverse={reverse} desktop={!isDesktopOrLaptop ? "true" : ""}>
+            <CompaniesRow reverse={reverse} desktop={!isMobile ? "true" : ""}>
                 <CompaniesInfo bgChangeColor={appMode ? "true" : ""} >
                     {data.map(({ id, title, href, img }: any) => (
-                        <CompaniesCard desktop={!isDesktopOrLaptop ? "true" : ""} key={`company-id-${id}`} onClick={() => push(href)}>
+                        <CompaniesCard desktop={!isMobile ? "true" : ""} key={`company-id-${id}`} onClick={() => push(href)}>
                             <Image width="170" height="70" alt={title} src={img} />
                         </CompaniesCard>
                     ))}

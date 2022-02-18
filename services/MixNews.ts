@@ -20,9 +20,9 @@ import { Axios } from '../utils/axios';
 
 // });
 
-export const getDataNews = async (patch,offpage: number = 1) => {
+export const getDataNews = async (patch,offpage) => {
 
-    let url = `/${patch}/?limit=8&offset=${offpage}`
+    let url = offpage ? offpage : patch
 
     try {
         const res = await Axios.get(url)
