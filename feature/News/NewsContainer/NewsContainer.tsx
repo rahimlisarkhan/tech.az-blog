@@ -15,8 +15,6 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
     let dispatch = useDispatch()
     let [data, setData] = useState(newsData)
     let [nextPageUrl, setNextPageUrl] = useState(nextPage)
-    let [loading, setLoading] = useState(false)
-
 
     useEffect(() => {
         dispatch(fillAppMode())
@@ -36,19 +34,16 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
 
 
     const onPage = async () => {
-        setLoading(true)
 
         console.log(nextPageUrl);
 
         if (!nextPageUrl) {
-            setLoading(false)
             return
         }
 
         let res = await getDataNews(null, nextPageUrl?.split("api")[1])
 
         if (res) {
-            setLoading(false)
             setData([...data, ...res.data.results])
             setNextPageUrl(res.data.next)
         }
@@ -57,10 +52,6 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
 
     return (
         <NewsContainerStyled>
-            {loading && <Loading />}
-       
-
-            
             {data?.map((item, index) => {
                 if (index === 0) {
                     return <NewsCard key={`mixnews-id-${index}`} col={12} height="460" {...item} />

@@ -1,24 +1,6 @@
-// import { Axios, mock } from "../mock";
-// import news from "../mock/news.json"
-// import news1 from "../mock/newsNext.json"
-// import newsSlug from "../mock/newsSlug.json"
 import { toast } from 'react-toastify';
 import { Axios } from '../utils/axios';
 
-// mock.onGet("/mixdata").reply(config => {
-//     return [200, { message: 'OK', result: news }]
-
-// });
-
-// mock.onGet("/mixdata/offset").reply(config => {
-//     return [200, { message: 'OK', result: { news: news1 } }]
-
-// });
-
-// mock.onGet("/mixdata/slug").reply(config => {
-//     return [200, { message: 'OK', result: newsSlug }]
-
-// });
 
 export const getDataNews = async (patch:string | null,offpage:string | null) => {
 
