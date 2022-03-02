@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseURL = "http://34.125.112.115/api/"
+const baseURL = "http://62.212.239.74/api/"
 
 export const Axios = axios.create({
     baseURL,
