@@ -3,10 +3,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import TypographyText from "../../../../components/Typograph"
+import TypographyText from "../../../../shared/components/Typograph"
 import { TagContent, TitleContentStyled } from './TitleContent.styled';
-import { useSelector } from '../../../../hooks/useSelector';
-import { convertNormalDate } from '../../../../helper/timeConvert';
+import { useSelector } from '../../../../shared/hooks/useSelector';
+import { convertNormalDate } from '../../../../shared/helper/timeConvert';
 
 
 export const TitleContent = ({ newsSlug }: any) => {

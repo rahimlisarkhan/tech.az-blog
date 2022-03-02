@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import dynamic from 'next/dynamic'
-import Layout from '../../components/Layout'
+import Layout from '../../shared/components/Layout'
 
 const AboutContainer = dynamic(() => import('../../feature/About/AboutContainer'))
 

@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
-import Layout from '../../components/Layout'
-import { getDataNews, getNewsSlug } from '../../services/MixNews'
+import Layout from '../../shared/components/Layout'
+import { getDataNews, getNewsSlug } from '../../shared/services/MixNews'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const DetailedContainer = dynamic(() => import('../../feature/Detailed/DetailedContainer'))

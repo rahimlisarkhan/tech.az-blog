@@ -1,9 +1,9 @@
-import TypographyText from "../../../components/Typograph"
+import TypographyText from "../../../shared/components/Typograph"
 import { JoinContent, FormContent, Field } from "./JoinContainer.styled"
-import ButtonOutlined from "../../../components/ButtonOutlined"
-import { useSelector } from "../../../hooks/useSelector"
+import ButtonOutlined from "../../../shared/components/ButtonOutlined"
+import { useSelector } from "../../../shared/hooks/useSelector"
 import { useFormik } from "formik"
-import { addJoin } from "../../../services/MixNews"
+import { addJoin } from "../../../shared/services/MixNews"
 import { toast } from "react-toastify"
 
 

@@ -1,7 +1,7 @@
 import { IconButton } from "@mui/material";
 import { useState } from "react";
 import Slider from "react-slick";
-import Image from "../../../../components/Image"
+import Image from "../../../../shared/components/Image"
 import { SliderImage } from "./NewsImageSlider.styled";
 
 const NextArrow = (props) => {

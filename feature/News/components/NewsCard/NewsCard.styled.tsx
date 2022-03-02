@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/material";
 import styled from "styled-components";
-import { ThemeProps } from "../../../../interfaces/theme";
+import { ThemeProps } from "../../../../types/theme";
 
 
 type Props = {

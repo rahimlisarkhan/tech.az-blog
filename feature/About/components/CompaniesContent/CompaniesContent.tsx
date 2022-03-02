@@ -1,9 +1,9 @@
 import { CompaniesContentStyled, CompaniesRow, CompaniesInfo, CompaniesCard, CompaniesTexts } from "./CompaniesContent.styled"
-import Image from "../../../../components/Image"
-import TypographyText from "../../../../components/Typograph"
+import Image from "../../../../shared/components/Image"
+import TypographyText from "../../../../shared/components/Typograph"
 import { Box } from "@mui/material"
 import { useRouter } from "next/router"
-import { useSelector } from "../../../../hooks/useSelector"
+import { useSelector } from "../../../../shared/hooks/useSelector"
 import { breakpoint } from "../../../../styles/breakpoint"
 import { useMediaQuery } from "react-responsive"
 

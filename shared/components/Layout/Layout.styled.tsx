@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import styled, { css } from "styled-components";
-import { ThemeProps } from "../../interfaces/theme";
+import { ThemeProps } from "../../../types/theme";
 
 type Props = {
   theme?: ThemeProps,

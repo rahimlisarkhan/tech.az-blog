@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Layout from '../../components/Layout'
+import Layout from '../../shared/components/Layout'
 import dynamic from 'next/dynamic'
 
 const JoinContainer = dynamic(() => import('../../feature/join/JoinContainer'))

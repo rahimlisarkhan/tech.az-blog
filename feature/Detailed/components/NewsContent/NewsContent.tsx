@@ -1,13 +1,13 @@
 import { Fragment } from "react"
 import { NewsContentStyled, SuggestedContentStyled, VideoContent, ImageContent, SimilarNewsContentStyled } from "./NewsContent.styled"
 import TitleContent from "../../components/TitleContent";
-import Image from "../../../../components/Image"
-import TypographyText from "../../../../components/Typograph";
+import Image from "../../../../shared/components/Image"
+import TypographyText from "../../../../shared/components/Typograph";
 import ReactPlayer from "react-player";
-import SliderContent from "../../../../components/Slider"
+import SliderContent from "../../../../shared/components/Slider"
 import NewsCard from "../../../News/components/NewsCard"
 import NewsImageSlider from "../../components/NewsImageSlider"
-import { useSelector } from "../../../../hooks/useSelector";
+import { useSelector } from "../../../../shared/hooks/useSelector";
 import { useMediaQuery } from 'react-responsive'
 import { breakpoint } from "../../../../styles/breakpoint";
 import { Grid } from "@mui/material";

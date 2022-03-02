@@ -1,6 +1,6 @@
 import { Box, MenuItem } from "@material-ui/core";
 import styled from "styled-components";
-import { ThemeProps } from "../../interfaces/theme";
+import { ThemeProps } from "../../../types/theme";
 
 
 type MenuItemProps = {

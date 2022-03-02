@@ -1,7 +1,7 @@
-import TypographyText from "../../../../components/Typograph"
+import TypographyText from "../../../../shared/components/Typograph"
 import { TechContentStyled, TechContentRow, TechContentInfo, TechCard } from "./TechContent.styled"
-import Image from "../../../../components/Image"
-import { useSelector } from "../../../../hooks/useSelector"
+import Image from "../../../../shared/components/Image"
+import { useSelector } from "../../../../shared/hooks/useSelector"
 
 
 export const TechContent = () => {

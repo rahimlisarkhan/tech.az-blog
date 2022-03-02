@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styled, { css } from "styled-components";
-import { ThemeProps, TypographProps } from "../../interfaces/theme";
+import { ThemeProps, TypographProps } from "../../../types/theme";
 
 
 export const TypographyText = styled(Typography).attrs(() => ({

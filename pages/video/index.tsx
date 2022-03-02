@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import dynamic from 'next/dynamic'
-import Layout from '../../components/Layout'
-import { getDataNews } from '../../services/MixNews'
+import Layout from '../../shared/components/Layout'
+import { getDataNews } from '../../shared/services/MixNews'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 
