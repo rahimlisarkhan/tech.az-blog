@@ -1,12 +1,12 @@
 import { NewsContainerStyled, MoreNewsContent } from "./NewsContainer.styled"
 import NewsCard from "../components/NewsCard"
-import { getDataNews } from "../../../services/MixNews"
+import { getDataNews } from "../../../shared/services/MixNews"
 import { useEffect, useState } from "react"
-import Loading from "../../../components/Loading"
-import { useSelector } from "../../../hooks/useSelector"
-import { fillAppMode } from "../../../store/slices/home/homeSlices"
-import { useDispatch } from "../../../hooks/useDispatch"
-import ButtonOutlined from "../../../components/ButtonOutlined"
+// import Loading from "../../../shared/components/Loading"
+import { useSelector } from "../../../shared/hooks/useSelector"
+import { fillAppMode } from "../../../shared/store/slices/home/homeSlices"
+import { useDispatch } from "../../../shared/hooks/useDispatch"
+import ButtonOutlined from "../../../shared/components/ButtonOutlined"
 import { useRouter } from "next/router"
 import Grow from '@mui/material/Grow';
 export const NewsContainer = ({ newsData, nextPage }: any) => {

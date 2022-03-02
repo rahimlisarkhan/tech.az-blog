@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import TypographyText from "../../../components/Typograph"
+import TypographyText from "../../../shared/components/Typograph"
 import { ErrorContent, ErrorButton } from "./NotFoundContainer.styled"
 
 

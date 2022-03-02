@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { MenuList, MenuItemStyle } from "./Navbar.styled"
-import { router } from "../../utils/route"
+import { router } from "../../constant/route"
 import { useTranslation } from "next-i18next"
 
 

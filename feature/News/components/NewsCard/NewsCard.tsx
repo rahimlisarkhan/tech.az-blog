@@ -1,9 +1,9 @@
 import { NewsCardStyled, Card, CardTitleContent, CardTitle } from "./NewsCard.styled"
-import Image from "../../../../components/Image"
-import TypographyText from "../../../../components/Typograph"
+import Image from "../../../../shared/components/Image"
+import TypographyText from "../../../../shared/components/Typograph"
 import { Router, useRouter } from "next/router"
-import { router } from "../../../../utils/route"
-import { convertNormalDate } from "../../../../helper/timeConvert"
+import { router } from "../../../../shared/constant/route"
+import { convertNormalDate } from "../../../../shared/helper/timeConvert"
 import { useMediaQuery } from "react-responsive"
 import { breakpoint } from "../../../../styles/breakpoint"
 import Grow from '@mui/material/Grow';

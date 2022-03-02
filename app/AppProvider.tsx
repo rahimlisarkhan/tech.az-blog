@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { Provider } from "react-redux";
-import { store } from "../store/store";
+import { store } from "../shared/store/store";
 
 Router.events.on('routeChangeStart', (url) => {
     NProgress.start()

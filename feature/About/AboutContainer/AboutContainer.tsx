@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import { componaies } from "../../../utils/companies"
+import { componaies } from "../../../shared/constant/companies"
 import AboutHeader from "../components/AboutHeader"
 import CompaniesContent from "../components/CompaniesContent"
 import TechContent from "../components/TechContent"

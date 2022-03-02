@@ -8,9 +8,9 @@ import { setAppMode } from "../../store/slices/home/homeSlices";
 import { useDispatch } from "../../hooks/useDispatch";
 import { useSelector } from "../../hooks/useSelector";
 import { useRouter } from "next/router";
-import { router } from "../../utils/route";
+import { router } from "../../constant/route";
 import { useMediaQuery } from 'react-responsive'
-import { breakpoint } from "../../styles/breakpoint";
+import { breakpoint } from "../../../styles/breakpoint";
 import MenuIcon from '@mui/icons-material/Menu';
 import { Box } from "@mui/material";
 import NavbarMobile from "../NavbarMobile"

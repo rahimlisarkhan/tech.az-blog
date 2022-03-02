@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
 import { DetailedContainerStyled } from "./DetailedContainer.styled"
 import NewsContent from "../components/NewsContent";
-import { useDispatch } from "../../../hooks/useDispatch";
-import { fillAppMode } from "../../../store/slices/home/homeSlices";
+import { useDispatch } from "../../../shared/hooks/useDispatch";
+import { fillAppMode } from "../../../shared/store/slices/home/homeSlices";
 
 export const DetailedContainer: React.FC<any> = ({ newsSlug , newsData }) => {
 

@@ -1,7 +1,7 @@
 import { useTranslation } from "next-i18next"
 import { useRouter } from "next/router"
 import { useSelector } from "../../hooks/useSelector"
-import { router } from "../../utils/route"
+import { router } from "../../constant/route"
 import ButtonOutlined from "../ButtonOutlined"
 import { NavbarMobileContent } from "./NavbarMobile.styled"
 import { MenuList, MenuItemStyle } from "./NavbarMobile.styled"

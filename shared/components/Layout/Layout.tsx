@@ -5,7 +5,7 @@ import Main from "../Main"
 import Header from "../Header"
 import Footer from '../Footer';
 import { LayoutContent } from './Layout.styled';
-import Image from "../Image"
+// import Image from "../Image"
 import { useSelector }from "../../hooks/useSelector"
 
 type Props = {
