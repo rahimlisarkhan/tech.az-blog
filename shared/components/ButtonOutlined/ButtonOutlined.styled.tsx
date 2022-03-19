@@ -9,6 +9,7 @@ export const ButtonOutlined: any = styled(Button).attrs(() => ({
 }))`
     text-transform: lowercase;
     font-size: 18px;
+    margin:0 10px !important;
     padding:0 15px;
     border:2px solid ${({ theme, mode }: any) => mode ? theme.colors.dark : theme.colors.green} !important;
     color: ${({ theme, mode }: any) => mode ? theme.colors.dark : theme.colors.green} !important;
