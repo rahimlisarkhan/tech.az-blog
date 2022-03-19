@@ -1,8 +1,9 @@
-import axios from "axios"
+import axios from "axios";
 
-const baseURL = "http://62.212.239.74:8000/api/"
+export const url = "https://backend.tech.az";
+const baseURL = `${url}/api/`;
 
 export const Axios = axios.create({
-    baseURL,
-    timeout: 60000,
-})
+  baseURL,
+  timeout: 60000,
+});

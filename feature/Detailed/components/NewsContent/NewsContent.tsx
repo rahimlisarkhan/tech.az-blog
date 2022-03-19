@@ -11,13 +11,13 @@ import { useSelector } from "../../../../shared/hooks/useSelector";
 import { useMediaQuery } from 'react-responsive'
 import { breakpoint } from "../../../../styles/breakpoint";
 import { Grid } from "@mui/material";
+import { url } from "../../../../shared/utils/axios";
 
 export const NewsContent = ({ newsSlug, newsData }: any) => {
 
     const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop })
 
     console.log(newsSlug);
-    let url = "http://34.125.112.115"
 
     let appMode = useSelector(state => state.home.appMode)
 
@@ -41,8 +41,7 @@ export const NewsContent = ({ newsSlug, newsData }: any) => {
             <NewsContentStyled>
                 <TitleContent newsSlug={newsSlug} />
                 <ImageContent>
-                {/* <Image cover="true" src={url + newsSlug?.cover_image} height="500" alt="news name" /> */}
-                    <Image cover="true" src={"/image/techaz.jpg"} height="500" alt="news name" />
+                <Image cover="true" src={url + newsSlug?.cover_image} height="500" alt="news name" />
                 </ImageContent>
                 <TypographyText font="18" color={colorMode()}>
                     {newsSlug?.content.slice(0, 1800)}
