@@ -34,7 +34,7 @@ export const TypographyText = styled(Typography).attrs(() => ({
         margin:${margin ? `${margin}px 2px` : "10px 3px"} !important;
         font-weight:${bold && `bold`} !important;
         line-height: 1.5 !important;
-        text-transform:${text ? "lowercase" : "capitalize"}!important;
+        text-transform:${text ? "lowercase" : "normal"}!important;
         display: flex;
         align-items: center;
         text-align:${center ? `center` : "none"} !important;

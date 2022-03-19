@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         background-image:linear-gradient(${colors.dark} 85%,${colors.dark} 20% ) ;
         background-repeat: repeat-y, repeat-y;
         background-position: left,right;
+
     }
 
     *::-webkit-scrollbar {
