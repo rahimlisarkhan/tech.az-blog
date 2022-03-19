@@ -12,8 +12,6 @@ const HomePage: NextPage = ({ news: { results, next } }: any) => {
 
   const { t } = useTranslation("menu");
 
-  // console.log(props);
-
   return (
     <Layout title={`${t("home")} | tech.az`}>
       <NewsContainer newsData={results} nextPage={next} />

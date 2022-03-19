@@ -35,8 +35,6 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
 
     const onPage = async () => {
 
-        console.log(nextPageUrl);
-
         if (!nextPageUrl) {
             return
         }

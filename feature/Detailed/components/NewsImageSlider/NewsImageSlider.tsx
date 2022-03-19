@@ -18,9 +18,6 @@ export const NewsImageSlider = ({ images, url }: any) => {
     let [nav2, setNav2] = useState(0);
 
 
-    console.log(images);
-
-
     const slider2Settings = {
         dots: true,
         infinite: true,

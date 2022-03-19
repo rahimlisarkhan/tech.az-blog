@@ -20,8 +20,6 @@ export const getNewsSlug = async (query) => {
 
 
     let url = `/${query[0]}/${query[1]}`
-    console.log(url);
-
     try {
         const res = await Axios.get(url)
 
@@ -36,7 +34,6 @@ export const addJoin =  async (form) => {
 
     try {
         const res = await Axios.post("/join/",form)
-        console.log(res);
         
         toast.success("Uğurlu əməliyyat!")
     } catch ({ message }) {

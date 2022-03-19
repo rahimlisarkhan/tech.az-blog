@@ -18,8 +18,6 @@ export const homeSlice = createSlice({
     fillAppMode: (state) => {
       let mode = localStorage.getItem("appMode")
 
-      console.log(mode);
-
       state.appMode = mode === "true" ? true : false
     },
     fillMixData: (state, action: PayloadAction<any>) => {

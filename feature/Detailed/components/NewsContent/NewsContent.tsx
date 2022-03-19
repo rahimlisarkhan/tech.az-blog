@@ -17,8 +17,6 @@ export const NewsContent = ({ newsSlug, newsData }: any) => {
 
     const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop })
 
-    console.log(newsSlug);
-
     let appMode = useSelector(state => state.home.appMode)
 
     let similarData = newsData?.filter((item) => {

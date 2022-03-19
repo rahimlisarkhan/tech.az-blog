@@ -24,8 +24,6 @@ const Header: React.FC<Props> = () => {
     const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop })
     const isMobile = useMediaQuery({ maxWidth: breakpoint.tablet})
     let [open, setOpen] = useState(false);
-
-    console.log(isMobile);
     
 
     let mode = useSelector(state => state.home.appMode)
