@@ -36,7 +36,7 @@ export const NewsCard: React.FC<Props> = ({
 }) => {
   let { push, asPath, pathname } = useRouter();
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
-  let itemImageUrl = cover_image.replace("http", "https");
+  let itemImageUrl = cover_image?.replace("http", "https") ;
 
   const changePage = (): void => {
     push(`detailed?${type}=${slug}`);
