@@ -3,7 +3,7 @@ import TypographyText from "../../../shared/components/Typograph";
 import { ErrorContent, ErrorButton } from "./NotFoundContainer.styled";
 
 type Props = {
-  serverError: boolean;
+  serverError?: boolean;
 };
 
 export const NotFoundContainer = ({ serverError }: Props) => {
