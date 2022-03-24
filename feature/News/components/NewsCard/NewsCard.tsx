@@ -12,6 +12,7 @@ import { convertNormalDate } from "../../../../shared/helper/timeConvert";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "../../../../styles/breakpoint";
 import Grow from "@mui/material/Grow";
+import { convertUrlLink } from "../../../../shared/utils/convertUrlLink";
 
 type Props = {
   height?: number | string;
@@ -36,7 +37,7 @@ export const NewsCard: React.FC<Props> = ({
 }) => {
   let { push, asPath, pathname } = useRouter();
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
-  let itemImageUrl = cover_image?.replace("http", "https") ;
+  // let itemImageUrl = cover_image?.replace("http", "https") ;
 
   const changePage = (): void => {
     push(`detailed?${type}=${slug}`);
@@ -72,7 +73,7 @@ export const NewsCard: React.FC<Props> = ({
     <Grow in={true} style={{ transformOrigin: "0 0 10" }} timeout={2000}>
       <NewsCardStyled sm={sm} col={col} onClick={changePage}>
         <Card height={height}>
-          <Image src={itemImageUrl} alt={title} cover="true" />
+          <Image src={convertUrlLink(cover_image)} alt={title} cover="true" />
           {/* <Image src={"/image/techaz.jpg"} alt={title} cover="true" /> */}
           <CardTitleContent col={col}>
             <CardTitle>
