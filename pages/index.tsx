@@ -28,6 +28,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
   let data = await getDataNews("mixdata",null)
 
+
   if (!data) {
     return {
       notFound: true
