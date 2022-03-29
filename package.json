@@ -4,6 +4,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "git-commit": "git status && git add . && git commit -m",
     "type-check": "tsc"
   },
   "dependencies": {
