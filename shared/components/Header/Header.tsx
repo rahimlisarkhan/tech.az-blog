@@ -4,7 +4,7 @@ import {
   ModeButton,
   MenuActions,
 } from "./Header.styled";
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Image from "../Image";
 import Navbar from "../Navbar";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
@@ -20,17 +20,23 @@ import NavbarMobile from "../NavbarMobile";
 import Drawer from "../Drawer";
 import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
+import { useLangChange } from "shared/hooks/useLangChange";
 
 type Props = {};
 
 const Header: React.FC<Props> = () => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ maxWidth: breakpoint.laptop });
+  const { langChange } = useLangChange();
   let [open, setOpen] = useState(false);
   let { mode } = useScreenMode();
 
   let dispatch = useDispatch();
   let { push } = useRouter();
+
+  useLayoutEffect(() => {
+    langChange("az");
+  }, []);
 
   const handleMode = () => {
     dispatch(setAppMode());
