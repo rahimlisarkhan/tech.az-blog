@@ -18,11 +18,12 @@ import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "../../../../styles/breakpoint";
 import { Grid } from "@mui/material";
 import { url } from "../../../../shared/utils/axios";
+import { useScreenMode } from "../../../../shared/hooks/useScreenMode";
 
 export const NewsContent = ({ newsSlug, newsData }: any) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
 
-  let appMode = useSelector((state) => state.home.appMode);
+  let { colorMode } = useScreenMode();
 
   let similarData = newsData?.filter((item) => {
     if (
@@ -33,14 +34,6 @@ export const NewsContent = ({ newsSlug, newsData }: any) => {
     }
     return false;
   });
-
-  const colorMode = () => {
-    if (appMode) {
-      return "black";
-    }
-
-    return "white";
-  };
 
   return (
     <Fragment>
