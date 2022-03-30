@@ -7,7 +7,7 @@ const NotFoundContainer = dynamic(() => import('../../feature/404/NotFoundContai
 const NotFoundPage: NextPage = () => {
 
   return (
-    <Layout title="Serverdə xəta baş verdi | tech.az">
+    <Layout title="Serverdə xəta baş verdi | tech.az" errorPage>
       <NotFoundContainer serverError />
     </Layout>
   )

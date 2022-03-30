@@ -6,7 +6,7 @@ import {
 } from "./NewsCard.styled";
 import Image from "../../../../shared/components/Image";
 import TypographyText from "../../../../shared/components/Typograph";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { router } from "../../../../shared/constant/route";
 import { convertNormalDate } from "../../../../shared/helper/timeConvert";
 import { useMediaQuery } from "react-responsive";
@@ -37,10 +37,9 @@ export const NewsCard: React.FC<Props> = ({
 }) => {
   let { push, asPath, pathname } = useRouter();
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
-  // let itemImageUrl = cover_image?.replace("http", "https") ;
 
   const changePage = (): void => {
-    push(`detailed?${type}=${slug}`);
+    push(`/detailed/${type}=${slug}`);
   };
 
   const dynamicFont = () => {

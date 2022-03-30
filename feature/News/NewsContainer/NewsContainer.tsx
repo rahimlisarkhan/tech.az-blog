@@ -89,8 +89,8 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             onClick={onPage}
           >
             {nextPageUrl
-              ? `Daha 10 ${renderTypeName()}`
-              : `Daha ${renderTypeName()} yoxdur`}
+              ? `daha 12 ${renderTypeName()}`
+              : `daha ${renderTypeName()} yoxdur`}
           </ButtonOutlined>
         </MoreNewsContent>
       </Grow>

@@ -16,7 +16,8 @@ export const getDataNews = async (
   }
 };
 
-export const getNewsSlug = async (query) => {
+export const getNewsSlug = async (slug) => {
+  let query = slug.split("=");
   let url = `/${query[0]}/${query[1]}`;
   try {
     const res = await Axios.get(url);

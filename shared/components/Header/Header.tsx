@@ -4,7 +4,7 @@ import {
   ModeButton,
   MenuActions,
 } from "./Header.styled";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "../Image";
 import Navbar from "../Navbar";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
@@ -34,7 +34,7 @@ const Header: React.FC<Props> = () => {
   let dispatch = useDispatch();
   let { push } = useRouter();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     langChange("az");
   }, []);
 

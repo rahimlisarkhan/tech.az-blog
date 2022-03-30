@@ -1,8 +1,7 @@
 
 export const componaies = {
-    
     brands: {
-        title: "international event brands",
+        title: "Beynəlxalq brendlər",
         data: [
             {
                 id: "001",
@@ -44,7 +43,7 @@ export const componaies = {
     },
 
     global_partners: {
-        title: "our international partners",
+        title: "Beynəlxalq tərəfdaşlarımız",
         data: [
             {
                 id: "008",
@@ -103,7 +102,7 @@ export const componaies = {
     },
 
     local_partners:{
-        title:"our local partners",
+        title:"Yerli tərəfdaşlarımız",
         data:[
             {
                 id: "017",

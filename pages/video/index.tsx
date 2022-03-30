@@ -1,40 +1,42 @@
-import { GetServerSideProps, NextPage } from 'next'
-import dynamic from 'next/dynamic'
-import Layout from '../../shared/components/Layout'
-import { getDataNews } from '../../shared/services/MixNews'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+import { NextPage } from "next";
+import dynamic from "next/dynamic";
+import Layout from "../../shared/components/Layout";
+import { getDataNews } from "../../shared/services/MixNews";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+import { GetStaticProps } from "next";
 
-const NewsContainer = dynamic(() => import('../../feature/News/NewsContainer'))
+const NewsContainer = dynamic(() => import("../../feature/News/NewsContainer"));
 
 const VideoPage: NextPage = ({ news: { results, next } }: any) => {
-  let { t } = useTranslation("menu")
+  let { t } = useTranslation("menu");
   return (
     <Layout title={`${t("video")} | tech.az`}>
       <NewsContainer newsData={results} nextPage={next} />
     </Layout>
-  )
-}
+  );
+};
 
-export default VideoPage
+export default VideoPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  let languages = {
+    ...(await serverSideTranslations(locale, ["common", "menu"])),
+  };
 
-  let languages = { ...await serverSideTranslations(locale, ['common', 'menu']) }
-
-  let data = await getDataNews("videos",null)
+  let data = await getDataNews("videos", null);
 
   if (!data) {
     return {
-      notFound: true
-    }
+      notFound: true,
+    };
   }
-  
+
   return {
     props: {
       ...languages,
-      news: data.data
-    }
-  }
-
-}
+      news: data.data,
+    },
+    revalidate: 30,
+  };
+};
