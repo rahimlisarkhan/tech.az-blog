@@ -26,7 +26,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { slug: `${item.type}=${item.slug}` },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true};
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
@@ -50,5 +50,6 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       news: data.data,
       newsSlug: res.data,
     },
+    revalidate:30
   };
 };
