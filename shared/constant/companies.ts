@@ -1,5 +1,6 @@
 
 export const componaies = {
+    
     brands: {
         title: "international event brands",
         data: [
