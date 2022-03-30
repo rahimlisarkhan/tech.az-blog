@@ -50,6 +50,6 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       news: data.data,
       newsSlug: res.data,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 };
