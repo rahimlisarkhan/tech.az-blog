@@ -19,6 +19,7 @@ import { breakpoint } from "../../../../styles/breakpoint";
 import { Grid } from "@mui/material";
 import { url } from "../../../../shared/utils/axios";
 import { useScreenMode } from "../../../../shared/hooks/useScreenMode";
+import { useMounted } from "shared/hooks/useMounted";
 
 export const NewsContent = ({ newsSlug, newsData }: any) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
@@ -71,27 +72,27 @@ export const NewsContent = ({ newsSlug, newsData }: any) => {
         </TypographyText>
       </NewsContentStyled>
 
-      <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
-        <TypographyText font="20" color={colorMode()} bold="true">
-          Son yükləmələr
-        </TypographyText>
-        <Grid container={true}>
-          {newsData
-            ?.filter((item) => item.id !== newsSlug.id)
-            ?.map((news, index) => {
-              if (index < 5) {
-                return (
-                  <NewsCard
-                    sm={6}
-                    key={`last-upload-${index}`}
-                    height={200}
-                    {...news}
-                  />
-                );
-              }
-            })}
-        </Grid>
-      </SuggestedContentStyled>
+        <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
+          <TypographyText font="20" color={colorMode()} bold="true">
+            Son yükləmələr
+          </TypographyText>
+          <Grid container={true}>
+            {newsData
+              ?.filter((item) => item.id !== newsSlug.id)
+              ?.map((news, index) => {
+                if (index < 5) {
+                  return (
+                    <NewsCard
+                      sm={6}
+                      key={`last-upload-${index}`}
+                      height={200}
+                      {...news}
+                    />
+                  );
+                }
+              })}
+          </Grid>
+        </SuggestedContentStyled>
       <SimilarNewsContentStyled>
         <TypographyText font="20" color={colorMode()} bold="true">
           Oxşar yükləmələr

@@ -34,9 +34,9 @@ const Header: React.FC<Props> = () => {
   let dispatch = useDispatch();
   let { push } = useRouter();
 
-  useEffect(() => {
-    langChange("az");
-  }, []);
+  // useEffect(() => {
+  //   langChange("az");
+  // }, []);
 
   const handleMode = () => {
     dispatch(setAppMode());

@@ -4,8 +4,9 @@ import { useUpdate } from "react-use";
 export const useMounted = () => {
   const mounted = useRef(false);
   const update = useUpdate();
+  
   useEffect(() => {
-    if (mounted.current == false) {
+    if (!mounted.current) {
       mounted.current = true;
       update();
     }
