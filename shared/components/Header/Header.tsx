@@ -4,23 +4,28 @@ import {
   ModeButton,
   MenuActions,
 } from "./Header.styled";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "../Image";
 import Navbar from "../Navbar";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
-import { setAppMode } from "../../store/slices/home/homeSlices";
-import { useDispatch } from "../../hooks/useDispatch";
+import {
+  setAppMode,
+  setIsOpenSearch,
+} from "shared/store/slices/home/homeSlices";
+import { useDispatch } from "shared/hooks/useDispatch";
 import { useRouter } from "next/router";
-import { router } from "../../constant/route";
+import { router } from "shared/constant/route";
 import { useMediaQuery } from "react-responsive";
-import { breakpoint } from "../../../styles/breakpoint";
+import { breakpoint } from "styles/breakpoint";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavbarMobile from "../NavbarMobile";
 import Drawer from "../Drawer";
 import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
 import { useLangChange } from "shared/hooks/useLangChange";
+import { Search } from "@mui/icons-material";
+
 
 type Props = {};
 
@@ -34,16 +39,16 @@ const Header: React.FC<Props> = () => {
   let dispatch = useDispatch();
   let { push } = useRouter();
 
-  // useEffect(() => {
-  //   langChange("az");
-  // }, []);
-
   const handleMode = () => {
     dispatch(setAppMode());
   };
 
   const handleClick = () => {
     setOpen(!open);
+  };
+
+  const handleSearchBar = () => {
+    dispatch(setIsOpenSearch());
   };
 
   return (
@@ -67,6 +72,9 @@ const Header: React.FC<Props> = () => {
               bizə qoşul
             </ButtonOutlined>
           )}
+          <ModeButton mode={mode ? mode : ""} onClick={handleSearchBar}>
+            <Search />
+          </ModeButton>
           <ModeButton mode={mode ? mode : ""} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
