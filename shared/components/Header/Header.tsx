@@ -23,7 +23,6 @@ import NavbarMobile from "../NavbarMobile";
 import Drawer from "../Drawer";
 import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
-import { useLangChange } from "shared/hooks/useLangChange";
 import { Search } from "@mui/icons-material";
 
 
@@ -32,7 +31,6 @@ type Props = {};
 const Header: React.FC<Props> = () => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ maxWidth: breakpoint.laptop });
-  const { langChange } = useLangChange();
   let [open, setOpen] = useState(false);
   let { mode } = useScreenMode();
 
