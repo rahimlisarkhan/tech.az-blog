@@ -23,7 +23,7 @@ import NavbarMobile from "../NavbarMobile";
 import Drawer from "../Drawer";
 import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
-// import { Search } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 
 
 type Props = {};
@@ -70,9 +70,9 @@ const Header: React.FC<Props> = () => {
               bizə qoşul
             </ButtonOutlined>
           )}
-          {/* <ModeButton mode={mode ? mode : ""} onClick={handleSearchBar}>
+          <ModeButton mode={mode ? mode : ""} onClick={handleSearchBar}>
             <Search />
-          </ModeButton> */}
+          </ModeButton>
           <ModeButton mode={mode ? mode : ""} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
