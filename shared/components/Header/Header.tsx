@@ -11,7 +11,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
 import {
   setAppMode,
-  // setIsOpenSearch,
+  setIsOpenSearch,
 } from "shared/store/slices/home/homeSlices";
 import { useDispatch } from "shared/hooks/useDispatch";
 import { useRouter } from "next/router";
@@ -45,7 +45,7 @@ const Header: React.FC<Props> = () => {
   };
 
   const handleSearchBar = () => {
-    // dispatch(setIsOpenSearch());
+    dispatch(setIsOpenSearch());
   };
 
   return (
@@ -59,7 +59,6 @@ const Header: React.FC<Props> = () => {
           height="32"
         />
         {isDesktopOrLaptop && <Navbar mode={mode ? mode : ""} />}
-        {/* <Navbar mode={mode ? mode : ""} /> */}
         <MenuActions>
           {isDesktopOrLaptop && (
             <ButtonOutlined

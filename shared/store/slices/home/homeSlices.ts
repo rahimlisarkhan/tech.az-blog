@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   appMode: false,
-  // openSearchBar: false,
+  openSearchBar: false,
   mixNews: [],
   newsSlug: null,
 };
@@ -15,9 +15,9 @@ export const homeSlice = createSlice({
       state.appMode = !state.appMode;
       localStorage.setItem("appMode", `${state.appMode}`);
     },
-    // setIsOpenSearch: (state) => {
-    //   state.openSearchBar = !state.openSearchBar;
-    // },
+    setIsOpenSearch: (state) => {
+      state.openSearchBar = !state.openSearchBar;
+    },
     fillAppMode: (state) => {
       let mode = localStorage.getItem("appMode");
 
@@ -38,7 +38,7 @@ export const {
   fillMixData,
   fillNewsSlug,
   fillAppMode,
-  // setIsOpenSearch,
+  setIsOpenSearch,
 } = homeSlice.actions;
 
 export default homeSlice.reducer;
