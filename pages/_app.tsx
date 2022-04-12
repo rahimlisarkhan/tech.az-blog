@@ -3,13 +3,14 @@ import { Fragment } from "react";
 import { AppProvider } from "../app/AppProvider";
 import Head from "next/head";
 import nextI18NextConfig from "../next-i18next.config";
+import "styles/theme.scss";
 import { appWithTranslation } from "next-i18next";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Fragment>
       <Head>
-        <meta http-equiv="content-language" content="az" />
+        <meta httpEquiv="content-language" content="az" />
         <meta name="publisher" content="tech.az" />
         <meta
           name="viewport"

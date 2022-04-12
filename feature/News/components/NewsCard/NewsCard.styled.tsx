@@ -14,17 +14,14 @@ export const NewsCardStyled = styled(Grid).attrs(({ col = 12 }: Props) => ({
   // sm:6,
   lg: col,
 }))`
+  flex-direction: column;
+  height: auto;
+  padding-right: ${({ mobileMargin }) =>
+    mobileMargin ? "16px !important" : "0 !important"};
   cursor: pointer !important;
 
-  ${mediaQueries.greaterThan("xs")`
-    flex-direction: column;
-     padding-right: 0 !important;
-    height:auto;
-  `}
   ${mediaQueries.greaterThan("sm")`
-    flex-direction: column;
      padding-right: 16px !important;
-     height:auto;
   `}
 `;
 

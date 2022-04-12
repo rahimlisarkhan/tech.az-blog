@@ -10,6 +10,7 @@ import { useRequest } from "shared/hooks/useRequest";
 import { useEffect, useState } from "react";
 import { NewsType } from "types/news";
 import { changeTitle } from "shared/utils/changeTitle";
+import { Motion } from "shared/components/Motion";
 
 export const SearchContainer = () => {
   const isOpen = useSelector((state) => state.home.openSearchBar);

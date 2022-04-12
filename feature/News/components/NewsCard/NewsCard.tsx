@@ -4,15 +4,15 @@ import {
   CardTitleContent,
   CardTitle,
 } from "./NewsCard.styled";
-import Image from "../../../../shared/components/Image";
-import TypographyText from "../../../../shared/components/Typograph";
+import Image from "shared/components/Image";
+import TypographyText from "shared/components/Typograph";
 import { useRouter } from "next/router";
-import { router } from "../../../../shared/constant/route";
-import { convertNormalDate } from "../../../../shared/helper/timeConvert";
+import { router } from "shared/constant/route";
+import { convertNormalDate } from "shared/helper/timeConvert";
 import { useMediaQuery } from "react-responsive";
-import { breakpoint } from "../../../../styles/breakpoint";
-import Grow from "@mui/material/Grow";
-import { convertUrlLink } from "../../../../shared/utils/convertUrlLink";
+import { breakpoint } from "styles/breakpoint";
+import { Motion } from "shared/components/Motion";
+import { convertUrlLink } from "shared/utils/convertUrlLink";
 
 type Props = {
   height?: number | string;
@@ -20,6 +20,7 @@ type Props = {
   cover_image?: string;
   title?: string;
   slug?: string;
+  mobileMargin?: string;
   type?: string;
   created_at?: string;
   sm?: number;
@@ -32,6 +33,7 @@ export const NewsCard: React.FC<Props> = ({
   cover_image,
   title,
   slug,
+  mobileMargin,
   type,
   created_at,
 }) => {
@@ -44,7 +46,7 @@ export const NewsCard: React.FC<Props> = ({
 
   const dynamicFont = () => {
     if (!isDesktopOrLaptop) {
-      return "22";
+      return "18";
     }
 
     if (col === 12) {
@@ -69,8 +71,13 @@ export const NewsCard: React.FC<Props> = ({
   };
 
   return (
-    <Grow in={true} style={{ transformOrigin: "0 0 10" }} timeout={2000}>
-      <NewsCardStyled sm={sm} col={col} onClick={changePage}>
+    <Motion>
+      <NewsCardStyled
+        sm={sm}
+        col={col}
+        mobileMargin={mobileMargin}
+        onClick={changePage}
+      >
         <Card height={height}>
           <Image src={convertUrlLink(cover_image)} alt={title} cover="true" />
           {/* <Image src={"/image/techaz.jpg"} alt={title} cover="true" /> */}
@@ -85,15 +92,16 @@ export const NewsCard: React.FC<Props> = ({
                 font={dynamicFont()}
                 bold="true"
               >
-                {`${title?.slice(
+                {title}
+                {/* {`${title?.slice(
                   0,
                   pathname === router.detailed.href ? 40 : 60
-                )}...`}
+                )}...`} */}
               </TypographyText>
             </CardTitle>
           </CardTitleContent>
         </Card>
       </NewsCardStyled>
-    </Grow>
+    </Motion>
   );
 };

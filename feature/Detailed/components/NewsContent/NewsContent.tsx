@@ -19,6 +19,7 @@ import { Grid } from "@mui/material";
 import { url } from "shared/utils/axios";
 import { useScreenMode } from "shared/hooks/useScreenMode";
 import { NewsType } from "types/news";
+import { Motion } from "shared/components/Motion";
 
 type Props = {
   newsData: NewsType[];
@@ -27,6 +28,7 @@ type Props = {
 
 export const NewsContent = ({ newsSlug, newsData }: Props) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
+  const isMobile = useMediaQuery({ minWidth: breakpoint.mobile });
 
   let { colorMode } = useScreenMode();
 
@@ -42,39 +44,41 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
 
   return (
     <Fragment>
-      <NewsContentStyled>
-        <TitleContent newsSlug={newsSlug} />
-        <ImageContent>
-          <Image
-            cover="true"
-            src={url + newsSlug?.cover_image}
-            height="500"
-            alt="news name"
-          />
-        </ImageContent>
-        <TypographyText font="18" color={colorMode()}>
-          {newsSlug?.content.slice(0, 1800)}
-        </TypographyText>
-        {newsSlug?.video_link && (
-          <VideoContent>
-            <ReactPlayer url={newsSlug?.video_link} />
-          </VideoContent>
-        )}
-        <TypographyText font="18" color={colorMode()}>
-          {newsSlug?.content.slice(1800, 3000)}
-        </TypographyText>
-        {newsSlug?.news_images?.length ? (
-          <NewsImageSlider
-            url={url}
-            images={newsSlug?.news_images || newsSlug?.videos_images}
-          />
-        ) : (
-          ""
-        )}
-        <TypographyText font="18" color={colorMode()}>
-          {newsSlug?.content.slice(3000)}
-        </TypographyText>
-      </NewsContentStyled>
+      <Motion>
+        <NewsContentStyled>
+          <TitleContent newsSlug={newsSlug} />
+          <ImageContent>
+            <Image
+              cover="true"
+              src={url + newsSlug?.cover_image}
+              height={isDesktopOrLaptop ? "400" : "250"}
+              alt="news name"
+            />
+          </ImageContent>
+          <TypographyText font="18" color={colorMode()}>
+            {newsSlug?.content.slice(0, 1800)}
+          </TypographyText>
+          {newsSlug?.video_link && (
+            <VideoContent>
+              <ReactPlayer url={newsSlug?.video_link} />
+            </VideoContent>
+          )}
+          <TypographyText font="18" color={colorMode()}>
+            {newsSlug?.content.slice(1800, 3000)}
+          </TypographyText>
+          {newsSlug?.news_images?.length ? (
+            <NewsImageSlider
+              url={url}
+              images={newsSlug?.news_images || newsSlug?.videos_images}
+            />
+          ) : (
+            ""
+          )}
+          <TypographyText font="18" color={colorMode()}>
+            {newsSlug?.content.slice(3000)}
+          </TypographyText>
+        </NewsContentStyled>
+      </Motion>
 
       <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
         <TypographyText font="20" color={colorMode()} bold="true">
@@ -104,7 +108,13 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
         <SliderContent
           data={similarData}
           slidesToShow={3}
-          content={(item) => <NewsCard height={270} {...item} />}
+          content={(item) => (
+            <NewsCard
+              height={270}
+              {...item}
+              mobileMargin={isMobile ? "true" : ""}
+            />
+          )}
         />
       </SimilarNewsContentStyled>
     </Fragment>

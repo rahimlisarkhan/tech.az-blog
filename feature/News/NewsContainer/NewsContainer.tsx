@@ -73,7 +73,7 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             <NewsCard
               key={`mixnews-id-${index}`}
               col={4}
-              height="468"
+              height="400"
               {...item}
             />
           );
