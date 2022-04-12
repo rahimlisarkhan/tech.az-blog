@@ -1,57 +1,76 @@
-import { Search } from "@mui/icons-material";
-import { useRef, useState } from "react";
-import {
-  SearchContentStyled,
-  SearchInputBox,
-  SearchInput,
-  SearchButton,
-  SearchList,
-} from "./SearchContent.styled";
-import { SearchCard } from "../SearchCard";
-import { NewsType } from "types/news";
-import { Typograph } from "shared/components/Typograph/Typograph";
+import { Button } from "@mui/material";
+import styled from "styled-components";
+import mediaQueries from "styles/media-queries";
 
-interface SearchProps {
-  search: (text: string) => void;
-  setFilterData: (data: null) => void;
-  searchData: NewsType[];
-}
+export const SearchContentStyled = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 100vh;
+  width: 90%;
 
-export const SearchContent = ({
-  search,
-  searchData,
-  setFilterData,
-}: SearchProps) => {
-  const [inputPosition, setInputPosition] = useState(false);
-  const inputRef = useRef(null);
+  ${mediaQueries.greaterThan("xl")`
+  width: 38%;
+`}
+`;
 
-  return (
-    <SearchContentStyled>
-      <SearchInputBox inputPosition={inputPosition}>
-        <SearchInput
-          ref={inputRef}
-          onFocus={() => {
-            setFilterData(null);
-            setInputPosition(true);
-          }}
-          onKeyPress={({ key }) =>
-            key === "Enter" && search(inputRef.current.value)
-          }
-        />
-        <SearchButton onClick={() => search(inputRef.current.value)}>
-          <Search />
-        </SearchButton>
-      </SearchInputBox>
-      <SearchList inputPosition={inputPosition}>
-        {Array.isArray(searchData) && !searchData.length && (
-          <Typograph color="white" font="25">
-            Axtarılan nəticə tapılmadı...
-          </Typograph>
-        )}
-        {searchData?.map((news) => (
-          <SearchCard key={`search-news-${news.id}`} news={news} searchWord={inputRef.current.value} />
-        ))}
-      </SearchList>
-    </SearchContentStyled>
-  );
-};
+export const SearchInputBox: any = styled.div`
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  border-radius: 5px;
+  top: ${({ inputPosition }: any) => (inputPosition ? "8.3%" : "30%")};
+  overflow: hidden;
+  transition: all 1s;
+  z-index: 5;
+  display: flex;
+
+
+  ${mediaQueries.greaterThan("lg")`
+  font-size: 60px;
+`}
+`;
+
+export const SearchInput = styled.input`
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 10px;
+  outline: none;
+  font-size: 18px;
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.gray};
+
+  ${mediaQueries.greaterThan("xl")`
+  font-size: 24px;
+`}
+`;
+
+export const SearchButton = styled(Button).attrs(() => ({
+  color: "success",
+}))`
+  width: 40px;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.green} !important;
+  color: ${({ theme }) => theme.colors.white} !important;
+  border-radius: 0 !important;
+`;
+
+export const SearchList: any = styled.div`
+  display: ${({ inputPosition }: any) => (inputPosition ? "block" : "none")};
+  position: absolute;
+  top: 18%;
+  width: 100%;
+  max-height: 700px;
+  padding-right: 2px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; /* color of the tracking area */
+  }
+`;
