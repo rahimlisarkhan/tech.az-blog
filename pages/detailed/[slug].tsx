@@ -4,6 +4,9 @@ import Layout from "shared/components/Layout";
 import { getDataNews, getNewsSlug } from "../../shared/services/MixNews";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
+import { Fragment } from "react";
+import { url } from "shared/utils/axios";
+import Head from "next/head";
 
 const DetailedContainer = dynamic(
   () => import("../../feature/Detailed/DetailedContainer")
@@ -11,9 +14,18 @@ const DetailedContainer = dynamic(
 
 const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
   return (
-    <Layout title={`${newsSlug.title}`}>
-      <DetailedContainer newsSlug={newsSlug} newsData={results} />
-    </Layout>
+    <Fragment>
+      <Head>
+        <meta property="og:title" content={newsSlug?.title} />
+        <meta property="og:description" content={newsSlug?.content} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={url + newsSlug?.cover_image} />
+        <meta property="og:url" content="https://www.dev.tech.az" />
+      </Head>
+      <Layout title={`${newsSlug.title}`}>
+        <DetailedContainer newsSlug={newsSlug} newsData={results} />
+      </Layout>
+    </Fragment>
   );
 };
 
