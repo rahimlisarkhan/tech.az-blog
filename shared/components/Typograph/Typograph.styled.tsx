@@ -4,7 +4,7 @@ import { ThemeProps, TypographProps } from "../../../types/theme";
 
 
 export const TypographyText = styled(Typography).attrs(() => ({
-    variant: "h6",
+    variant: "h1",
     component: "div"
 }))`
     padding: 0 !important;

@@ -12,7 +12,7 @@ export const TitleContent = ({ newsSlug }: any) => {
 
   return (
     <TitleContentStyled>
-      <TypographyText font="24" color={colorMode()} bold="true">
+      <TypographyText font="24" color={colorMode()} bold="true" as="h1">
         {newsSlug?.title}
       </TypographyText>
       <TagContent>

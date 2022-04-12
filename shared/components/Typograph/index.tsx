@@ -1,3 +1,3 @@
-import { TypographyText} from './Typograph.styled'
+import { Typograph } from "./Typograph";
 
-export default TypographyText
+export default Typograph;

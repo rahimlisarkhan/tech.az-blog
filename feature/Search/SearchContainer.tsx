@@ -5,7 +5,7 @@ import {
   fillAllData,
   setIsOpenSearch,
 } from "shared/store/slices/home/homeSlices";
-// import { SearchContent } from "./components/SearchContent";
+import { SearchContent } from "./components/SearchContent";
 import { useRequest } from "shared/hooks/useRequest";
 import { useEffect, useState } from "react";
 import { NewsType } from "types/news";
@@ -44,11 +44,11 @@ export const SearchContainer = () => {
 
   return (
     <Modal isOpen={isOpen} close={handleSearchBar}>
-      {/* <SearchContent
+      <SearchContent
         searchData={filterData}
         setFilterData={setFilterData}
         search={handleSearchData}
-      /> */}
+      />
     </Modal>
   );
 };
