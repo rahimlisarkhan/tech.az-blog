@@ -7,10 +7,16 @@ import { GetStaticProps } from "next";
 import { Fragment } from "react";
 import { url } from "shared/utils/axios";
 import Head from "next/head";
+import { NewsResponseType, NewsType } from "types/news";
 
 const DetailedContainer = dynamic(
   () => import("../../feature/Detailed/DetailedContainer")
 );
+
+interface DetailedTypes {
+  news: NewsResponseType<NewsType>;
+  newsSlug: NewsType;
+}
 
 const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
   return (

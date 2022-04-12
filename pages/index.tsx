@@ -5,10 +5,13 @@ import { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
+import { NewsResponseType, NewsType } from "types/news";
 
 const NewsContainer = dynamic(() => import("../feature/News/NewsContainer"));
 
-const HomePage: NextPage = ({ news: { results, next } }: any) => {
+const HomePage: NextPage<NewsResponseType<NewsType>> = ({
+  news: { results, next },
+}: any) => {
   const { t } = useTranslation("menu");
 
   return (

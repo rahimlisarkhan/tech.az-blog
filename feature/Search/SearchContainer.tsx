@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { NewsType } from "types/news";
 import { changeTitle } from "shared/utils/changeTitle";
 import { Motion } from "shared/components/Motion";
+import ErrorBoundary from "shared/components/ErrorBoundary/ErrorBoundary";
 
 export const SearchContainer = () => {
   const isOpen = useSelector((state) => state.home.openSearchBar);
@@ -45,11 +46,13 @@ export const SearchContainer = () => {
 
   return (
     <Modal isOpen={isOpen} close={handleSearchBar}>
-      <SearchContent
-        searchData={filterData}
-        setFilterData={setFilterData}
-        search={handleSearchData}
-      />
+      <ErrorBoundary>
+        <SearchContent
+          searchData={filterData}
+          setFilterData={setFilterData}
+          search={handleSearchData}
+        />
+      </ErrorBoundary>
     </Modal>
   );
 };

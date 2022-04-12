@@ -5,9 +5,12 @@ import { getDataNews } from "../../shared/services/MixNews";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
+import { NewsResponseType, NewsType } from "types/news";
 const NewsContainer = dynamic(() => import("../../feature/News/NewsContainer"));
 
-const ArticlePage: NextPage = ({ news: { results, next } }: any) => {
+const ArticlePage: NextPage<NewsResponseType<NewsType>> = ({
+  news: { results, next },
+}) => {
   let { t } = useTranslation("menu");
 
   return (
