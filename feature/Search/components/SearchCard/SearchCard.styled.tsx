@@ -15,7 +15,7 @@ export const SearchCardContent = styled.div`
 
   ${mediaQueries.greaterThan("xl")`
   height: 150px;
-`}
+`};
 
   &:hover {
     transform: scale(0.98);
