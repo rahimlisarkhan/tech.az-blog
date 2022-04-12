@@ -20,7 +20,7 @@ const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
         <meta property="og:description" content={newsSlug?.content} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={url + newsSlug?.cover_image} />
-        <meta property="og:url" content="https://www.dev.tech.az" />
+        <meta property="og:url" content="https://www.tech.az" />
       </Head>
       <Layout title={`${newsSlug.title}`}>
         <DetailedContainer newsSlug={newsSlug} newsData={results} />

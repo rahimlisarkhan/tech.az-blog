@@ -18,13 +18,19 @@ import { breakpoint } from "styles/breakpoint";
 import { Grid } from "@mui/material";
 import { url } from "shared/utils/axios";
 import { useScreenMode } from "shared/hooks/useScreenMode";
+import { NewsType } from "types/news";
 
-export const NewsContent = ({ newsSlug, newsData }: any) => {
+type Props = {
+  newsData: NewsType[];
+  newsSlug: NewsType;
+};
+
+export const NewsContent = ({ newsSlug, newsData }: Props) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
 
   let { colorMode } = useScreenMode();
 
-  let similarData = newsData?.filter((item) => {
+  let similarData = newsData?.filter((item: NewsType) => {
     if (
       item.tag.findIndex((x) => x.title === newsSlug?.tag[0].title) &&
       item.id !== newsSlug.id

@@ -7,7 +7,7 @@ import Footer from "../Footer";
 import { LayoutContent } from "./Layout.styled";
 // import Image from "../Image"
 import { useSelector } from "../../hooks/useSelector";
-import { useMounted } from "shared/hooks/useMounted";
+import { SearchContainer } from "feature/Search";
 
 type Props = {
   children?: ReactNode;
@@ -17,7 +17,6 @@ type Props = {
 
 const Layout = ({ children, title = "tech.az | blog", errorPage }: Props) => {
   let mode = useSelector((state) => state.home.appMode);
-  const mounted = useMounted();
 
   return (
     <Fragment>
@@ -26,7 +25,8 @@ const Layout = ({ children, title = "tech.az | blog", errorPage }: Props) => {
       </Head>
       <Fragment>
         <LayoutContent mode={mode ? "true" : ""}>
-          {mounted && !errorPage && <Header />}
+          {!errorPage && <Header />}
+          {!errorPage && <SearchContainer />}
           <Container maxWidth="lg">
             <Main>{children}</Main>
           </Container>

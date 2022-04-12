@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = {
   appMode: false,
   openSearchBar: false,
-  mixNews: [],
+  allData: [],
   newsSlug: null,
 };
 
@@ -23,8 +23,8 @@ export const homeSlice = createSlice({
 
       state.appMode = mode === "true" ? true : false;
     },
-    fillMixData: (state, action: PayloadAction<any>) => {
-      state.mixNews = [...state.mixNews, ...action.payload];
+    fillAllData: (state, action: PayloadAction<any>) => {
+      state.allData = action.payload;
     },
     fillNewsSlug: (state, action: PayloadAction<any>) => {
       state.newsSlug = action.payload;
@@ -35,7 +35,7 @@ export const homeSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   setAppMode,
-  fillMixData,
+  fillAllData,
   fillNewsSlug,
   fillAppMode,
   setIsOpenSearch,
