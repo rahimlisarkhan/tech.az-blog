@@ -11,7 +11,7 @@ export const SearchContentStyled = styled.div`
   width: 90%;
 
   ${mediaQueries.greaterThan("xl")`
-  width: 38%;
+  width: 45%;
 `}
 `;
 

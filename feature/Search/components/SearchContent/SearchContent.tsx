@@ -12,14 +12,14 @@ import { NewsType } from "types/news";
 import { Typograph } from "shared/components/Typograph/Typograph";
 interface SearchProps {
   search: (text: string) => void;
-  setFilterData: (data: null) => void;
+  setValue: (data: null) => void;
   searchData: NewsType[];
 }
 
 export const SearchContent = ({
   search,
   searchData,
-  setFilterData,
+  setValue,
 }: SearchProps) => {
   const [inputPosition, setInputPosition] = useState(false);
   const inputRef = useRef(null);
@@ -30,14 +30,14 @@ export const SearchContent = ({
           <SearchInput
             ref={inputRef}
             onFocus={() => {
-              setFilterData(null);
+              setValue(null);
               setInputPosition(true);
             }}
             onKeyPress={({ key }) =>
-              key === "Enter" && search(inputRef.current.value)
+              key === "Enter" && search(inputRef.current?.value)
             }
           />
-          <SearchButton onClick={() => search(inputRef.current.value)}>
+          <SearchButton onClick={() => search(inputRef.current?.value)}>
             <SearchIcon />
           </SearchButton>
         </SearchInputBox>
@@ -52,7 +52,7 @@ export const SearchContent = ({
             <SearchCard
               key={`search-news-${news.id}`}
               news={news}
-              searchWord={inputRef.current.value}
+              searchWord={inputRef.current?.value}
             />
           ))}
         </SearchList>

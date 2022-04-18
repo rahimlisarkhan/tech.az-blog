@@ -7,17 +7,15 @@ import {
 } from "shared/store/slices/home/homeSlices";
 import { SearchContent } from "./components/SearchContent";
 import { useRequest } from "shared/hooks/useRequest";
-import { useEffect, useState } from "react";
-import { NewsType } from "types/news";
+import { useEffect, useMemo, useState } from "react";
 import { changeTitle } from "shared/utils/changeTitle";
-import { Motion } from "shared/components/Motion";
 import ErrorBoundary from "shared/components/ErrorBoundary/ErrorBoundary";
 
 export const SearchContainer = () => {
   const isOpen = useSelector((state) => state.home.openSearchBar);
   const allData = useSelector((state) => state.home.allData);
   const dispatch = useDispatch();
-  const [filterData, setFilterData] = useState<Array<NewsType> | null>(null);
+  const [value, setValue] = useState("");
 
   const { exc } = useRequest("alldata", {
     onSuccess: (res) => {
@@ -29,18 +27,22 @@ export const SearchContainer = () => {
     !allData.length && exc();
   }, []);
 
+  const filterData = useMemo(() => {
+    if (value) {
+      return allData.filter((data) =>
+        changeTitle(data.title).includes(changeTitle(value))
+      );
+    }
+  }, [value]);
+
   const handleSearchBar = () => {
     dispatch(setIsOpenSearch());
-    setFilterData(null);
+    setValue("");
   };
 
   const handleSearchData = (title: string) => {
     if (title) {
-      setFilterData(
-        allData.filter((data) =>
-          changeTitle(data.title).includes(changeTitle(title))
-        )
-      );
+      setValue(title);
     }
   };
 
@@ -49,7 +51,7 @@ export const SearchContainer = () => {
       <ErrorBoundary>
         <SearchContent
           searchData={filterData}
-          setFilterData={setFilterData}
+          setValue={setValue}
           search={handleSearchData}
         />
       </ErrorBoundary>
