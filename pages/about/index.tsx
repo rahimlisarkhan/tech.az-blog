@@ -1,4 +1,5 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic'
 import Layout from '../../shared/components/Layout'
 
@@ -14,3 +15,18 @@ const AboutPage: NextPage = () => {
 }
 
 export default AboutPage
+
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  let languages = {
+    ...(await serverSideTranslations(locale, ["common", "menu"])),
+  };
+
+  
+  return {
+    props: {
+      ...languages,
+    },
+    revalidate: 1,
+  };
+};
