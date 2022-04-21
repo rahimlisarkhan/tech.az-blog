@@ -6,7 +6,7 @@ interface MoveContentType {
   onMove: () => void;
 }
 
-export const useMoveContent = ({
+export const useDragContent = ({
   onDown,
   onUp,
   onMove,

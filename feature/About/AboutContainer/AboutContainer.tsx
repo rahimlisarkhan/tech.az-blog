@@ -3,8 +3,6 @@ import { componaies } from "../../../shared/constant/companies";
 import AboutHeader from "../components/AboutHeader";
 import CompaniesContent from "../components/CompaniesContent";
 import TechContent from "../components/TechContent";
-import Grow from "@mui/material/Grow";
-import { useMoveContent } from "shared/hooks/useMoveContent";
 
 export const AboutContainer = () => {
 //   const { ref, listener, moveStyle } = useMoveContent({});
