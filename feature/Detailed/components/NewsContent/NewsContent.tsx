@@ -112,7 +112,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
             <NewsCard
               height={270}
               {...item}
-              mobileMargin={isMobile ? "true" : ""}
+              mobilemargin={isMobile ? "true" : ""}
             />
           )}
         />

@@ -20,7 +20,7 @@ type Props = {
   cover_image?: string;
   title?: string;
   slug?: string;
-  mobileMargin?: string;
+  mobilemargin?: string;
   type?: string;
   created_at?: string;
   sm?: number;
@@ -33,7 +33,7 @@ export const NewsCard: React.FC<Props> = ({
   cover_image,
   title,
   slug,
-  mobileMargin,
+  mobilemargin,
   type,
   created_at,
 }) => {
@@ -75,7 +75,7 @@ export const NewsCard: React.FC<Props> = ({
       <NewsCardStyled
         sm={sm}
         col={col}
-        mobileMargin={mobileMargin}
+        mobilemargin={mobilemargin}
         onClick={changePage}
       >
         <Card height={height}>

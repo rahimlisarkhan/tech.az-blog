@@ -8,6 +8,7 @@ import { Fragment } from "react";
 import { url } from "shared/utils/axios";
 import Head from "next/head";
 import { NewsResponseType, NewsType } from "types/news";
+import { useRouter } from "next/router";
 
 const DetailedContainer = dynamic(
   () => import("../../feature/Detailed/DetailedContainer")
@@ -19,14 +20,18 @@ interface DetailedTypes {
 }
 
 const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
+
+  const {asPath} = useRouter()
+
+
   return (
     <Fragment>
       <Head>
         <meta property="og:title" content={newsSlug?.title} />
-        <meta property="og:description" content={newsSlug?.content} />
+        <meta property="og:description" content={newsSlug?.title} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={url + newsSlug?.cover_image} />
-        <meta property="og:url" content="https://www.tech.az" />
+        <meta property="og:url" content={`https://www.tech.az${asPath}`} />
       </Head>
       <Layout title={`${newsSlug.title}`}>
         <DetailedContainer newsSlug={newsSlug} newsData={results} />

@@ -16,8 +16,8 @@ export const NewsCardStyled = styled(Grid).attrs(({ col = 12 }: Props) => ({
 }))`
   flex-direction: column;
   height: auto;
-  padding-right: ${({ mobileMargin }) =>
-    mobileMargin ? "16px !important" : "0 !important"};
+  padding-right: ${({ mobilemargin }) =>
+    mobilemargin ? "16px !important" : "0 !important"};
   cursor: pointer !important;
 
   ${mediaQueries.greaterThan("sm")`

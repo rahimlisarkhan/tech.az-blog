@@ -12,7 +12,7 @@ const NextArrow = (props) => {
 }
 
 
-export const NewsImageSlider = ({ images, url,mobileMargin }: any) => {
+export const NewsImageSlider = ({ images, url }: any) => {
 
     let [nav1, setNav1] = useState(0);
     let [nav2, setNav2] = useState(0);
