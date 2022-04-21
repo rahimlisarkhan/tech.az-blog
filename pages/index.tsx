@@ -8,6 +8,7 @@ import { GetStaticProps } from "next";
 import { NewsResponseType, NewsType } from "types/news";
 import { Fragment } from "react";
 import Head from "next/head";
+import { productURL } from "shared/utils/productURL";
 
 const NewsContainer = dynamic(() => import("../feature/News/NewsContainer"));
 
@@ -15,6 +16,11 @@ const HomePage: NextPage<NewsResponseType<NewsType>> = ({
   news: { results, next },
 }: any) => {
   const { t } = useTranslation("menu");
+
+ 
+  console.log("newurl",productURL());
+  
+
 
   return (
     <Fragment>
@@ -33,7 +39,7 @@ const HomePage: NextPage<NewsResponseType<NewsType>> = ({
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/image/techaz.jpg" />
-        <meta property="og:url" content="https://www.tech.az" />
+        <meta property="og:url" content={productURL()} />
       </Head>
       <Layout title={`${t("home")} | tech.az`}>
         <NewsContainer newsData={results} nextPage={next} />

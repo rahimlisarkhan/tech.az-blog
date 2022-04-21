@@ -9,6 +9,7 @@ import { url } from "shared/utils/axios";
 import Head from "next/head";
 import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
+import { productURL } from "shared/utils/productURL";
 
 const DetailedContainer = dynamic(
   () => import("../../feature/Detailed/DetailedContainer")
@@ -31,7 +32,7 @@ const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
         <meta property="og:description" content={newsSlug?.title} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={url + newsSlug?.cover_image} />
-        <meta property="og:url" content={`https://www.tech.az${asPath}`} />
+        <meta property="og:url" content={`${productURL()}${asPath}`} />
       </Head>
       <Layout title={`${newsSlug.title}`}>
         <DetailedContainer newsSlug={newsSlug} newsData={results} />
