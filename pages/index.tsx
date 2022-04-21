@@ -9,6 +9,7 @@ import { NewsResponseType, NewsType } from "types/news";
 import { Fragment } from "react";
 import Head from "next/head";
 import { productURL } from "shared/utils/productURL";
+import MetaSEO from "shared/components/Meta";
 
 const NewsContainer = dynamic(() => import("../feature/News/NewsContainer"));
 
@@ -17,31 +18,27 @@ const HomePage: NextPage<NewsResponseType<NewsType>> = ({
 }: any) => {
   const { t } = useTranslation("menu");
 
- 
-  console.log("newurl",productURL());
-  
-
+  console.log("newurl", productURL());
 
   return (
     <Fragment>
       <Head>
-        <meta
-          property="og:title"
-          content={
+        <MetaSEO
+          title={`${t("home")} | tech.az`}
+          description={
             "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
           }
-        />
-        <meta
-          property="og:description"
-          content={
+          ogTitle={
             "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
           }
+          ogDescription={
+            "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
+          }
+          ogImage={"static/image/techaz.jpg"}
+          ogUrl={`${productURL()}`}
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="/image/techaz.jpg" />
-        <meta property="og:url" content={productURL()} />
       </Head>
-      <Layout title={`${t("home")} | tech.az`}>
+      <Layout>
         <NewsContainer newsData={results} nextPage={next} />
       </Layout>
     </Fragment>

@@ -10,6 +10,7 @@ import Head from "next/head";
 import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
+import MetaSEO from "shared/components/Meta";
 
 const DetailedContainer = dynamic(
   () => import("../../feature/Detailed/DetailedContainer")
@@ -21,20 +22,21 @@ interface DetailedTypes {
 }
 
 const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
-
-  const {asPath} = useRouter()
-
+  const { asPath } = useRouter();
 
   return (
     <Fragment>
       <Head>
-        <meta property="og:title" content={newsSlug?.title} />
-        <meta property="og:description" content={newsSlug?.title} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={url + newsSlug?.cover_image} />
-        <meta property="og:url" content={`${productURL()}${asPath}`} />
+        <MetaSEO
+          title={newsSlug.title}
+          description={newsSlug.content}
+          ogTitle={newsSlug.title}
+          ogDescription={newsSlug.content}
+          ogImage={newsSlug.cover_image}
+          ogUrl={`${productURL()}${asPath}`}
+        />
       </Head>
-      <Layout title={`${newsSlug.title}`}>
+      <Layout>
         <DetailedContainer newsSlug={newsSlug} newsData={results} />
       </Layout>
     </Fragment>
