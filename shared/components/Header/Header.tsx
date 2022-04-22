@@ -54,9 +54,8 @@ const Header: React.FC<Props> = () => {
         <Image
           onClick={() => push(router.menu.home.href)}
           src={`/image/${mode ? "logo-black" : "logo"}.png`}
-          width="165"
+          width="90"
           cover="true"
-          height="32"
         />
         {isDesktopOrLaptop && <Navbar mode={mode ? mode : ""} />}
         <MenuActions>
