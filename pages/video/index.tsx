@@ -6,6 +6,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
 import { NewsResponseType, NewsType } from "types/news";
+import { Fragment } from "react";
+import { productURL } from "shared/utils/productURL";
+import MetaSEO from "shared/components/Meta";
 
 const NewsContainer = dynamic(() => import("../../feature/News/NewsContainer"));
 
@@ -14,9 +17,25 @@ const VideoPage: NextPage<NewsResponseType<NewsType>> = ({
 }: any) => {
   let { t } = useTranslation("menu");
   return (
-    <Layout title={`${t("video")} | tech.az`}>
+    <Fragment>
+         <MetaSEO
+          title={`${t("video")} | tech.az`}
+          description={
+            "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
+          }
+          ogTitle={
+            "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
+          }
+          ogDescription={
+            "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
+          }
+          ogImage={"static/image/techaz.jpg"}
+          ogUrl={`${productURL()}`}
+        />
+    <Layout >
       <NewsContainer newsData={results} nextPage={next} />
     </Layout>
+    </Fragment>
   );
 };
 

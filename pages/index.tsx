@@ -18,8 +18,6 @@ const HomePage: NextPage<NewsResponseType<NewsType>> = ({
 }: any) => {
   const { t } = useTranslation("menu");
 
-  console.log("newurl", productURL());
-
   return (
     <Fragment>
       <Head>

@@ -14,15 +14,11 @@ type Props = {
   errorPage?: boolean;
 };
 
-const Layout = ({ children, title = "tech.az | blog", errorPage }: Props) => {
+const Layout = ({ children, errorPage }: Props) => {
   let mode = useSelector((state) => state.home.appMode);
 
   return (
     <Fragment>
-      <Head>
-        <title>{title}</title>
-      </Head>
-      <Fragment>
         <LayoutContent mode={mode ? "true" : ""}>
           {!errorPage && <Header />}
           {!errorPage && <SearchContainer />}
@@ -31,7 +27,6 @@ const Layout = ({ children, title = "tech.az | blog", errorPage }: Props) => {
           </Container>
           {!errorPage && <Footer />}
         </LayoutContent>
-      </Fragment>
     </Fragment>
   );
 };

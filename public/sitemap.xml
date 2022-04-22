@@ -4,6 +4,9 @@
         <loc>https://tech.az</loc>
     </url>
     <url>
+        <loc>https://tech.az/en</loc>
+    </url>
+    <url>
         <loc>https://tech.az/news</loc>
     </url>
     <url>
@@ -17,5 +20,8 @@
     </url>
     <url>
         <loc>https://tech.az/about</loc>
+    </url>
+    <url>
+        <loc>https://tech.az/join</loc>
     </url>
 </urlset>
