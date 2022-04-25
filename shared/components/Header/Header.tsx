@@ -4,12 +4,13 @@ import {
   ModeButton,
   MenuActions,
 } from "./Header.styled";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "../Image";
 import Navbar from "../Navbar";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
 import {
+  fillAppMode,
   setAppMode,
   setIsOpenSearch,
 } from "shared/store/slices/home/homeSlices";
@@ -23,7 +24,7 @@ import NavbarMobile from "../NavbarMobile";
 import Drawer from "../Drawer";
 import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 type Props = {};
 
@@ -35,6 +36,10 @@ const Header: React.FC<Props> = () => {
 
   let dispatch = useDispatch();
   let { push } = useRouter();
+
+  useEffect(() => {
+    dispatch(fillAppMode());
+  }, []);
 
   const handleMode = () => {
     dispatch(setAppMode());
@@ -49,8 +54,8 @@ const Header: React.FC<Props> = () => {
   };
 
   return (
-    <HeaderStyled mode={mode ? mode : ""}>
-      <HeaderContainer mode={mode ? mode : ""}>
+    <HeaderStyled mode={mode ? "true" : ""}>
+      <HeaderContainer mode={mode ? "true" : ""}>
         <Image
           onClick={() => push(router.menu.home.href)}
           src={`/image/${mode ? "logo-black" : "logo"}.png`}
@@ -58,7 +63,7 @@ const Header: React.FC<Props> = () => {
           height="90"
           cover="true"
         />
-        {isDesktopOrLaptop && <Navbar mode={mode ? mode : ""} />}
+        {isDesktopOrLaptop && <Navbar mode={mode ? "true" : ""} />}
         <MenuActions>
           {isDesktopOrLaptop && (
             <ButtonOutlined
@@ -68,14 +73,14 @@ const Header: React.FC<Props> = () => {
               bizə qoşul
             </ButtonOutlined>
           )}
-          <ModeButton mode={mode ? mode : ""} onClick={handleSearchBar}>
+          <ModeButton mode={mode ? "true" : ""} onClick={handleSearchBar}>
             <SearchIcon />
           </ModeButton>
-          <ModeButton mode={mode ? mode : ""} onClick={handleMode}>
+          <ModeButton mode={mode ? "true" : ""} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
           {isMobile && (
-            <ModeButton mode={mode ? mode : ""} onClick={handleClick}>
+            <ModeButton mode={mode ? "true" : ""} onClick={handleClick}>
               <MenuIcon />
             </ModeButton>
           )}

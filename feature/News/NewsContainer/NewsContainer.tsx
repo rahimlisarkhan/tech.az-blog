@@ -1,10 +1,8 @@
 import { NewsContainerStyled, MoreNewsContent } from "./NewsContainer.styled";
 import NewsCard from "../components/NewsCard";
 import { getDataNews } from "../../../shared/services/MixNews";
-import { useEffect, useState } from "react";
-// import Loading from "../../../shared/components/Loading"
+import { useState } from "react";
 import { useSelector } from "../../../shared/hooks/useSelector";
-import { fillAppMode } from "../../../shared/store/slices/home/homeSlices";
 import { useDispatch } from "../../../shared/hooks/useDispatch";
 import ButtonOutlined from "../../../shared/components/ButtonOutlined";
 import { useRouter } from "next/router";
@@ -12,13 +10,8 @@ import Grow from "@mui/material/Grow";
 export const NewsContainer = ({ newsData, nextPage }: any) => {
   let appMode = useSelector((state) => state.home.appMode);
   let { pathname } = useRouter();
-  let dispatch = useDispatch();
   let [data, setData] = useState(newsData);
   let [nextPageUrl, setNextPageUrl] = useState(nextPage);
-
-  useEffect(() => {
-    dispatch(fillAppMode());
-  }, []);
 
   const renderTypeName = () => {
     switch (pathname) {

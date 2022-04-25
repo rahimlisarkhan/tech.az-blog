@@ -62,7 +62,7 @@ export const SearchList: any = styled.div`
   position: absolute;
   top: 18%;
   width: 100%;
-  max-height: 700px;
+  max-height: 80vh;
   padding-right: 2px;
   overflow-y: auto;
 

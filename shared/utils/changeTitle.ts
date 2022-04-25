@@ -5,6 +5,8 @@ export const changeTitle = (text: string): string => {
       .replace(/ə/g, "e")
       .replace(/ü/g, "u")
       .replace(/ö/g, "o")
-      .replace(/ç/g, "c");
+      .replace(/ç/g, "c")
+      .replace(/ğ/g, "g")
+      .replace(/ş/g, "s");
   };
   

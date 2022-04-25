@@ -9,9 +9,10 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import { Provider } from "react-redux";
 import { store } from "../shared/store/store";
-import { useEffect } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useMounted } from "shared/hooks/useMounted";
 import { useLangChange } from "shared/hooks/useLangChange";
+import { useScreenMode } from "shared/hooks/useScreenMode";
 
 Router.events.on("routeChangeStart", (url) => {
   NProgress.start();
@@ -26,7 +27,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     langChange("az");
   }, []);
-
+  
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
