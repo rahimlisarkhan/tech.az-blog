@@ -21,9 +21,6 @@ export const homeSlice = createSlice({
     fillAppMode: (state) => {
       let mode = localStorage.getItem("appMode");
 
-      console.log("redux",mode);
-      
-
       state.appMode = mode === "true" ? true : false;
     },
     fillAllData: (state, action: PayloadAction<any>) => {
