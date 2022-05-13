@@ -6,7 +6,8 @@ interface TypographyProps {
   text?: string;
   margin?: string;
   as?: React.ElementType;
-  children?: React.ReactNode;
+  children?: React.ReactNode | string;
+  innerHTML?: boolean;
   bold?: "true";
 }
 
@@ -17,6 +18,7 @@ export const Typograph = ({
   margin,
   bold,
   text,
+  innerHTML,
   children,
 }: TypographyProps) => {
   return (
@@ -28,7 +30,11 @@ export const Typograph = ({
         color={color}
         bold={bold}
       >
-        {children}
+        {typeof children === "string" && innerHTML ? (
+          <div dangerouslySetInnerHTML={{ __html: children }} />
+        ) : (
+          children
+        )}
       </TypographyText>
     </Component>
   );

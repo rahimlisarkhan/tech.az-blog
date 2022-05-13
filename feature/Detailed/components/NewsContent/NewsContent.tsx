@@ -30,6 +30,8 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ minWidth: breakpoint.mobile });
 
+  console.log(newsSlug?.content, "text");
+
   let { colorMode } = useScreenMode();
 
   let similarData = newsData?.filter((item: NewsType) => {
@@ -55,7 +57,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
               alt="news name"
             />
           </ImageContent>
-          <TypographyText font="18" color={colorMode()}>
+          <TypographyText font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(0, 1800)}
           </TypographyText>
           {newsSlug?.video_link && (
@@ -63,7 +65,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
               <ReactPlayer url={newsSlug?.video_link} />
             </VideoContent>
           )}
-          <TypographyText font="18" color={colorMode()}>
+          <TypographyText font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(1800, 3000)}
           </TypographyText>
           {newsSlug?.news_images?.length ? (
@@ -74,7 +76,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           ) : (
             ""
           )}
-          <TypographyText font="18" color={colorMode()}>
+          <TypographyText font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(3000)}
           </TypographyText>
         </NewsContentStyled>
