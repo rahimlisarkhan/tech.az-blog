@@ -42,6 +42,9 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
     return false;
   });
 
+  console.log(newsSlug?.content.slice(0, 1800));
+  
+
   return (
     <Fragment>
       <Motion>

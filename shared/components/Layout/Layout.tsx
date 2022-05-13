@@ -21,7 +21,7 @@ const Layout = ({ children, errorPage }: Props) => {
     <Fragment>
         <LayoutContent mode={mode ? "true" : ""}>
           {!errorPage && <Header />}
-          {!errorPage && <SearchContainer />}
+          {/* {!errorPage && <SearchContainer />} */}
           <Container maxWidth="lg">
             <Main>{children}</Main>
           </Container>
