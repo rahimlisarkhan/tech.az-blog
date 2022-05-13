@@ -30,8 +30,6 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ minWidth: breakpoint.mobile });
 
-  console.log(newsSlug?.content, "text");
-
   let { colorMode } = useScreenMode();
 
   let similarData = newsData?.filter((item: NewsType) => {
