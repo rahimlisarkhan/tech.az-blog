@@ -13,6 +13,7 @@ import { writeData } from "db/writeData";
 import { realTimeData } from "db/realTimeData";
 import { onValue, ref } from "firebase/database";
 import { db } from "config/firebase";
+import { createdAt } from "db/createdAt";
 
 const DetailedContainer = dynamic(
   () => import("feature/Detailed/DetailedContainer")
@@ -46,6 +47,7 @@ const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
           image: "url",
         },
         content: "Ela Xeberdir",
+        created_at:createdAt(),
         reply: "",
       },
       true
