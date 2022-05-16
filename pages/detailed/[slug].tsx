@@ -4,11 +4,12 @@ import Layout from "shared/components/Layout";
 import { getDataNews, getNewsSlug } from "shared/services/MixNews";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
 import MetaSEO from "shared/components/Meta";
+import { writeData } from "db/db-write";
 
 const DetailedContainer = dynamic(
   () => import("feature/Detailed/DetailedContainer")
@@ -22,16 +23,70 @@ interface DetailedTypes {
 const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
   const { asPath } = useRouter();
 
+
+  //create comments comments
+
+  useEffect(() => {
+    writeData(
+      `all_content_comments/${newsSlug.slug}`,
+      {
+        user: {
+          user_id: "",
+          full_name: "Cemil",
+          last_name: "Huseynzade",
+          image: "url",
+        },
+        content: "Ela Xeberdir",
+        reply: "",
+      },
+      true
+    );
+  }, [newsSlug.slug]);
+
+  //Reply click
+  // useEffect(() => {
+  //   writeData(
+  //     `all_content_comments/${newsSlug.slug}/-N2CI73m8mKAW4wPdqtZ/reply/reply_content`,
+  //     {
+  //       user: {
+  //         user_id: "",
+  //         full_name: "Cemil",
+  //         last_name: "Huseynzade",
+  //         image: "url",
+  //       },
+  //       content: "Ela Xeberdir!",
+  //     },
+  //   );
+  // }, [newsSlug.slug]);
+
+
+  //Reply comments
+  // useEffect(() => {
+  //   writeData(
+  //     `all_content_comments/${newsSlug.slug}/-N2CI73m8mKAW4wPdqtZ/reply/reply_messages`,
+  //     {
+  //       user: {
+  //         user_id: "",
+  //         full_name: "Sarkhan",
+  //         last_name: "Rahimli",
+  //         image: "url",
+  //       },
+  //       content: "Halaldi Cemil!",
+  //     },
+  //     true
+  //   );
+  // }, [newsSlug.slug]);
+
   return (
     <Fragment>
-        <MetaSEO
-          title={newsSlug.title}
-          description={newsSlug.content}
-          ogTitle={newsSlug.title}
-          ogDescription={newsSlug.content}
-          ogImage={newsSlug.cover_image}
-          ogUrl={`${productURL()}${asPath}`}
-        />
+      <MetaSEO
+        title={newsSlug.title}
+        description={newsSlug.content}
+        ogTitle={newsSlug.title}
+        ogDescription={newsSlug.content}
+        ogImage={newsSlug.cover_image}
+        ogUrl={`${productURL()}${asPath}`}
+      />
       <Layout>
         <DetailedContainer newsSlug={newsSlug} newsData={results} />
       </Layout>
@@ -50,7 +105,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return { paths, fallback: false };
 };
-
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   let languages = {

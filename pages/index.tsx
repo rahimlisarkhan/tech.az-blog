@@ -7,7 +7,6 @@ import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
 import { NewsResponseType, NewsType } from "types/news";
 import { Fragment } from "react";
-import Head from "next/head";
 import { productURL } from "shared/utils/productURL";
 import MetaSEO from "shared/components/Meta";
 
@@ -16,7 +15,8 @@ const NewsContainer = dynamic(() => import("../feature/News/NewsContainer"));
 const HomePage: NextPage<NewsResponseType<NewsType>> = ({
   news: { results, next },
 }: any) => {
-  const { t } = useTranslation("menu");
+  const { t } = useTranslation("menu");   
+
 
   console.log(`${t("home")} | tech.az`);
   
