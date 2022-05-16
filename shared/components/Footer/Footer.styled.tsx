@@ -10,7 +10,7 @@ export const FooterStyled = styled.header`
 `
 
 export const FooterContainer = styled(Container).attrs(() => ({
-    maxWidth: "lg"
+    maxWidth: "false"
 }))`
     display: flex !important;
     justify-content: space-between !important;

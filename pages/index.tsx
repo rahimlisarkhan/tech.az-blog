@@ -18,9 +18,11 @@ const HomePage: NextPage<NewsResponseType<NewsType>> = ({
 }: any) => {
   const { t } = useTranslation("menu");
 
+  console.log(`${t("home")} | tech.az`);
+  
+
   return (
     <Fragment>
-      <Head>
         <MetaSEO
           title={`${t("home")} | tech.az`}
           description={
@@ -35,7 +37,6 @@ const HomePage: NextPage<NewsResponseType<NewsType>> = ({
           ogImage={"static/image/techaz.jpg"}
           ogUrl={`${productURL()}`}
         />
-      </Head>
       <Layout>
         <NewsContainer newsData={results} nextPage={next} />
       </Layout>

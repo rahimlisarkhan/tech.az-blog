@@ -12,7 +12,7 @@ interface MetaTypes {
 }
 
 const MetaSEO = ({
-  title = "tech.az | blog",
+  title,
   keywords,
   description,
   ogTitle,

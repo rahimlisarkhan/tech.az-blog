@@ -1,19 +1,17 @@
 import { GetStaticPaths, NextPage } from "next";
 import dynamic from "next/dynamic";
 import Layout from "shared/components/Layout";
-import { getDataNews, getNewsSlug } from "../../shared/services/MixNews";
+import { getDataNews, getNewsSlug } from "shared/services/MixNews";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
 import { Fragment } from "react";
-import { url } from "shared/utils/axios";
-import Head from "next/head";
 import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
 import MetaSEO from "shared/components/Meta";
 
 const DetailedContainer = dynamic(
-  () => import("../../feature/Detailed/DetailedContainer")
+  () => import("feature/Detailed/DetailedContainer")
 );
 
 interface DetailedTypes {
@@ -26,7 +24,6 @@ const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
 
   return (
     <Fragment>
-      <Head>
         <MetaSEO
           title={newsSlug.title}
           description={newsSlug.content}
@@ -35,7 +32,6 @@ const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
           ogImage={newsSlug.cover_image}
           ogUrl={`${productURL()}${asPath}`}
         />
-      </Head>
       <Layout>
         <DetailedContainer newsSlug={newsSlug} newsData={results} />
       </Layout>
@@ -54,6 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return { paths, fallback: false };
 };
+
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   let languages = {

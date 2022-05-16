@@ -3,26 +3,16 @@ import NewsCard from "../components/NewsCard";
 import { getDataNews } from "../../../shared/services/MixNews";
 import { useState } from "react";
 import { useSelector } from "../../../shared/hooks/useSelector";
-import { useDispatch } from "../../../shared/hooks/useDispatch";
 import ButtonOutlined from "../../../shared/components/ButtonOutlined";
-import { useRouter } from "next/router";
 import Grow from "@mui/material/Grow";
-export const NewsContainer = ({ newsData, nextPage }: any) => {
-  let appMode = useSelector((state) => state.home.appMode);
-  let { pathname } = useRouter();
-  let [data, setData] = useState(newsData);
-  let [nextPageUrl, setNextPageUrl] = useState(nextPage);
+import { useRenderTypeName } from "shared/hooks/useRenderTypeName";
 
-  const renderTypeName = () => {
-    switch (pathname) {
-      case "/article":
-        return "məqalə";
-      case "/video":
-        return "video";
-      default:
-        return "xəbər";
-    }
-  };
+export const NewsContainer = ({ newsData, nextPage }: any) => {
+  const appMode = useSelector((state) => state.home.appMode);
+  const [data, setData] = useState(newsData);
+  let [nextPageUrl, setNextPageUrl] = useState(nextPage);
+  const tagName = useRenderTypeName();
+
 
   const onPage = async () => {
     if (!nextPageUrl) {
@@ -45,33 +35,39 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             <NewsCard
               key={`mixnews-id-${index}`}
               col={12}
-              height="460"
+              height="600"
               {...item}
             />
           );
         }
 
         if (
-          index === 3 ||
           index === 4 ||
           index === 5 ||
-          index === 8 ||
-          index === 9 ||
-          index === 10 ||
+          index === 6 ||
+          index === 7 ||
+          index === 11 ||
+          index === 12 ||
           index === 13 ||
-          index === 14 ||
-          index === 15
+          index === 14
         ) {
           return (
             <NewsCard
               key={`mixnews-id-${index}`}
-              col={4}
+              col={3}
               height="400"
               {...item}
             />
           );
         }
-        return <NewsCard key={`mixnews-id-${index}`} col={6} {...item} />;
+        return (
+          <NewsCard
+            key={`mixnews-id-${index}`}
+            col={4}
+            {...item}
+            height="350"
+          />
+        );
       })}
 
       <Grow in={true} style={{ transformOrigin: "0 0 10" }} timeout={2000}>
@@ -81,9 +77,7 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             mode={appMode ? "true" : ""}
             onClick={onPage}
           >
-            {nextPageUrl
-              ? `daha 12 ${renderTypeName()}`
-              : `daha ${renderTypeName()} yoxdur`}
+            {nextPageUrl ? `daha 12 ${tagName}` : `daha ${tagName} yoxdur`}
           </ButtonOutlined>
         </MoreNewsContent>
       </Grow>

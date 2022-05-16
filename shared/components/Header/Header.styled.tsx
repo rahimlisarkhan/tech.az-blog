@@ -10,11 +10,10 @@ export const HeaderStyled: any = styled.header`
     background: ${({ theme, mode }: any) =>
       mode ? theme.colors.white : theme.colors.blackGrey}};
     margin-bottom: 20px;
-
 `
 
 export const HeaderContainer: any = styled(Container).attrs(() => ({
-  maxWidth: "lg",
+  maxWidth: "false",
 }))`
   display: flex !important;
   height: 80px;

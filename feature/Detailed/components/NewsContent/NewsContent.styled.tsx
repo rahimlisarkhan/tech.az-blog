@@ -1,17 +1,19 @@
 import { Box } from "@material-ui/core";
 import { Grid } from "@mui/material";
+import mediaQueries from "styles/media-queries";
+
 import styled, { css } from "styled-components";
 
 export const NewsContentStyled = styled(Grid).attrs(() => ({
   item: true,
-  lg: 8,
+  lg: 9,
   xs: 12,
 }))``;
 
 export const SuggestedContentStyled: any = styled(Grid).attrs(() => ({
   item: true,
   xs: 12,
-  lg: 4,
+  lg: 3,
 }))`
   ${({ desktop }: any) => css`
     padding-top: ${desktop ? "140px" : "0"};
@@ -24,12 +26,17 @@ export const SimilarNewsContentStyled = styled(Grid).attrs(() => ({
   xs: 12,
 }))`
   margin: 50px 0 !important;
+  padding: 0 10px;
 `;
 
 export const VideoContent = styled(Box)`
   margin: 50px 0;
   div {
     width: 100% !important;
+
+    ${mediaQueries.greaterThan("xl")`
+      height: 600px !important;
+    `};
   }
 `;
 export const ImageContent = styled(Box)`

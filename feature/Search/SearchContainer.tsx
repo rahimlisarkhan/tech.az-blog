@@ -23,9 +23,9 @@ export const SearchContainer = () => {
     },
   });
 
-  // useEffect(() => {
-  //   !allData.length && exc();
-  // }, []);
+  useEffect(() => {
+    !allData.length && exc();
+  }, []);
 
   const filterData = useMemo(() => {
     if (value) {

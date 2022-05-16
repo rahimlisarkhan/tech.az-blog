@@ -51,7 +51,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
             <Image
               cover="true"
               src={url + newsSlug?.cover_image}
-              height={isDesktopOrLaptop ? "400" : "250"}
+              height={isDesktopOrLaptop ? "600" : "250"}
               alt="news name"
             />
           </ImageContent>
@@ -60,7 +60,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           </TypographyText>
           {newsSlug?.video_link && (
             <VideoContent>
-              <ReactPlayer url={newsSlug?.video_link} />
+              <ReactPlayer url={newsSlug?.video_link} playing loop controls />
             </VideoContent>
           )}
           <TypographyText font="18" color={colorMode()} innerHTML>
@@ -93,7 +93,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
                   <NewsCard
                     sm={6}
                     key={`last-upload-${index}`}
-                    height={200}
+                    height={"220"}
                     {...news}
                   />
                 );
@@ -107,7 +107,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
         </TypographyText>
         <SliderContent
           data={similarData}
-          slidesToShow={3}
+          slidesToShow={4}
           content={(item) => (
             <NewsCard
               height={270}
