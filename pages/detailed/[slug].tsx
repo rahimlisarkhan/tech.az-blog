@@ -9,7 +9,10 @@ import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
 import MetaSEO from "shared/components/Meta";
-import { writeData } from "db/db-write";
+import { writeData } from "db/writeData";
+import { realTimeData } from "db/realTimeData";
+import { onValue, ref } from "firebase/database";
+import { db } from "config/firebase";
 
 const DetailedContainer = dynamic(
   () => import("feature/Detailed/DetailedContainer")
@@ -23,6 +26,12 @@ interface DetailedTypes {
 const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
   const { asPath } = useRouter();
 
+  //read data
+  // useEffect(() => {
+  //   realTimeData("/all_content_comments", (data: any) => {
+  //     console.log(data, "Data");
+  //   });
+  // }, []);
 
   //create comments comments
 
@@ -58,7 +67,6 @@ const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
   //     },
   //   );
   // }, [newsSlug.slug]);
-
 
   //Reply comments
   // useEffect(() => {
