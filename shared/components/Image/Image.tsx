@@ -21,9 +21,6 @@ export const ImageTag = ({
   onClick,
 }: ImageType) => {
 
-  console.log("src",width);
-  console.log("src",height);
-  
   return (
     <ImageContent
       onClick={onClick}
@@ -33,6 +30,7 @@ export const ImageTag = ({
     >
       <Image
         layout="fill"
+        priority
         alt={alt}
         src={src}
         objectFit={cover ? "cover" : "contain"}
