@@ -4,7 +4,7 @@ import {
   CardTitleContent,
   CardTitle,
 } from "./NewsCard.styled";
-import Image from "shared/components/Image";
+import { Image } from "shared/components/Image";
 import TypographyText from "shared/components/Typograph";
 import { useRouter } from "next/router";
 import { router } from "shared/constant/route";
@@ -79,8 +79,11 @@ export const NewsCard: React.FC<Props> = ({
         onClick={changePage}
       >
         <Card height={height}>
-          <Image src={convertUrlLink(cover_image)} alt={title} cover="true" />
-          {/* <Image src={"/image/techaz.jpg"} alt={title} cover="true" /> */}
+          <Image
+            src={convertUrlLink(cover_image)}
+            alt={title}
+            cover
+          />
           <CardTitleContent col={col}>
             <CardTitle>
               <TypographyText color="white" font={"13"} bold="true">

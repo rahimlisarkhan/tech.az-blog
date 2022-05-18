@@ -4,6 +4,9 @@ module.exports = {
   experimental: {
     styledComponents: true
   },
+  images: {
+    domains: ['usaqhakatonu.az'],
+  },
   reactStrictMode: true,
   i18n,
 };

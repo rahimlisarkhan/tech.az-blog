@@ -5,7 +5,7 @@ import {
   AboutHeaderInfo,
   AboutHeaderButton,
 } from "./AboutHeader.styled";
-import Image from "../../../../shared/components/Image";
+import { Image } from "../../../../shared/components/Image";
 import { useSelector } from "../../../../shared/hooks/useSelector";
 import { breakpoint } from "../../../../styles/breakpoint";
 import { useMediaQuery } from "react-responsive";
@@ -49,7 +49,7 @@ export const AboutHeader = () => {
         </AboutHeaderInfo>
         {isDesktopOrLaptop && (
           <AboutHeaderInfo>
-            <Image src="/image/carousel.png" alt="carousel" />
+            <Image src="/image/carousel.png" alt="carousel" cover />
           </AboutHeaderInfo>
         )}
       </AboutRow>

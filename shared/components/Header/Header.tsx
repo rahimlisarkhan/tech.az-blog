@@ -5,7 +5,7 @@ import {
   MenuActions,
 } from "./Header.styled";
 import React, { useEffect, useState } from "react";
-import Image from "../Image";
+import { Image } from "../Image";
 import Navbar from "../Navbar";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
@@ -61,7 +61,7 @@ const Header: React.FC<Props> = () => {
           src={`/image/${mode ? "logo-black" : "logo"}.png`}
           width="90"
           height="90"
-          cover="true"
+          cover
         />
         {isDesktopOrLaptop && <Navbar mode={mode ? "true" : ""} />}
         <MenuActions>

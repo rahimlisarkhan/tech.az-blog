@@ -7,7 +7,7 @@ import {
   SimilarNewsContentStyled,
 } from "./NewsContent.styled";
 import TitleContent from "../../components/TitleContent";
-import Image from "shared/components/Image";
+import {Image} from "shared/components/Image";
 import TypographyText from "shared/components/Typograph";
 import ReactPlayer from "react-player";
 import SliderContent from "shared/components/Slider";
@@ -49,10 +49,10 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           <TitleContent newsSlug={newsSlug} />
           <ImageContent>
             <Image
-              cover="true"
               src={url + newsSlug?.cover_image}
               height={isDesktopOrLaptop ? "600" : "250"}
               alt="news name"
+              cover
             />
           </ImageContent>
           <TypographyText font="18" color={colorMode()} innerHTML>

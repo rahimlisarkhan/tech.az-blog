@@ -1,6 +1,10 @@
 import { Typograph } from "shared/components/Typograph/Typograph";
-import { InfoContent, SearchCardContent } from "./SearchCard.styled";
-import Image from "shared/components/Image";
+import {
+  InfoContent,
+  SearchCardContent,
+  SearchImageContent,
+} from "./SearchCard.styled";
+import { Image } from "shared/components/Image";
 import { NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { useDispatch } from "shared/hooks/useDispatch";
@@ -40,12 +44,7 @@ export const SearchCard = ({
   return (
     <Grow in={true} style={{ transformOrigin: "0 0 10" }} timeout={1000}>
       <SearchCardContent onClick={handleRouter}>
-        <Image
-          width={isDesktopOrLaptop ? "250" : "100"}
-          cover="true"
-          src={cover_image}
-          alt={title}
-        />
+        <Image width="300" cover src={cover_image} alt={title} />
         <InfoContent>
           <Typograph font={renderFont()} color="black" bold="true">
             <HighlighterContent

@@ -1,5 +1,5 @@
 import { Content } from "./Loading.styled"
-import Image from "../Image"
+import {Image} from "../Image"
 
 
 

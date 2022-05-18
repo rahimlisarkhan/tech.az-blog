@@ -42,6 +42,8 @@ export const VideoContent = styled(Box)`
 export const ImageContent = styled(Box)`
   margin: 30px 0;
   overflow: hidden;
+  width: 100%;
+  position: relative;
 
   & img {
     transition: all 2s;

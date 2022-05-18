@@ -5,7 +5,7 @@ import {
   TechContentInfo,
   TechCard,
 } from "./TechContent.styled";
-import Image from "../../../../shared/components/Image";
+import { Image } from "../../../../shared/components/Image";
 import { useScreenMode } from "../../../../shared/hooks/useScreenMode";
 
 export const TechContent = () => {
@@ -26,6 +26,7 @@ export const TechContent = () => {
               height="110"
               src="/image/icons _ graphics/Asset 6.png"
               alt="techaz"
+              fill
             />
             <TypographyText font="25" color={colorMode()} text="true">
               trend texnologiyası və startap xəbərləri

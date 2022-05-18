@@ -15,7 +15,8 @@ const rotate = keyframes`
 
 
 export const AboutHeaderContent = styled(Grid).attrs(() => ({
-    item: true
+    item: true,
+    xs:12
 }))`
 margin-bottom: 100px;
 

@@ -1,6 +1,1 @@
-import {
-    ImageStyled
-} from './Image.styled'
-
-
-export default ImageStyled
+export { ImageTag as Image } from "./Image";

@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { FunctionComponent } from "react";
+import styled, { css } from "styled-components";
 import mediaQueries from "styles/media-queries";
 
 export const SearchCardContent = styled.div`
@@ -20,6 +21,12 @@ export const SearchCardContent = styled.div`
   &:hover {
     transform: scale(0.98);
   }
+`;
+
+export const SearchImageContent: FunctionComponent = styled.div`
+  position: relative;
+  width: ${({ width }: { width: string }) => `${width}px`};
+  height: 100%;
 `;
 
 export const InfoContent = styled.div`
