@@ -41,7 +41,7 @@ export const SearchContent = ({ search, searchData }: SearchProps) => {
       </SearchInputBox>
 
       <SearchList inputPosition={inputPosition}>
-        {Array.isArray(searchData) && !searchData.length && (
+        {Array.isArray(searchData) && !searchData.length && inputRef.current?.value && (
           <Typograph color="white" font="25">
             Axtarılan nəticə tapılmadı...
           </Typograph>

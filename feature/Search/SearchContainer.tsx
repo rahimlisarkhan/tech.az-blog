@@ -1,9 +1,7 @@
 import { useSelector } from "shared/hooks/useSelector";
 import { Modal } from "shared/components/Modal";
 import { useDispatch } from "shared/hooks/useDispatch";
-import {
-  setIsOpenSearch,
-} from "shared/store/slices/home/homeSlices";
+import { setIsOpenSearch } from "shared/store/slices/home/homeSlices";
 import { SearchContent } from "./components/SearchContent";
 import { useState } from "react";
 import ErrorBoundary from "shared/components/ErrorBoundary/ErrorBoundary";
@@ -16,6 +14,7 @@ export const SearchContainer = () => {
 
   const handleSearchBar = () => {
     dispatch(setIsOpenSearch());
+    setSearchData([]);
   };
 
   const handleSearchData = async (title: string) => {
