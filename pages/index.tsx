@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { getDataNews } from "../shared/services/MixNews";
-import { GetServerSideProps, NextPage } from "next";
+import {  NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";

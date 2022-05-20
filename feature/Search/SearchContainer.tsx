@@ -21,17 +21,17 @@ export const SearchContainer = () => {
 
   const openSearchBar = useSelector((state) => state.home.openSearchBar);
 
-  const { exc } = useRequest("alldata", {
-    onSuccess: (res) => {
-      dispatch(fillAllData(res));
-    },
-  });
+  // const { exc } = useRequest("alldata", {
+  //   onSuccess: (res) => {
+  //     dispatch(fillAllData(res));
+  //   },
+  // });
 
-  useEffect(() => {
-    if (openSearchBar) {
-      !allData.length && exc();
-    }
-  }, [openSearchBar]);
+  // useEffect(() => {
+  //   if (openSearchBar) {
+  //     !allData.length && exc();
+  //   }
+  // }, [openSearchBar]);
 
   const filterData = useMemo(() => {
     if (value) {

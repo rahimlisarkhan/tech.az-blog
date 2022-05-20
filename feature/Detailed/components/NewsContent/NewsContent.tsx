@@ -6,12 +6,9 @@ import {
   ImageContent,
   SimilarNewsContentStyled,
 } from "./NewsContent.styled";
-import TitleContent from "../../components/TitleContent";
 import { Image } from "shared/components/Image";
 import TypographyText from "shared/components/Typograph";
 import ReactPlayer from "react-player";
-import SliderContent from "shared/components/Slider";
-import NewsImageSlider from "../../components/NewsImageSlider";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
 import { Grid } from "@mui/material";
@@ -23,6 +20,11 @@ import { Motion } from "shared/components/Motion";
 import dynamic from "next/dynamic";
 import { MobileCard } from "feature/News/components/MobileCard";
 
+const NewsImageSlider = dynamic(
+  () => import("../../components/NewsImageSlider")
+);
+const SliderContent = dynamic(() => import("shared/components/Slider"));
+const TitleContent = dynamic(() => import("../../components/TitleContent"));
 const NewsCard = dynamic(() => import("../../../News/components/NewsCard"));
 
 type Props = {
@@ -40,14 +42,15 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
     () =>
       newsData?.filter((item: NewsType) => {
         if (
-          item.tag.findIndex((x) => x.title === newsSlug?.tag[0].title) &&
+          item.tag.findIndex((x) => x.title === newsSlug?.tag[0].title) !==
+            -1 &&
           item.id !== newsSlug.id
         ) {
           return true;
         }
         return false;
       }),
-    []
+    [newsData, newsSlug.slug]
   );
 
   return (
@@ -117,22 +120,24 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
             })}
         </Grid>
       </SuggestedContentStyled>
-      <SimilarNewsContentStyled>
-        <TypographyText font="20" color={colorMode()} bold="true">
-          Oxşar yükləmələr
-        </TypographyText>
-        <SliderContent
-          data={similarData}
-          slidesToShow={3}
-          content={(item) => (
-            <NewsCard
-              height={220}
-              {...item}
-              mobilemargin={isMobile ? "true" : ""}
-            />
-          )}
-        />
-      </SimilarNewsContentStyled>
+      {similarData?.length && (
+        <SimilarNewsContentStyled>
+          <TypographyText font="20" color={colorMode()} bold="true">
+            Oxşar yükləmələr
+          </TypographyText>
+          <SliderContent
+            data={similarData}
+            slidesToShow={similarData.length <= 2 ? 1 : 3}
+            content={(item) => (
+              <NewsCard
+                height={similarData.length <= 2 ? 300 : 220}
+                {...item}
+                mobilemargin={isMobile ? "true" : ""}
+              />
+            )}
+          />
+        </SimilarNewsContentStyled>
+      )}
     </Fragment>
   );
 };

@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import { getDataNews, getNewsSlug } from "shared/services/MixNews";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 // import { GetStaticProps } from "next";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
@@ -17,6 +17,7 @@ import { writeData } from "db/writeData";
 // import { onValue, ref } from "firebase/database";
 // import { db } from "config/firebase";
 import { createdAt } from "db/createdAt";
+import { useRequest } from "shared/hooks/useRequest";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 const Layout = dynamic(() => import("shared/components/Layout"));
@@ -29,8 +30,21 @@ const DetailedContainer = dynamic(
 //   newsSlug: NewsType;
 // }
 
-const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
+// news: { results }
+
+const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const { asPath } = useRouter();
+  const [results, setResults] = useState([]);
+
+  const { exc } = useRequest("mixdata", {
+    onSuccess: ({ results }) => {
+      setResults(results);
+    },
+  });
+
+  useEffect(() => {
+    exc();
+  }, []);
 
   //read data
   // useEffect(() => {
@@ -111,6 +125,30 @@ const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
 
 export default DetailedPage;
 
+export const getServerSideProps: GetServerSideProps = async ({
+  locale,
+  params,
+}) => {
+  let languages = {
+    ...(await serverSideTranslations(locale, ["common", "menu"])),
+  };
+
+  let res = await getNewsSlug(params.slug);
+
+  if (!res) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      ...languages,
+      newsSlug: res.data,
+    },
+  };
+};
+
 // export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
 //   let languages = {
 //     ...(await serverSideTranslations(locale, ["common", "menu"])),
@@ -145,30 +183,3 @@ export default DetailedPage;
 
 //   return { paths, fallback: false };
 // };
-
-export const getServerSideProps: GetServerSideProps = async ({
-  locale,
-  params,
-}) => {
-  let languages = {
-    ...(await serverSideTranslations(locale, ["common", "menu"])),
-  };
-
-  let data = await getDataNews("mixdata", null);
-
-  let res = await getNewsSlug(params.slug);
-
-  if (!data || !res) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      ...languages,
-      news: data.data,
-      newsSlug: res.data,
-    },
-  };
-};

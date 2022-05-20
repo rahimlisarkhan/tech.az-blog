@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { getDataNews } from "../../shared/services/MixNews";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -18,30 +18,30 @@ const VideoPage: NextPage<NewsResponseType<NewsType>> = ({
   let { t } = useTranslation("menu");
   return (
     <Fragment>
-         <MetaSEO
-          title={`${t("video")} | tech.az`}
-          description={
-            "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
-          }
-          ogTitle={
-            "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
-          }
-          ogDescription={
-            "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
-          }
-          ogImage={"static/image/techaz.jpg"}
-          ogUrl={`${productURL()}`}
-        />
-    <Layout >
-      <NewsContainer newsData={results} nextPage={next} />
-    </Layout>
+      <MetaSEO
+        title={`${t("video")} | tech.az`}
+        description={
+          "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
+        }
+        ogTitle={
+          "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
+        }
+        ogDescription={
+          "yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
+        }
+        ogImage={"static/image/techaz.jpg"}
+        ogUrl={`${productURL()}`}
+      />
+      <Layout>
+        <NewsContainer newsData={results} nextPage={next} />
+      </Layout>
     </Fragment>
   );
 };
 
 export default VideoPage;
 
-export const getStaticProps: GetStaticProps  = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   let languages = {
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
