@@ -124,7 +124,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
               })}
           </Grid>
         </SuggestedContentStyled>
-      )}
+      )} */}
       {similarData && similarData?.length && (
         <SimilarNewsContentStyled>
           <TypographyText font="20" color={colorMode()} bold="true">
@@ -142,7 +142,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
             )}
           />
         </SimilarNewsContentStyled>
-      )} */}
+      )} 
     </Fragment>
   );
 };
