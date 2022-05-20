@@ -132,7 +132,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
             slidesToShow={similarData.length <= 2 ? 1 : 3}
             content={(item) => (
               <NewsCard
-                height={similarData.length <= 2 ? 300 : 220}
+                height={similarData.length <= 2 ? 420 : 220}
                 {...item}
                 mobilemargin={isMobile ? "true" : ""}
               />
