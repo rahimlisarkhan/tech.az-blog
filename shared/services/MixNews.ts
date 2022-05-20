@@ -3,7 +3,7 @@ import { Axios } from "../utils/axios";
 
 export const getDataNews = async (
   patch: string | null,
-  offpage: string | null
+  offpage: string | null | undefined
 ) => {
   let url = offpage ? offpage : patch;
 

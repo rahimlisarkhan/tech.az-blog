@@ -6,7 +6,7 @@ export const SliderContent = ({ content, data, slidesToShow = 4 }) => {
   const slider2Settings = {
     swipeToSlide: true,
     slidesToScroll: 3,
-    centerMode: true,
+    centerMode: data?.length > 1 ? true : false,
     focusOnSelect: true,
     slidesToShow,
     responsive: [

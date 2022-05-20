@@ -12,15 +12,10 @@ import { NewsType } from "types/news";
 import { Typograph } from "shared/components/Typograph/Typograph";
 interface SearchProps {
   search: (text: string) => void;
-  setValue: (data: null) => void;
   searchData: NewsType[];
 }
 
-export const SearchContent = ({
-  search,
-  searchData,
-  setValue,
-}: SearchProps) => {
+export const SearchContent = ({ search, searchData }: SearchProps) => {
   const [inputPosition, setInputPosition] = useState(false);
   const inputRef = useRef(null);
 
@@ -34,7 +29,6 @@ export const SearchContent = ({
         <SearchInput
           ref={inputRef}
           onFocus={() => {
-            setValue(null);
             setInputPosition(true);
           }}
           onKeyPress={({ key }) =>

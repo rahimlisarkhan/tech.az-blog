@@ -44,8 +44,6 @@ export const MobileCard: React.FC<Props> = ({
   let { push } = useRouter();
   const appMode = useSelector((state) => state.home.appMode);
 
-  console.log(appMode,"appMode");
-  
   const changePage = (): void => {
     push(`/detailed/${type}=${slug}`);
   };

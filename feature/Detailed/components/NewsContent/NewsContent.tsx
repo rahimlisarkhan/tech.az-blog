@@ -36,9 +36,6 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ minWidth: breakpoint.mobile });
 
-  console.log(newsData,"newsData");
-  
-
   let { colorMode } = useScreenMode();
 
   let similarData = useMemo(
@@ -53,7 +50,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
         }
         return false;
       }),
-    [newsData, newsSlug.slug]
+    [newsSlug?.id, newsData]
   );
 
   return (
@@ -95,7 +92,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
         </NewsContentStyled>
       </Motion>
 
-      {/* {newsData && (
+      {newsData && (
         <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
           <TypographyText font="20" color={colorMode()} bold="true">
             Son yükləmələr
@@ -124,7 +121,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
               })}
           </Grid>
         </SuggestedContentStyled>
-      )} */}
+      )}
       {similarData && similarData?.length && (
         <SimilarNewsContentStyled>
           <TypographyText font="20" color={colorMode()} bold="true">
@@ -142,7 +139,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
             )}
           />
         </SimilarNewsContentStyled>
-      )} 
+      )}
     </Fragment>
   );
 };
