@@ -46,7 +46,7 @@ export const NewsCard: React.FC<Props> = ({
 
   const dynamicFont = () => {
     if (!isDesktopOrLaptop) {
-      return "18";
+      return "16";
     }
 
     if (col === 12) {

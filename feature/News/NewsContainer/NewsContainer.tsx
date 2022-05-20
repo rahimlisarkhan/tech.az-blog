@@ -6,12 +6,16 @@ import { useSelector } from "../../../shared/hooks/useSelector";
 import ButtonOutlined from "../../../shared/components/ButtonOutlined";
 import Grow from "@mui/material/Grow";
 import { useRenderTypeName } from "shared/hooks/useRenderTypeName";
+import { useMediaQuery } from "react-responsive";
+import { breakpoint } from "styles/breakpoint";
+import { MobileCard } from "../components/MobileCard";
 
 export const NewsContainer = ({ newsData, nextPage }: any) => {
   const appMode = useSelector((state) => state.home.appMode);
   const [data, setData] = useState(newsData);
   let [nextPageUrl, setNextPageUrl] = useState(nextPage);
   const tagName = useRenderTypeName();
+  const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
 
   const onPage = async () => {
     if (!nextPageUrl) {
@@ -34,7 +38,7 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             <NewsCard
               key={`mixnews-id-${index}`}
               col={12}
-              height="500"
+              height={isDesktopOrLaptop ? "500" : "250"}
               {...item}
             />
           );
@@ -50,21 +54,35 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
           index === 16 ||
           index === 17
         ) {
-          return (
+          return isDesktopOrLaptop ? (
             <NewsCard
               key={`mixnews-id-${index}`}
               col={6}
               height="300"
               {...item}
             />
+          ) : (
+            <MobileCard
+              key={`mobile-mixnews-id-${index}`}
+              col={12}
+              {...item}
+              height="120"
+            />
           );
         }
-        return (
+        return isDesktopOrLaptop ? (
           <NewsCard
             key={`mixnews-id-${index}`}
             col={4}
             {...item}
             height="320"
+          />
+        ) : (
+          <MobileCard
+            key={`mobile-mixnews-id-${index}`}
+            col={12}
+            {...item}
+            height="120"
           />
         );
       })}

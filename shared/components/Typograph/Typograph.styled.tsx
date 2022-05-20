@@ -43,7 +43,7 @@ export const TypographyText = styled(Typography).attrs(() => ({
     text-transform: ${text ? "lowercase" : "normal"}!important;
     display: flex;
     align-items: center;
-    text-align: ${center ? `center` : "none"} !important;
+    text-align: ${center ? `center` : "left"} !important;
     justify-content: ${center ? `center` : "none"} !important;
     svg {
       margin-right: 5px;

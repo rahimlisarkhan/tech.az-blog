@@ -30,10 +30,6 @@ export const NavbarMobile = ({ closeMenu }: Props) => {
   return (
     <NavbarMobileContent mode={mode ? "true" : ""}>
       <MenuList>
-        <ButtonOutlined mode={mode ? "true" : ""} onClick={() => push("/join")}>
-          bizə qoşul
-        </ButtonOutlined>
-
         {Object.values(router.menu).map((item) => {
           return (
             <MenuItemStyle
@@ -46,6 +42,9 @@ export const NavbarMobile = ({ closeMenu }: Props) => {
             </MenuItemStyle>
           );
         })}
+        <ButtonOutlined mode={mode ? "true" : ""} onClick={() => push("/join")}>
+          bizə qoşul
+        </ButtonOutlined>
       </MenuList>
     </NavbarMobileContent>
   );

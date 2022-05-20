@@ -1,7 +1,7 @@
 import { IconButton } from "@mui/material";
 import { useState } from "react";
 import Slider from "react-slick";
-import {Image} from "../../../../shared/components/Image";
+import { Image } from "../../../../shared/components/Image";
 import { SliderImage } from "./NewsImageSlider.styled";
 
 const NextArrow = (props) => {
@@ -17,14 +17,14 @@ const NextArrow = (props) => {
   );
 };
 
-export const NewsImageSlider = ({ images, url }: any) => {
+export const NewsImageSlider = ({ images, url, imageSize }: any) => {
   let [nav1, setNav1] = useState(0);
   let [nav2, setNav2] = useState(0);
 
   const slider2Settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 2,
     slidesToScroll: 1,
     swipeToSlide: true,
     focusOnSelect: true,
@@ -38,7 +38,7 @@ export const NewsImageSlider = ({ images, url }: any) => {
         {images?.map((item, index) => {
           return (
             <SliderImage key={`slide-nav-1-${index}`}>
-              <Image cover height="550" src={url + item.image} />
+              <Image cover height={imageSize} src={url + item.image} />
             </SliderImage>
           );
         })}
@@ -53,7 +53,11 @@ export const NewsImageSlider = ({ images, url }: any) => {
           {images?.map((item, index) => {
             return (
               <SliderImage key={`slide-nav-2-${index}`}>
-                <Image cover height="150" src={url + item.image} />
+                <Image
+                  cover
+                  height={`${imageSize / 2}`}
+                  src={url + item.image}
+                />
               </SliderImage>
             );
           })}

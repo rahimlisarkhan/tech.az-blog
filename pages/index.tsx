@@ -17,8 +17,6 @@ const HomePage: NextPage<NewsResponseType<NewsType>> = ({
 }: any) => {
   const { t } = useTranslation("menu");
 
-  console.log(`${t("home")} | tech.az`);
-
   return (
     <Fragment>
       <MetaSEO

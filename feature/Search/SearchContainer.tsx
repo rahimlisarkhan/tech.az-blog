@@ -21,9 +21,6 @@ export const SearchContainer = () => {
 
   const openSearchBar = useSelector((state) => state.home.openSearchBar);
 
-  console.log(openSearchBar, "openSearchBar");
-  console.log(allData.length, "allDatalength ");
-
   const { exc } = useRequest("alldata", {
     onSuccess: (res) => {
       dispatch(fillAllData(res));

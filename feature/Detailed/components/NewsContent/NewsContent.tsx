@@ -21,11 +21,9 @@ import { NewsType } from "types/news";
 import { Motion } from "shared/components/Motion";
 
 import dynamic from "next/dynamic";
+import { MobileCard } from "feature/News/components/MobileCard";
 
 const NewsCard = dynamic(() => import("../../../News/components/NewsCard"));
-
-
-
 
 type Props = {
   newsData: NewsType[];
@@ -60,7 +58,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           <ImageContent>
             <Image
               src={url + newsSlug?.cover_image}
-              height={isDesktopOrLaptop ? "450" : "250"}
+              height={isDesktopOrLaptop ? "400" : "200"}
               alt="news name"
               cover
             />
@@ -78,6 +76,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           </TypographyText>
           {newsSlug?.news_images?.length ? (
             <NewsImageSlider
+              imageSize={isDesktopOrLaptop ? 400 : 200}
               url={url}
               images={newsSlug?.news_images || newsSlug?.videos_images}
             />
@@ -99,12 +98,19 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
             ?.filter((item) => item.id !== newsSlug.id)
             ?.map((news, index) => {
               if (index < 5) {
-                return (
+                return isDesktopOrLaptop ? (
                   <NewsCard
                     sm={6}
                     key={`last-upload-${index}`}
                     height={"210"}
                     {...news}
+                  />
+                ) : (
+                  <MobileCard
+                    key={`mobile-last-upload-${index}`}
+                    col={12}
+                    {...news}
+                    height="120"
                   />
                 );
               }

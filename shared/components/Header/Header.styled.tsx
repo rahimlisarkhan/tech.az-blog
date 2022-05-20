@@ -29,12 +29,11 @@ export const ModeButton: any = styled(Button).attrs((props: any) => ({
   variant: "text",
 }))`
     min-width: 0 !important;
-    margin-left: 5px;
     svg{
+      margin-left: 5px;
         fill: ${({ theme, mode }: any) =>
           mode ? theme.colors.dark : theme.colors.green}};
     }
-
 `
 
 export const MenuActions = styled(Box)`

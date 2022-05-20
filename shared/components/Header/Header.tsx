@@ -59,8 +59,7 @@ const Header: React.FC<Props> = () => {
         <Image
           onClick={() => push(router.menu.home.href)}
           src={`/image/${mode ? "logo-black" : "logo"}.png`}
-          width="90"
-          height="90"
+          width="80"
           cover
           isNotLoading
         />

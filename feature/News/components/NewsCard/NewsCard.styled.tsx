@@ -21,7 +21,7 @@ export const NewsCardStyled = styled(Grid).attrs(({ col = 12 }: Props) => ({
   cursor: pointer !important;
 
   ${mediaQueries.greaterThan("sm")`
-     padding-right: 16px !important;
+    padding-right: 16px !important;
   `}
 `;
 
@@ -34,15 +34,14 @@ export const Card = styled(Box)`
   overflow: hidden;
   transition: all 0.3s;
   position: relative;
-
   cursor: pointer;
 
   & img {
-    transition: all 2s;
+    transition: all 1s;
   }
 
   &:hover img {
-    transform: scale(1.2);
+    transform: scale(1.03);
   }
 `;
 
@@ -56,7 +55,7 @@ export const CardTitleContent = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: ${({ col }: Props) => (col === 12 ? "60px" : "40px")};
+  padding: ${({ col }: Props) => (col === 12 ? "30px" : "20px")};
 `;
 
 export const CardTitle = styled(Box)`

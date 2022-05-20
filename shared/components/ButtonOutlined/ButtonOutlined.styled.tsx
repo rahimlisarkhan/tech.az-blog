@@ -9,6 +9,7 @@ export const ButtonOutlined: any = styled.button`
   font-size: 18px;
   margin: 0 10px;
   background: transparent;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s;
   padding: 5px 15px;
