@@ -42,9 +42,9 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
     () =>
       newsData?.filter((item: NewsType) => {
         if (
-          item.tag.findIndex((x) => x.title === newsSlug?.tag[0].title) !==
+          item?.tag.findIndex((x) => x?.title === newsSlug?.tag[0]?.title) !==
             -1 &&
-          item.id !== newsSlug.id
+          item?.id !== newsSlug?.id
         ) {
           return true;
         }
@@ -92,34 +92,36 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
         </NewsContentStyled>
       </Motion>
 
-      <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
-        <TypographyText font="20" color={colorMode()} bold="true">
-          Son yükləmələr
-        </TypographyText>
-        <Grid container={true}>
-          {newsData
-            ?.filter((item) => item.id !== newsSlug.id)
-            ?.map((news, index) => {
-              if (index < 5) {
-                return isDesktopOrLaptop ? (
-                  <NewsCard
-                    sm={6}
-                    key={`last-upload-${index}`}
-                    height={"210"}
-                    {...news}
-                  />
-                ) : (
-                  <MobileCard
-                    key={`mobile-last-upload-${index}`}
-                    col={12}
-                    {...news}
-                    height="120"
-                  />
-                );
-              }
-            })}
-        </Grid>
-      </SuggestedContentStyled>
+      {newsData && (
+        <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
+          <TypographyText font="20" color={colorMode()} bold="true">
+            Son yükləmələr
+          </TypographyText>
+          <Grid container={true}>
+            {newsData
+              ?.filter((item) => item.id !== newsSlug.id)
+              ?.map((news, index) => {
+                if (index < 5) {
+                  return isDesktopOrLaptop ? (
+                    <NewsCard
+                      sm={6}
+                      key={`last-upload-${index}`}
+                      height={"210"}
+                      {...news}
+                    />
+                  ) : (
+                    <MobileCard
+                      key={`mobile-last-upload-${index}`}
+                      col={12}
+                      {...news}
+                      height="120"
+                    />
+                  );
+                }
+              })}
+          </Grid>
+        </SuggestedContentStyled>
+      )}
       {similarData && similarData?.length && (
         <SimilarNewsContentStyled>
           <TypographyText font="20" color={colorMode()} bold="true">
