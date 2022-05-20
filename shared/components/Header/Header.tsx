@@ -62,6 +62,7 @@ const Header: React.FC<Props> = () => {
           width="90"
           height="90"
           cover
+          isNotLoading
         />
         {isDesktopOrLaptop && <Navbar mode={mode ? "true" : ""} />}
         <MenuActions>
@@ -73,9 +74,9 @@ const Header: React.FC<Props> = () => {
               bizə qoşul
             </ButtonOutlined>
           )}
-          <ModeButton mode={mode ? "true" : ""} onClick={handleSearchBar}>
+          {/* <ModeButton mode={mode ? "true" : ""} onClick={handleSearchBar}>
             <SearchIcon />
-          </ModeButton>
+          </ModeButton> */}
           <ModeButton mode={mode ? "true" : ""} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>

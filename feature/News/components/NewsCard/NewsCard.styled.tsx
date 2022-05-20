@@ -52,7 +52,7 @@ export const CardTitleContent = styled(Box)`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(#00000034 10%, #00000099 50%);
+  background-image: linear-gradient(#00000034 20%, #191919ea 60%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

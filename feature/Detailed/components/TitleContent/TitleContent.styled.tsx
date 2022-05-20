@@ -5,7 +5,7 @@ export const TitleContentStyled = styled(Box)``;
 
 export const TagContent = styled(Box)`
   display: flex;
-  width: 50%;
+  width: 80%;
   flex-wrap: wrap;
   align-items: center;
   margin-top: 10px;
@@ -14,7 +14,7 @@ export const TagContent = styled(Box)`
 `;
 
 export const Tag = styled.strong`
-  margin: 0 10px;
+  margin: 0 5px;
   text-transform: lowercase;
   font-weight: normal;
 `;

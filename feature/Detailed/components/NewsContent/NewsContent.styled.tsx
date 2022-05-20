@@ -6,14 +6,14 @@ import styled, { css } from "styled-components";
 
 export const NewsContentStyled = styled(Grid).attrs(() => ({
   item: true,
-  lg: 9,
+  lg: 8,
   xs: 12,
 }))``;
 
 export const SuggestedContentStyled: any = styled(Grid).attrs(() => ({
   item: true,
   xs: 12,
-  lg: 3,
+  lg: 4,
 }))`
   ${({ desktop }: any) => css`
     padding-top: ${desktop ? "140px" : "0"};
@@ -35,7 +35,7 @@ export const VideoContent = styled(Box)`
     width: 100% !important;
 
     ${mediaQueries.greaterThan("xl")`
-      height: 600px !important;
+      height: 450px !important;
     `};
   }
 `;

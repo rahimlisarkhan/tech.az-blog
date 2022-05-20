@@ -1,12 +1,12 @@
-import TypographyText from "../../../../shared/components/Typograph";
+import TypographyText from "shared/components/Typograph";
 import {
   TechContentStyled,
   TechContentRow,
   TechContentInfo,
   TechCard,
 } from "./TechContent.styled";
-import { Image } from "../../../../shared/components/Image";
-import { useScreenMode } from "../../../../shared/hooks/useScreenMode";
+import { Image } from "shared/components/Image";
+import { useScreenMode } from "shared/hooks/useScreenMode";
 
 export const TechContent = () => {
   let { mode: appMode, colorMode } = useScreenMode();
@@ -24,7 +24,7 @@ export const TechContent = () => {
             <Image
               width="100"
               height="110"
-              src="/image/icons _ graphics/Asset 6.png"
+              src="/image/icons_graphics/Asset6.png"
               alt="techaz"
             />
             <TypographyText font="25" color={colorMode()} text="true">
@@ -35,7 +35,7 @@ export const TechContent = () => {
             <Image
               width="100"
               height="110"
-              src="/image/icons _ graphics/Asset 9.png"
+              src="/image/icons_graphics/Asset9.png"
               alt="techaz"
             />
             <TypographyText font="25" color={colorMode()} text="true">
@@ -46,7 +46,7 @@ export const TechContent = () => {
             <Image
               width="100"
               height="110"
-              src="/image/icons _ graphics/Asset 7.png"
+              src="/image/icons_graphics/Asset7.png"
               alt="techaz"
             />
             <TypographyText font="25" color={colorMode()} text="true">
@@ -57,7 +57,7 @@ export const TechContent = () => {
             <Image
               width="100"
               height="110"
-              src="/image/icons _ graphics/Asset 8.png"
+              src="/image/icons_graphics/Asset8.png"
               alt="techaz"
             />
             <TypographyText font="25" color={colorMode()} text="true">

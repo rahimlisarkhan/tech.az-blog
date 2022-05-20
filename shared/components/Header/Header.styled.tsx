@@ -16,7 +16,7 @@ export const HeaderStyled: any = styled.header`
 
 
 export const HeaderContainer: any = styled(Container).attrs(() => ({
-  maxWidth: "false",
+  maxWidth: "lg",
 }))`
   display: flex !important;
   height: 80px;

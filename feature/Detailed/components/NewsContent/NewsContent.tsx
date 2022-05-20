@@ -50,7 +50,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           <ImageContent>
             <Image
               src={url + newsSlug?.cover_image}
-              height={isDesktopOrLaptop ? "600" : "250"}
+              height={isDesktopOrLaptop ? "450" : "250"}
               alt="news name"
               cover
             />
@@ -93,7 +93,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
                   <NewsCard
                     sm={6}
                     key={`last-upload-${index}`}
-                    height={"220"}
+                    height={"210"}
                     {...news}
                   />
                 );
@@ -107,10 +107,10 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
         </TypographyText>
         <SliderContent
           data={similarData}
-          slidesToShow={4}
+          slidesToShow={3}
           content={(item) => (
             <NewsCard
-              height={270}
+              height={220}
               {...item}
               mobilemargin={isMobile ? "true" : ""}
             />

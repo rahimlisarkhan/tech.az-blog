@@ -13,7 +13,6 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
   let [nextPageUrl, setNextPageUrl] = useState(nextPage);
   const tagName = useRenderTypeName();
 
-
   const onPage = async () => {
     if (!nextPageUrl) {
       return;
@@ -35,27 +34,27 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             <NewsCard
               key={`mixnews-id-${index}`}
               col={12}
-              height="600"
+              height="500"
               {...item}
             />
           );
         }
 
         if (
-          index === 4 ||
-          index === 5 ||
+          index === 1 ||
+          index === 2 ||
           index === 6 ||
           index === 7 ||
           index === 11 ||
           index === 12 ||
-          index === 13 ||
-          index === 14
+          index === 16 ||
+          index === 17
         ) {
           return (
             <NewsCard
               key={`mixnews-id-${index}`}
-              col={3}
-              height="400"
+              col={6}
+              height="300"
               {...item}
             />
           );
@@ -65,7 +64,7 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             key={`mixnews-id-${index}`}
             col={4}
             {...item}
-            height="350"
+            height="320"
           />
         );
       })}
@@ -77,7 +76,7 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
             mode={appMode ? "true" : ""}
             onClick={onPage}
           >
-            {nextPageUrl ? `daha 12 ${tagName}` : `daha ${tagName} yoxdur`}
+            {nextPageUrl ? `daha 30 ${tagName}` : `daha ${tagName} yoxdur`}
           </ButtonOutlined>
         </MoreNewsContent>
       </Grow>
