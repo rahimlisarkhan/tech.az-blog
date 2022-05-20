@@ -1,10 +1,11 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import dynamic from "next/dynamic";
 import { Fragment } from "react";
-import MetaSEO from "shared/components/Meta";
 import { productURL } from "shared/utils/productURL";
-import Layout from "../../shared/components/Layout";
+
+const MetaSEO = dynamic(() => import("shared/components/Meta"));
+const Layout = dynamic(() => import("shared/components/Layout"));
 
 const AboutContainer = dynamic(
   () => import("../../feature/About/AboutContainer")
@@ -36,7 +37,7 @@ const AboutPage: NextPage = () => {
 
 export default AboutPage;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   let languages = {
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
@@ -45,6 +46,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       ...languages,
     },
-    revalidate: 1,
+    // revalidate: 1,
   };
 };

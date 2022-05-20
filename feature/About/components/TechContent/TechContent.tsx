@@ -26,7 +26,6 @@ export const TechContent = () => {
               height="110"
               src="/image/icons _ graphics/Asset 6.png"
               alt="techaz"
-              fill
             />
             <TypographyText font="25" color={colorMode()} text="true">
               trend texnologiyası və startap xəbərləri

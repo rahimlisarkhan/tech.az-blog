@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 type Props = {
-  cover?: string;
-  radius?: string;
-  width?: string;
-  height?: string;
+  cover?: string | number;
+  radius?: string | number;
+  width?: string | number;
+  height?: string | number;
 };
 
 export const ImageContent: any = styled.div`

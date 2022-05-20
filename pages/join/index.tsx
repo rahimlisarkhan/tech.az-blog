@@ -1,30 +1,29 @@
-import { GetStaticProps, NextPage } from 'next'
-import Layout from '../../shared/components/Layout'
-import dynamic from 'next/dynamic'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import dynamic from "next/dynamic";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-const JoinContainer = dynamic(() => import('../../feature/join/JoinContainer'))
+const Layout = dynamic(() => import("shared/components/Layout"));
+const JoinContainer = dynamic(() => import("feature/join/JoinContainer"));
 
-const JoinPage:NextPage = () => {
-    return(
+const JoinPage: NextPage = () => {
+  return (
     <Layout title="Bizə qoşul | tech.az">
-        <JoinContainer/>
+      <JoinContainer />
     </Layout>
-    )
-}
+  );
+};
 
-export default JoinPage
+export default JoinPage;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    let languages = {
-      ...(await serverSideTranslations(locale, ["common", "menu"])),
-    };
-  
-    return {
-      props: {
-        ...languages,
-      },
-      revalidate: 1,
-    };
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+  let languages = {
+    ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
-  
+
+  return {
+    props: {
+      ...languages,
+    },
+    // revalidate: 1,
+  };
+};

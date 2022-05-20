@@ -1,16 +1,16 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import dynamic from "next/dynamic";
-import Layout from "../../shared/components/Layout";
 import { getDataNews } from "../../shared/services/MixNews";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
 import { NewsResponseType, NewsType } from "types/news";
 import { Fragment } from "react";
-import MetaSEO from "shared/components/Meta";
 import { productURL } from "shared/utils/productURL";
 
-const NewsContainer = dynamic(() => import("../../feature/News/NewsContainer"));
+const MetaSEO = dynamic(() => import("shared/components/Meta"));
+const Layout = dynamic(() => import("shared/components/Layout"));
+const NewsContainer = dynamic(() => import("feature/News/NewsContainer"));
 
 const NewsPage: NextPage<NewsResponseType<NewsType>> = ({
   news: { results, next },

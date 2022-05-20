@@ -1,12 +1,14 @@
-import React from "react"
-import { DetailedContainerStyled } from "./DetailedContainer.styled"
-import NewsContent from "../components/NewsContent";
+import React from "react";
+import { DetailedContainerStyled } from "./DetailedContainer.styled";
 
-export const DetailedContainer: React.FC<any> = ({ newsSlug , newsData }) => {
+import dynamic from "next/dynamic";
 
+const NewsContent = dynamic(() => import("../components/NewsContent"));
+
+export const DetailedContainer: React.FC<any> = ({ newsSlug, newsData }) => {
   return (
     <DetailedContainerStyled>
       <NewsContent newsSlug={newsSlug} newsData={newsData} />
     </DetailedContainerStyled>
-  )
-}
+  );
+};

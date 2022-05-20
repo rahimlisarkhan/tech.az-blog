@@ -10,12 +10,19 @@ import { useRequest } from "shared/hooks/useRequest";
 import { useEffect, useMemo, useState } from "react";
 import { changeTitle } from "shared/utils/changeTitle";
 import ErrorBoundary from "shared/components/ErrorBoundary/ErrorBoundary";
+import { useMounted } from "shared/hooks/useMounted";
 
 export const SearchContainer = () => {
   const isOpen = useSelector((state) => state.home.openSearchBar);
   const allData = useSelector((state) => state.home.allData);
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
+  const mounted = useMounted();
+
+  const openSearchBar = useSelector((state) => state.home.openSearchBar);
+
+  console.log(openSearchBar, "openSearchBar");
+  console.log(allData.length, "allDatalength ");
 
   const { exc } = useRequest("alldata", {
     onSuccess: (res) => {
@@ -24,8 +31,10 @@ export const SearchContainer = () => {
   });
 
   useEffect(() => {
-    !allData.length && exc();
-  }, []);
+    if (openSearchBar) {
+      !allData.length && exc();
+    }
+  }, [openSearchBar]);
 
   const filterData = useMemo(() => {
     if (value) {
