@@ -120,7 +120,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
             })}
         </Grid>
       </SuggestedContentStyled>
-      {similarData?.length && (
+      {similarData && similarData?.length && (
         <SimilarNewsContentStyled>
           <TypographyText font="20" color={colorMode()} bold="true">
             Oxşar yükləmələr

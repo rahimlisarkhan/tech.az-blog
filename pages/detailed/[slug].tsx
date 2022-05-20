@@ -37,8 +37,8 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const [results, setResults] = useState([]);
 
   const { exc } = useRequest("mixdata", {
-    onSuccess: ({ results }) => {
-      setResults(results);
+    onSuccess: (res) => {
+      setResults(res?.results);
     },
   });
 
