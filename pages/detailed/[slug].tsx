@@ -41,23 +41,23 @@ const DetailedPage: NextPage = ({ news: { results }, newsSlug }: any) => {
 
   //create comments comments
 
-  useEffect(() => {
-    writeData(
-      `all_content_comments/${newsSlug.slug}`,
-      {
-        user: {
-          user_id: "",
-          full_name: "Cemil",
-          last_name: "Huseynzade",
-          image: "url",
-        },
-        content: "Ela Xeberdir",
-        created_at: createdAt(),
-        reply: "",
-      },
-      true
-    );
-  }, [newsSlug.slug]);
+  // useEffect(() => {
+  //   writeData(
+  //     `all_content_comments/${newsSlug.slug}`,
+  //     {
+  //       user: {
+  //         user_id: "",
+  //         full_name: "Cemil",
+  //         last_name: "Huseynzade",
+  //         image: "url",
+  //       },
+  //       content: "Ela Xeberdir",
+  //       created_at: createdAt(),
+  //       reply: "",
+  //     },
+  //     true
+  //   );
+  // }, [newsSlug.slug]);
 
   //Reply click
   // useEffect(() => {

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 import {
   NewsContentStyled,
   SuggestedContentStyled,
@@ -7,11 +7,10 @@ import {
   SimilarNewsContentStyled,
 } from "./NewsContent.styled";
 import TitleContent from "../../components/TitleContent";
-import {Image} from "shared/components/Image";
+import { Image } from "shared/components/Image";
 import TypographyText from "shared/components/Typograph";
 import ReactPlayer from "react-player";
 import SliderContent from "shared/components/Slider";
-import NewsCard from "../../../News/components/NewsCard";
 import NewsImageSlider from "../../components/NewsImageSlider";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
@@ -20,6 +19,13 @@ import { url } from "shared/utils/axios";
 import { useScreenMode } from "shared/hooks/useScreenMode";
 import { NewsType } from "types/news";
 import { Motion } from "shared/components/Motion";
+
+import dynamic from "next/dynamic";
+
+const NewsCard = dynamic(() => import("../../../News/components/NewsCard"));
+
+
+
 
 type Props = {
   newsData: NewsType[];
@@ -32,15 +38,19 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
 
   let { colorMode } = useScreenMode();
 
-  let similarData = newsData?.filter((item: NewsType) => {
-    if (
-      item.tag.findIndex((x) => x.title === newsSlug?.tag[0].title) &&
-      item.id !== newsSlug.id
-    ) {
-      return true;
-    }
-    return false;
-  });
+  let similarData = useMemo(
+    () =>
+      newsData?.filter((item: NewsType) => {
+        if (
+          item.tag.findIndex((x) => x.title === newsSlug?.tag[0].title) &&
+          item.id !== newsSlug.id
+        ) {
+          return true;
+        }
+        return false;
+      }),
+    []
+  );
 
   return (
     <Fragment>
