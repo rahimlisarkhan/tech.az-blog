@@ -92,37 +92,35 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
         </NewsContentStyled>
       </Motion>
 
-      {newsData && (
-        <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
-          <TypographyText font="20" color={colorMode()} bold="true">
-            Son yükləmələr
-          </TypographyText>
-          <Grid container={true}>
-            {newsData
-              ?.filter((item) => item.id !== newsSlug.id)
-              ?.map((news, index) => {
-                if (index < 5) {
-                  return isDesktopOrLaptop ? (
-                    <NewsCard
-                      sm={6}
-                      key={`last-upload-${index}`}
-                      height={"210"}
-                      {...news}
-                    />
-                  ) : (
-                    <MobileCard
-                      key={`mobile-last-upload-${index}`}
-                      col={12}
-                      {...news}
-                      height="120"
-                    />
-                  );
-                }
-              })}
-          </Grid>
-        </SuggestedContentStyled>
-      )}
-      {similarData && similarData?.length && (
+      <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
+        <TypographyText font="20" color={colorMode()} bold="true">
+          Son yükləmələr
+        </TypographyText>
+        <Grid container={true}>
+          {newsData
+            ?.filter((item) => item.id !== newsSlug.id)
+            ?.map((news, index) => {
+              if (index < 5) {
+                return isDesktopOrLaptop ? (
+                  <NewsCard
+                    sm={6}
+                    key={`last-upload-${index}`}
+                    height={"210"}
+                    {...news}
+                  />
+                ) : (
+                  <MobileCard
+                    key={`mobile-last-upload-${index}`}
+                    col={12}
+                    {...news}
+                    height="120"
+                  />
+                );
+              }
+            })}
+        </Grid>
+      </SuggestedContentStyled>
+      {similarData?.length && (
         <SimilarNewsContentStyled>
           <TypographyText font="20" color={colorMode()} bold="true">
             Oxşar yükləmələr

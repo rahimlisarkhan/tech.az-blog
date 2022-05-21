@@ -18,6 +18,8 @@ import { writeData } from "db/writeData";
 // import { db } from "config/firebase";
 import { createdAt } from "db/createdAt";
 import { useRequest } from "shared/hooks/useRequest";
+import Loading from "shared/components/Loading";
+import { status_req } from "shared/constant/status";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 const Layout = dynamic(() => import("shared/components/Layout"));
@@ -34,9 +36,9 @@ const DetailedContainer = dynamic(
 
 const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const { asPath } = useRouter();
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(null);
 
-  const { exc } = useRequest("mixdata", {
+  const { exc, isStatus } = useRequest("mixdata", {
     onSuccess: (res) => {
       setResults(res?.results);
     },
@@ -117,7 +119,11 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
         ogUrl={`${productURL()}${asPath}`}
       />
       <Layout>
-        <DetailedContainer newsSlug={newsSlug} newsData={results} />
+        {isStatus === status_req.isSuccess ? (
+          <DetailedContainer newsSlug={newsSlug} newsData={results} />
+        ) : (
+          <Loading />
+        )}
       </Layout>
     </Fragment>
   );

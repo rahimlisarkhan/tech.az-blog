@@ -11,7 +11,7 @@ export type ImageType = {
   isNotLoading?:boolean;
   src?: string;
   alt?: string;
-  radius?: boolean | undefined;
+  radius?: string;
   onClick?: () => void;
 };
 
