@@ -12,7 +12,10 @@ export const TypographyText = styled(Typography).attrs(() => ({
     font,
     color,
     bold,
+    decaration,
+    cursor,
     center,
+    space,
     margin,
     text,
   }: TypographProps<ThemeProps>) => css`
@@ -45,6 +48,12 @@ export const TypographyText = styled(Typography).attrs(() => ({
     align-items: center;
     text-align: ${center ? `center` : "left"} !important;
     justify-content: ${center ? `center` : "none"} !important;
+    letter-spacing: ${space ? `${space}px` : "none"} !important;
+    text-decoration: ${decaration ? `${decaration}` : "none"} !important;
+    cursor: ${cursor && `pointer` } !important;
+
+    
+
     svg {
       margin-right: 5px;
     }

@@ -8,7 +8,10 @@ export interface TypographProps<T> {
   bold?: string;
   center?: string;
   margin?: string;
+  cursor?: string;
+  decaration?: string;
   text?: string;
+  space?: string;
   theme?: T;
 }
 

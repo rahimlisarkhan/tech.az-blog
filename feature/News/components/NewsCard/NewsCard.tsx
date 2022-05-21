@@ -7,7 +7,7 @@ import {
 import { Image } from "shared/components/Image";
 import TypographyText from "shared/components/Typograph";
 import { useRouter } from "next/router";
-import { router } from "shared/constant/route";
+import { ROUTER } from "shared/constant/route";
 import { convertNormalDate } from "shared/helper/timeConvert";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
@@ -53,7 +53,7 @@ export const NewsCard: React.FC<Props> = ({
       return "36";
     }
 
-    if (!col && asPath !== router.menu.home.href) {
+    if (!col && asPath !== ROUTER.MENU.HOME.href) {
       return "15";
     }
     return "20";
@@ -79,11 +79,7 @@ export const NewsCard: React.FC<Props> = ({
         onClick={changePage}
       >
         <Card height={height}>
-          <Image
-            src={convertUrlLink(cover_image)}
-            alt={title}
-            cover
-          />
+          <Image src={convertUrlLink(cover_image)} alt={title} cover />
           <CardTitleContent col={col}>
             <CardTitle>
               <TypographyText color="white" font={"13"} bold="true">

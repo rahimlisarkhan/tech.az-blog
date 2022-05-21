@@ -16,7 +16,7 @@ import {
 } from "shared/store/slices/home/homeSlices";
 import { useDispatch } from "shared/hooks/useDispatch";
 import { useRouter } from "next/router";
-import { router } from "shared/constant/route";
+import { ROUTER, router } from "shared/constant/route";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -25,6 +25,8 @@ import Drawer from "../Drawer";
 import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
 import SearchIcon from "@mui/icons-material/Search";
+import { Login } from "@mui/icons-material";
+import { Avatar } from "../Avatar";
 
 type Props = {};
 
@@ -40,6 +42,10 @@ const Header: React.FC<Props> = () => {
   useEffect(() => {
     dispatch(fillAppMode());
   }, []);
+
+  const redirectLogin = () => {
+    push(ROUTER.LOGIN.href);
+  };
 
   const handleMode = () => {
     dispatch(setAppMode());
@@ -57,7 +63,7 @@ const Header: React.FC<Props> = () => {
     <HeaderStyled mode={mode ? "true" : ""}>
       <HeaderContainer mode={mode ? "true" : ""}>
         <Image
-          onClick={() => push(router.menu.home.href)}
+          onClick={() => push(ROUTER.MENU.HOME.href)}
           src={`/image/${mode ? "logo-black" : "logo"}.png`}
           width="80"
           cover
@@ -65,20 +71,26 @@ const Header: React.FC<Props> = () => {
         />
         {isDesktopOrLaptop && <Navbar mode={mode ? "true" : ""} />}
         <MenuActions>
-          {isDesktopOrLaptop && (
+          {/* {isDesktopOrLaptop && (
             <ButtonOutlined
               mode={mode ? "true" : ""}
               onClick={() => push("/join")}
             >
               bizə qoşul
             </ButtonOutlined>
-          )}
+          )} */}
+
           <ModeButton mode={mode ? "true" : ""} onClick={handleSearchBar}>
             <SearchIcon />
           </ModeButton>
           <ModeButton mode={mode ? "true" : ""} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
+          {/* {true && (
+            <ModeButton mode={mode ? "true" : ""} onClick={redirectLogin}>
+              <Login />
+            </ModeButton>
+          )} */}
           {isMobile && (
             <ModeButton mode={mode ? "true" : ""} onClick={handleClick}>
               <MenuIcon />
@@ -88,6 +100,7 @@ const Header: React.FC<Props> = () => {
         <Drawer isOpen={open} setIsOpen={handleClick}>
           <NavbarMobile closeMenu={handleClick} />
         </Drawer>
+        {true && <Avatar name="Reshad" />}
       </HeaderContainer>
     </HeaderStyled>
   );

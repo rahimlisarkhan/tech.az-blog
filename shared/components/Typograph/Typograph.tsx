@@ -3,7 +3,11 @@ import { TypographyText } from "./Typograph.styled";
 interface TypographyProps {
   font?: string;
   color?: string;
+  center?: string;
   text?: string;
+  cursor?: string;
+  decaration?: string;
+  space?: string;
   margin?: string;
   as?: React.ElementType;
   children?: React.ReactNode | string;
@@ -15,8 +19,12 @@ export const Typograph = ({
   as: Component = "div",
   font,
   color,
+  cursor,
+  decaration,
   margin,
   bold,
+  space,
+  center,
   text,
   innerHTML,
   children,
@@ -28,7 +36,11 @@ export const Typograph = ({
         text={text}
         margin={margin}
         color={color}
+        center={center}
         bold={bold}
+        cursor={cursor}
+        decaration={decaration}
+        space={space}
       >
         {typeof children === "string" && innerHTML ? (
           <div dangerouslySetInnerHTML={{ __html: children }} />
