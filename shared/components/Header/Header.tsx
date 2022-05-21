@@ -16,7 +16,7 @@ import {
 } from "shared/store/slices/home/homeSlices";
 import { useDispatch } from "shared/hooks/useDispatch";
 import { useRouter } from "next/router";
-import { ROUTER, router } from "shared/constant/route";
+import { ROUTER } from "shared/constant/route";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
 import MenuIcon from "@mui/icons-material/Menu";
