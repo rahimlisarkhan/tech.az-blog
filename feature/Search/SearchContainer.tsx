@@ -5,7 +5,7 @@ import { setIsOpenSearch } from "shared/store/slices/home/homeSlices";
 import { SearchContent } from "./components/SearchContent";
 import { useState } from "react";
 import ErrorBoundary from "shared/components/ErrorBoundary/ErrorBoundary";
-import { resultSearchApi } from "api/serach";
+import { resultSearchApi } from "api/search";
 
 export const SearchContainer = () => {
   const isOpen = useSelector((state) => state.home.openSearchBar);

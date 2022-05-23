@@ -30,7 +30,7 @@ export const getNewsSlug = async (slug) => {
 
 export const addJoin = async (form) => {
   try {
-    const res = await Axios.post("/join/", form);
+    const res = await Axios["post"]("user/login/", form);
 
     toast.success("Uğurlu əməliyyat!");
   } catch ({ message }) {

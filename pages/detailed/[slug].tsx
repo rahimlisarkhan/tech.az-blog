@@ -45,7 +45,7 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
   });
 
   useEffect(() => {
-    exc();
+    exc(null);
   }, []);
 
   //read data

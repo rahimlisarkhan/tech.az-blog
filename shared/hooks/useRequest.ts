@@ -15,7 +15,7 @@ interface useRequestType {
 }
 
 export const useRequest = <T extends useRequestType>(
-  url: T["url"],
+  req,
   { onSuccess, onError, method, data, params }: T["config"]
 ) => {
   const [status, setStatus] = useState("");
@@ -27,25 +27,30 @@ export const useRequest = <T extends useRequestType>(
   }, []);
 
   const axiosConfig: any = {
-    method: method ?? "get",
-    url: baseURL + url,
-    data,
-    params,
+    method: "POST",
+    // url: baseURL + url,
+    data:{
+        "username":"rahimlisarkhan",
+        "password":"serxan1111"
+    },
+    // params,
   };
 
-  const executed = () => {
+  const executed = (data) => {
     setStatus(status_req.isPending);
-    axios(axiosConfig)
-      .then((res) => {
-        if (!mountedRef.current) return;
-        setStatus(status_req.isSuccess);
-        onSuccess?.(res?.data);
-      })
-      .catch((err) => {
-        if (!mountedRef.current) return;
-        setStatus(status_req.isError);
-        onError?.(err);
-      });
+    console.log(data,"data");
+    
+    req(data)
+      // .then((res) => {
+      //   if (!mountedRef.current) return;
+      //   setStatus(status_req.isSuccess);
+      //   onSuccess?.(res?.data);
+      // })
+      // .catch((err) => {
+      //   if (!mountedRef.current) return;
+      //   setStatus(status_req.isError);
+      //   onError?.(err);
+      // });
   };
 
   return { exc: executed, isStatus: status };
