@@ -17,8 +17,7 @@ export const FormInfo: any = styled(Grid).attrs(() => ({
   display: flex;
   justify-content: center;
   position: relative;
-  padding: 35px 10px;
-  height: 92vh;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;

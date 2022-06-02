@@ -14,7 +14,7 @@ export const Input = styled.input`
   padding: 10px;
   border-radius: 5px;
   padding-left: 40px;
-  margin: 20px 0;
+  margin: 13px 0;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.white} !important;

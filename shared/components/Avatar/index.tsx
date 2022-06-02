@@ -1,6 +1,5 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
 
 function stringToColor(string: string) {
   let hash = 0;
@@ -23,6 +22,8 @@ function stringToColor(string: string) {
 }
 
 function stringAvatar(name: string) {
+  if (!name) return;
+
   return {
     sx: {
       bgcolor: stringToColor(name),
@@ -31,12 +32,14 @@ function stringAvatar(name: string) {
   };
 }
 
-const BackgroundLetterAvatars = ({ name }: { name: string }) => {
-  return (
-    // <Stack direction="row" spacing={1}>
-    name && <Avatar {...stringAvatar(name)} />
-    // </Stack>
-  );
+const BackgroundLetterAvatars = ({
+  name,
+  image,
+}: {
+  name: string;
+  image: string;
+}) => {
+  return <Avatar src={image} {...stringAvatar(name)} />;
 };
 
 export { BackgroundLetterAvatars as Avatar };

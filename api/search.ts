@@ -1,11 +1,13 @@
-import { getDataNews } from "shared/services/MixNews";
+import { METHOD } from "shared/constant/method";
+import { apiPatch } from "shared/constant/patch";
+import { Axios } from "shared/utils/axios";
 
-export const resultSearchApi = async (search: string) => {
-  let {
-    data: {
-      results: { articles, news, videos },
+export const resultSearchApi = (search: string) =>
+  Axios({
+    url: apiPatch.search,
+    method: METHOD.GET,
+    params: {
+      search,
+      limit: 30,
     },
-  } = await getDataNews(`search/?search=${search}&limit=30&offset=1`, null);
-
-  return [...news, ...articles, ...videos];
-};
+  });

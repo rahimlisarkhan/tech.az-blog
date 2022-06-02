@@ -1,13 +1,7 @@
-import {
-  GetServerSideProps,
-  // GetStaticPaths,
-  // GetStaticProps,
-  NextPage,
-} from "next";
+import { GetServerSideProps, NextPage } from "next";
 import dynamic from "next/dynamic";
-import { getDataNews, getNewsSlug } from "shared/services/MixNews";
+import { serverSideRequest } from "shared/services/request";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-// import { GetStaticProps } from "next";
 import { Fragment, useEffect, useState } from "react";
 import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
@@ -20,6 +14,9 @@ import { createdAt } from "db/createdAt";
 import { useRequest } from "shared/hooks/useRequest";
 import Loading from "shared/components/Loading";
 import { status_req } from "shared/constant/status";
+import { apiPageContents } from "api/news";
+import { apiPatch } from "shared/constant/patch";
+import { converSlug } from "shared/utils/convertSlug";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 const Layout = dynamic(() => import("shared/components/Layout"));
@@ -38,14 +35,14 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const { asPath } = useRouter();
   const [results, setResults] = useState(null);
 
-  const { exc, isStatus } = useRequest("mixdata", {
-    onSuccess: (res) => {
-      setResults(res?.results);
+  const { exc } = useRequest(() => apiPageContents(apiPatch.mixdata), {
+    onSuccess: ({ results }) => {
+      setResults(results);
     },
   });
 
   useEffect(() => {
-    exc(null);
+    exc();
   }, []);
 
   //read data
@@ -119,11 +116,7 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
         ogUrl={`${productURL()}${asPath}`}
       />
       <Layout>
-        {isStatus === status_req.isSuccess ? (
-          <DetailedContainer newsSlug={newsSlug} newsData={results} />
-        ) : (
-          <Loading />
-        )}
+        <DetailedContainer newsSlug={newsSlug} newsData={results} />
       </Layout>
     </Fragment>
   );
@@ -139,7 +132,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
 
-  let res = await getNewsSlug(params.slug);
+  let res = await serverSideRequest(converSlug(params.slug));
 
   if (!res) {
     return {
@@ -154,38 +147,3 @@ export const getServerSideProps: GetServerSideProps = async ({
     },
   };
 };
-
-// export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-//   let languages = {
-//     ...(await serverSideTranslations(locale, ["common", "menu"])),
-//   };
-
-//   let data = await getDataNews("mixdata", null);
-
-//   let res = await getNewsSlug(params.slug);
-
-//   if (!data || !res) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: {
-//       ...languages,
-//       news: data.data,
-//       newsSlug: res.data,
-//     },
-//     // revalidate: 1,
-//   };
-// };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const news = await getDataNews("alldata", null);
-
-//   const paths = news?.data?.map((item: any) => ({
-//     params: { slug: `${item.type}=${item.slug}` },
-//   }));
-
-//   return { paths, fallback: false };
-// };

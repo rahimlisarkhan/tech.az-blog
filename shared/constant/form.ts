@@ -1,4 +1,6 @@
-import React from "react";
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
+import CakeIcon from '@mui/icons-material/Cake';
 import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
 import EmailIcon from "@mui/icons-material/Email";
@@ -33,6 +35,9 @@ export interface FormTypee {
       email: string;
       password: string;
       password2: string;
+      education: string;
+      position: string;
+      birtday: string;
     };
     inputs: InputType[];
   };
@@ -109,11 +114,32 @@ export const FORM: any = {
         icon: LockIcon,
       },
       {
-        id: "008 ̰",
+        id: "008",
         label: "təkrar şifrə",
         name: "password2",
         type: "password",
         icon: LockIcon,
+      },
+      {
+        id: "009",
+        label: "iş",
+        name: "position",
+        type: "text",
+        icon: WorkIcon,
+      },
+      {
+        id: "010",
+        label: "təhsil",
+        name: "education",
+        type: "text",
+        icon: SchoolIcon,
+      },
+      { 
+        id: "011",
+        label: "doğum tarixi",
+        name: "birthday",
+        type: "date",
+        icon: CakeIcon,
       },
     ],
   },

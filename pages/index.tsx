@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { getDataNews } from "../shared/services/MixNews";
+import { serverSideRequest } from "../shared/services/request";
 import {  NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -7,6 +7,7 @@ import { GetStaticProps } from "next";
 import { NewsResponseType, NewsType } from "types/news";
 import { Fragment } from "react";
 import { productURL } from "shared/utils/productURL";
+import { apiPatch } from "shared/constant/patch";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 const Layout = dynamic(() => import("shared/components/Layout"));
@@ -47,7 +48,7 @@ export const getStaticProps: GetStaticProps  = async ({ locale }) => {
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
 
-  let data = await getDataNews("mixdata", null);
+  let data = await serverSideRequest(apiPatch.mixdata);
 
   if (!data) {
     return {

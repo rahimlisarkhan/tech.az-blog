@@ -7,37 +7,25 @@ import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import { SubmitButton } from "./Form.styled";
 import { ROUTER } from "shared/constant/route";
-import { useRequest } from "shared/hooks/useRequest";
-import { apiLogin } from "api/login";
+import { useAccount } from "shared/hooks/useAccount";
+import { Image } from "shared/components/Image";
+import GoogleLogo from "public/image/google-logo.png";
 
 export const Form = ({ initialValues, inputs }) => {
   let mode = useSelector((state) => state.home.appMode);
 
-  const { exc } = useRequest((data) => apiLogin(data), {
-    onSuccess: (data) => {
-      console.log(data, "data");
-    },
-    onError: (data) => {
-      console.log(data, "error");
-    },
-  });
-
   let { push, asPath } = useRouter();
+
+  let isLogin = asPath === ROUTER.LOGIN.href;
+
+  const { defaultSignIn, googleSignIn } = useAccount();
 
   let formik = useFormik({
     initialValues,
-    // validate: (values) => {
-    //     console.log(values,"error");
 
-    //     if (!values.first_name || !values.last_name || !values.email) {
-    //         toast.error("Zəhmət olmasa xanaları düzgün doldurun...")
-    //     }
-    // },
-    onSubmit: (value, actions) => {
-      //   addJoin(value);
-      console.log("value", value);
-      exc(value);
-      // actions.resetForm();
+    onSubmit: (value, { resetForm }) => {
+      defaultSignIn(value);
+      resetForm();
     },
   });
 
@@ -81,23 +69,43 @@ export const Form = ({ initialValues, inputs }) => {
                 placeholder={input.label}
               />
             );
+          case "date":
+            return (
+              <InputField
+                value={formik.values[input.name]}
+                name={input.name}
+                icon={input.icon}
+                onChange={formik.handleChange}
+                type="text"
+                placeholder={input.label}
+              />
+            );
           default:
             return;
         }
       })}
+
       <Motion>
-        <SubmitButton>
-          {asPath === ROUTER.LOGIN.href ? "daxil ol" : "qeydiyyat"}
+        <SubmitButton color="green" hover="bgGreen">
+          {isLogin ? "daxil ol" : "qeydiyyat"}
         </SubmitButton>
       </Motion>
       <Motion>
+        <SubmitButton
+          color="whiteGray-50"
+          hover="white"
+          type="button"
+          onClick={() => googleSignIn()}
+        >
+          <Image width="30" src={GoogleLogo} />
+           google ilə daxil ol
+        </SubmitButton>
+      </Motion>
+
+      <Motion>
         <div
           onClick={() =>
-            push(
-              asPath === ROUTER.LOGIN.href
-                ? ROUTER.REGISTER.href
-                : ROUTER.LOGIN.href
-            )
+            push(isLogin ? ROUTER.REGISTER.href : ROUTER.LOGIN.href)
           }
         >
           <Typograph
@@ -106,7 +114,7 @@ export const Form = ({ initialValues, inputs }) => {
             cursor="true"
             color={!mode ? "white" : "black"}
           >
-            {asPath === ROUTER.LOGIN.href
+            {isLogin
               ? "Hesabın yoxdur? Buradan qeydiyyat et"
               : "Hesabın var? Buradan daxil ol"}
           </Typograph>

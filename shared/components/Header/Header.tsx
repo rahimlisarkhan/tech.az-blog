@@ -27,12 +27,21 @@ import { useScreenMode } from "../../hooks/useScreenMode";
 import SearchIcon from "@mui/icons-material/Search";
 import { Login } from "@mui/icons-material";
 import { Avatar } from "../Avatar";
+import { useSelector } from "shared/hooks/useSelector";
+import { stateUser } from "shared/store/slices/user/userSlices";
+import { useAccount } from "shared/hooks/useAccount";
 
 type Props = {};
 
 const Header: React.FC<Props> = () => {
+
+  let { googleLogout} = useAccount()
+
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ maxWidth: breakpoint.laptop });
+
+  const user = useSelector(stateUser);
+
   let [open, setOpen] = useState(false);
   let { mode } = useScreenMode();
 
@@ -70,37 +79,43 @@ const Header: React.FC<Props> = () => {
           isNotLoading
         />
         {isDesktopOrLaptop && <Navbar mode={mode ? "true" : ""} />}
+
         <MenuActions>
-          {/* {isDesktopOrLaptop && (
+          {isDesktopOrLaptop && !user && (
             <ButtonOutlined
               mode={mode ? "true" : ""}
               onClick={() => push("/join")}
             >
               bizə qoşul
             </ButtonOutlined>
-          )} */}
-
+          )}
           <ModeButton mode={mode ? "true" : ""} onClick={handleSearchBar}>
             <SearchIcon />
           </ModeButton>
           <ModeButton mode={mode ? "true" : ""} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
-          {/* {true && (
+          {!user && (
             <ModeButton mode={mode ? "true" : ""} onClick={redirectLogin}>
               <Login />
             </ModeButton>
-          )} */}
+          )}
           {isMobile && (
             <ModeButton mode={mode ? "true" : ""} onClick={handleClick}>
               <MenuIcon />
             </ModeButton>
           )}
+          {user && (
+            <ModeButton>
+              <Avatar name={user?.first_name} image={user?.image} />
+            </ModeButton>
+          )}
+          <button onClick={()=>googleLogout()}>Logout</button>
+       
         </MenuActions>
         <Drawer isOpen={open} setIsOpen={handleClick}>
           <NavbarMobile closeMenu={handleClick} />
         </Drawer>
-        {true && <Avatar name="Reshad" />}
       </HeaderContainer>
     </HeaderStyled>
   );
