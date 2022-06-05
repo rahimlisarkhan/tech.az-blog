@@ -31,10 +31,12 @@ export const CommentContent = ({ slug }) => {
     collection: firebasePatch.comments,
     onData(data) {
       let newsComments = Object.entries(data[slug])
-        .map((comment) => ({
-          comment_id: comment[0],
-          ...comment[1],
-        }))
+        .map((comment: any) => {
+          return {
+            comment_id: comment[0],
+            ...comment[1],
+          };
+        })
         .reverse();
       setComments(newsComments);
     },
