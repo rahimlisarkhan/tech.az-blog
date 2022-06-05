@@ -5,14 +5,13 @@ import { ROUTER } from "shared/constant/route";
 import { stateUser } from "shared/store/slices/user/userSlices";
 
 export const useRedirect = () => {
-  const { back } = useRouter();
+  const { push } = useRouter();
   const user = useSelector(stateUser);
   const [isAccessPage, setIsAccessPage] = useState<any>(false);
 
   useEffect(() => {
-
     if (!user) return;
-    back();
+    push(ROUTER.MENU.HOME.href);
     setIsAccessPage(true);
   }, [user]);
 
