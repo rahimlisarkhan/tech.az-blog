@@ -30,6 +30,7 @@ import { Avatar } from "../Avatar";
 import { useSelector } from "shared/hooks/useSelector";
 import { stateUser } from "shared/store/slices/user/userSlices";
 import { useAccount } from "shared/hooks/useAccount";
+import { isAppMode } from "shared/utils/isAppMode";
 
 type Props = {};
 
@@ -68,8 +69,8 @@ const Header: React.FC<Props> = () => {
   };
 
   return (
-    <HeaderStyled mode={mode ? "true" : ""}>
-      <HeaderContainer mode={mode ? "true" : ""}>
+    <HeaderStyled mode={isAppMode(mode)}>
+      <HeaderContainer mode={isAppMode(mode)}>
         <Image
           onClick={() => push(ROUTER.MENU.HOME.href)}
           src={`/image/${mode ? "logo-black" : "logo"}.png`}
@@ -77,36 +78,36 @@ const Header: React.FC<Props> = () => {
           cover
           isNotLoading
         />
-        {isDesktopOrLaptop && <Navbar mode={mode ? "true" : ""} />}
+        {isDesktopOrLaptop && <Navbar mode={isAppMode(mode)} />}
 
         <MenuActions>
           {isDesktopOrLaptop && !user && (
             <ButtonOutlined
-              mode={mode ? "true" : ""}
-              onClick={() => push("/join")}
+              mode={isAppMode(mode)}
+              onClick={() => push(ROUTER.JOIN.href)}
             >
               bizə qoşul
             </ButtonOutlined>
           )}
-          <ModeButton mode={mode ? "true" : ""} onClick={handleSearchBar}>
+          <ModeButton mode={isAppMode(mode)} onClick={handleSearchBar}>
             <SearchIcon />
           </ModeButton>
-          <ModeButton mode={mode ? "true" : ""} onClick={handleMode}>
+          <ModeButton mode={isAppMode(mode)} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
           {!user && (
-            <ModeButton mode={mode ? "true" : ""} onClick={redirectLogin}>
+            <ModeButton mode={isAppMode(mode)} onClick={redirectLogin}>
               <Login />
             </ModeButton>
           )}
           {isMobile && (
-            <ModeButton mode={mode ? "true" : ""} onClick={handleClick}>
+            <ModeButton mode={isAppMode(mode)} onClick={handleClick}>
               <MenuIcon />
             </ModeButton>
           )}
           {user && (
             <ModeButton>
-              <Avatar name={user?.first_name} image={user?.image} />
+              <Avatar name={user?.first_name} size="lg" image={user?.image} />
             </ModeButton>
           )}
           <button onClick={() => googleLogout()}>Logout</button>

@@ -10,3 +10,7 @@ export const apiPatch = {
     profile: "user/profile/",
     config:"api/config"
   };
+
+  export const firebasePatch = {
+    comments:"all_content_comments/"
+  }

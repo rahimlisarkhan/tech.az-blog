@@ -3,7 +3,7 @@ import { writeData } from "db/writeData";
 import { useEffect } from "react";
 import { useFirebaseConnect } from "./useFirebaseConnect";
 
-export const useFirebase = ({ collection, unique, onData }) => {
+export const useFirebase = ({ collection, unique, onData }: any) => {
   const { db } = useFirebaseConnect();
 
   useEffect(() => {
@@ -12,8 +12,8 @@ export const useFirebase = ({ collection, unique, onData }) => {
     });
   }, []);
 
-  const fireRequest = (data: any) => {
-    writeData(db,collection, data, unique);
+  const fireRequest = (col:string, data: any) => {
+    writeData(db, col, data, unique);
   };
 
   return { fireRequest };

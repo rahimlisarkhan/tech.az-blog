@@ -20,7 +20,6 @@ function stringToColor(string: string) {
 }
 
 function stringAvatar(name: string) {
-
   return {
     sx: {
       bgcolor: stringToColor(name),
@@ -29,14 +28,22 @@ function stringAvatar(name: string) {
   };
 }
 
-const BackgroundLetterAvatars = ({
+const sizes = {
+  xs: { width: 16, height: 16 },
+  sm: { width: 20, height: 20 },
+  md: { width: 24, height: 24 },
+  lg: { width: 56, height: 56 },
+};
+const UserAvatar = ({
   name,
   image,
+  size,
 }: {
   name: string;
   image: string;
+  size: string;
 }) => {
-  return <Avatar src={image} {...stringAvatar(name)} />;
+  return <Avatar src={image} sx={sizes[size]} {...stringAvatar(name)} />;
 };
 
-export { BackgroundLetterAvatars as Avatar };
+export { UserAvatar as Avatar };

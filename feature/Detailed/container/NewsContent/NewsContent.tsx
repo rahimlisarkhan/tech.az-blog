@@ -17,6 +17,8 @@ import { useScreenMode } from "shared/hooks/useScreenMode";
 import { NewsType } from "types/news";
 import { Motion } from "shared/components/Motion";
 
+import { CommentContent } from "../CommentContent";
+
 import dynamic from "next/dynamic";
 import { MobileCard } from "feature/News/components/MobileCard";
 
@@ -24,7 +26,7 @@ const NewsImageSlider = dynamic(
   () => import("../../components/NewsImageSlider")
 );
 const SliderContent = dynamic(() => import("shared/components/Slider"));
-const TitleContent = dynamic(() => import("../../components/TitleContent"));
+const TitleContent = dynamic(() => import("../TitleContent"));
 const NewsCard = dynamic(() => import("../../../News/components/NewsCard"));
 
 type Props = {
@@ -89,6 +91,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           <TypographyText font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(3000)}
           </TypographyText>
+          <CommentContent slug={newsSlug?.slug} />
         </NewsContentStyled>
       </Motion>
       {newsData && (

@@ -3,7 +3,7 @@ import { DetailedContainerStyled } from "./DetailedContainer.styled";
 
 import dynamic from "next/dynamic";
 
-const NewsContent = dynamic(() => import("../components/NewsContent"));
+const NewsContent = dynamic(() => import("../container/NewsContent"));
 
 export const DetailedContainer: React.FC<any> = ({ newsSlug, newsData }) => {
   return (

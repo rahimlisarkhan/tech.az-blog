@@ -38,4 +38,8 @@ export const ROUTER = {
     id: "012",
     href: "/register",
   },
+  JOIN: {
+    id: "013",
+    href: "/join",
+  },
 };

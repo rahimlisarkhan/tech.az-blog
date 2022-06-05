@@ -45,32 +45,6 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
     exc();
   }, []);
 
-  //read data
-  // useEffect(() => {
-  //   realTimeData("/all_content_comments", (data: any) => {
-  //     console.log(data, "Data");
-  //   });
-  // }, []);
-
-  //create comments comments
-
-  // useEffect(() => {
-  //   writeData(
-  //     `all_content_comments/${newsSlug.slug}`,
-  //     {
-  //       user: {
-  //         user_id: "",
-  //         full_name: "Cemil",
-  //         last_name: "Huseynzade",
-  //         image: "url",
-  //       },
-  //       content: "Ela Xeberdir",
-  //       created_at: createdAt(),
-  //       reply: "",
-  //     },
-  //     true
-  //   );
-  // }, [newsSlug.slug]);
 
   //Reply click
   // useEffect(() => {
