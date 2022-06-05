@@ -8,7 +8,11 @@ enum transformOriginMap {
 
 export const Motion = ({ children }) => {
   return (
-    <Grow in={true} style={{ transformOrigin: "center" }} timeout={2000}>
+    <Grow
+      in={true}
+      style={{ transformOrigin: transformOriginMap.center }}
+      timeout={2000}
+    >
       {children}
     </Grow>
   );

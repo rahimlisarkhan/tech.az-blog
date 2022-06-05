@@ -91,52 +91,55 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           </TypographyText>
         </NewsContentStyled>
       </Motion>
-
-      <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
-        <TypographyText font="20" color={colorMode()} bold="true">
-          Son yükləmələr
-        </TypographyText>
-        <Grid container={true}>
-          {newsData
-            ?.filter((item) => item.id !== newsSlug.id)
-            ?.map((news, index) => {
-              if (index < 5) {
-                return isDesktopOrLaptop ? (
+      {newsData && (
+        <>
+          <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
+            <TypographyText font="20" color={colorMode()} bold="true">
+              Son yükləmələr
+            </TypographyText>
+            <Grid container={true}>
+              {newsData
+                ?.filter((item) => item.id !== newsSlug.id)
+                ?.map((news, index) => {
+                  if (index < 5) {
+                    return isDesktopOrLaptop ? (
+                      <NewsCard
+                        sm={6}
+                        key={`last-upload-${index}`}
+                        height={"210"}
+                        {...news}
+                      />
+                    ) : (
+                      <MobileCard
+                        key={`mobile-last-upload-${index}`}
+                        col={12}
+                        {...news}
+                        height="120"
+                      />
+                    );
+                  }
+                })}
+            </Grid>
+          </SuggestedContentStyled>
+          {similarData?.length && (
+            <SimilarNewsContentStyled>
+              <TypographyText font="20" color={colorMode()} bold="true">
+                Oxşar yükləmələr
+              </TypographyText>
+              <SliderContent
+                data={similarData}
+                slidesToShow={similarData.length <= 2 ? 1 : 3}
+                content={(item) => (
                   <NewsCard
-                    sm={6}
-                    key={`last-upload-${index}`}
-                    height={"210"}
-                    {...news}
+                    height={similarData.length <= 2 ? 420 : 220}
+                    {...item}
+                    mobilemargin={isMobile ? "true" : ""}
                   />
-                ) : (
-                  <MobileCard
-                    key={`mobile-last-upload-${index}`}
-                    col={12}
-                    {...news}
-                    height="120"
-                  />
-                );
-              }
-            })}
-        </Grid>
-      </SuggestedContentStyled>
-      {similarData?.length && (
-        <SimilarNewsContentStyled>
-          <TypographyText font="20" color={colorMode()} bold="true">
-            Oxşar yükləmələr
-          </TypographyText>
-          <SliderContent
-            data={similarData}
-            slidesToShow={similarData.length <= 2 ? 1 : 3}
-            content={(item) => (
-              <NewsCard
-                height={similarData.length <= 2 ? 420 : 220}
-                {...item}
-                mobilemargin={isMobile ? "true" : ""}
+                )}
               />
-            )}
-          />
-        </SimilarNewsContentStyled>
+            </SimilarNewsContentStyled>
+          )}
+        </>
       )}
     </Fragment>
   );

@@ -4,13 +4,16 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Fragment } from "react";
 import { productURL } from "shared/utils/productURL";
 import { FORM } from "shared/constant/form";
+import { useRedirect } from "shared/hooks/useRedirect";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 const LoginContainer = dynamic(() => import("feature/Login/LoginContainer"));
 
 const LoginPage: NextPage = () => {
+  const { isAccessPage } = useRedirect();
+
   return (
-    <Fragment>
+   !isAccessPage && <Fragment>
       <MetaSEO
         title={`Daxil ol | tech.az`}
         description={
@@ -25,8 +28,8 @@ const LoginPage: NextPage = () => {
         ogImage={"static/image/techaz.jpg"}
         ogUrl={`${productURL()}`}
       />
-      <LoginContainer {...FORM.LOGIN} />
-    </Fragment>
+       <LoginContainer {...FORM.LOGIN} />
+    </Fragment> 
   );
 };
 

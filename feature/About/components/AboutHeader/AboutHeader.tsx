@@ -9,6 +9,7 @@ import { Image } from "../../../../shared/components/Image";
 import { useSelector } from "../../../../shared/hooks/useSelector";
 import { breakpoint } from "../../../../styles/breakpoint";
 import { useMediaQuery } from "react-responsive";
+import { isAppMode } from "shared/utils/isAppMode";
 
 export const AboutHeader = () => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
@@ -41,7 +42,7 @@ export const AboutHeader = () => {
             {/* tech.az */}
             hər şey tech.az ilə bağlıdır
           </TypographyText>
-          <AboutHeaderButton mode={appMode ? " true" : ""}>
+          <AboutHeaderButton mode={isAppMode(appMode)}>
             {/* learn more */}
             daha ətraflı
           </AboutHeaderButton>

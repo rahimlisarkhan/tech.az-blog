@@ -27,13 +27,14 @@ import { useScreenMode } from "../../hooks/useScreenMode";
 import SearchIcon from "@mui/icons-material/Search";
 import Login from "@mui/icons-material/Login";
 import { Avatar } from "../Avatar";
-import { stateUser } from "shared/store/slices/user/userSlices";
 import { useSelector } from "shared/hooks/useSelector";
+import { stateUser } from "shared/store/slices/user/userSlices";
+import { useAccount } from "shared/hooks/useAccount";
 
 type Props = {};
 
 const Header: React.FC<Props> = () => {
-  // let { googleLogout} = useAccount()
+  let { googleLogout } = useAccount();
 
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ maxWidth: breakpoint.laptop });
@@ -94,7 +95,7 @@ const Header: React.FC<Props> = () => {
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
           {!user && (
-            <ModeButton mode={mode ? "true" : ""} onClick={() => {}}>
+            <ModeButton mode={mode ? "true" : ""} onClick={redirectLogin}>
               <Login />
             </ModeButton>
           )}
@@ -108,7 +109,7 @@ const Header: React.FC<Props> = () => {
               <Avatar name={user?.first_name} image={user?.image} />
             </ModeButton>
           )}
-          <button onClick={() => {}}>Logout</button>
+          <button onClick={() => googleLogout()}>Logout</button>
         </MenuActions>
         <Drawer isOpen={open} setIsOpen={handleClick}>
           <NavbarMobile closeMenu={handleClick} />

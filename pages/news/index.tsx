@@ -6,6 +6,7 @@ import { GetStaticProps } from "next";
 import { NewsResponseType, NewsType } from "types/news";
 import { Fragment } from "react";
 import { productURL } from "shared/utils/productURL";
+import { apiPatch } from "shared/constant/patch";
 import { serverSideRequest } from "shared/services/request";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
@@ -47,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
 
-  let data = await serverSideRequest("news");
+  let data = await serverSideRequest(apiPatch.news);
 
   if (!data) {
     return {

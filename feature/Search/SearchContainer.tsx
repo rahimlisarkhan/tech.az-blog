@@ -13,17 +13,17 @@ export const SearchContainer = () => {
   const dispatch = useDispatch();
   const [searchData, setSearchData] = useState([]);
 
-  const handleSearchBar = () => {
-    dispatch(setIsOpenSearch());
-    setSearchData([]);
-  };
-
   const { exc } = useRequest((params: string) => resultSearchApi(params), {
     onSuccess: ({ results }) => {
       let { articles, news, videos } = results;
       setSearchData([...news, ...articles, ...videos]);
     },
   });
+
+  const handleSearchBar = () => {
+    dispatch(setIsOpenSearch());
+    setSearchData([]);
+  };
 
   return (
     <Modal isOpen={isOpen} close={handleSearchBar}>

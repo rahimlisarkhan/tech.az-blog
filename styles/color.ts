@@ -12,6 +12,7 @@ export const colors = {
     dark:"#232526",
     green:"#a3dd24",
     white:"#fefefe",
-    whiteGray:"#e6e6e6"
+    whiteGray:"#e6e6e6",
+    "whiteGray-50":"#e8f0ff"
 }
 
