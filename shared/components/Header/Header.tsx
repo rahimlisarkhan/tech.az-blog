@@ -25,23 +25,20 @@ import Drawer from "../Drawer";
 import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
 import SearchIcon from "@mui/icons-material/Search";
-import { Login } from "@mui/icons-material";
+import Login from "@mui/icons-material/Login";
 import { Avatar } from "../Avatar";
-// import { useSelector } from "shared/hooks/useSelector";
-// import { stateUser } from "shared/store/slices/user/userSlices";
-// import { useAccount } from "shared/hooks/useAccount";
+import { stateUser } from "shared/store/slices/user/userSlices";
+import { useSelector } from "shared/hooks/useSelector";
 
 type Props = {};
 
 const Header: React.FC<Props> = () => {
-
   // let { googleLogout} = useAccount()
 
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ maxWidth: breakpoint.laptop });
 
-  // const user = useSelector(stateUser);
-  const user = {first_name:"Sarkhan",image:null};
+  const user = useSelector(stateUser);
 
   let [open, setOpen] = useState(false);
   let { mode } = useScreenMode();
@@ -53,9 +50,9 @@ const Header: React.FC<Props> = () => {
     dispatch(fillAppMode());
   }, []);
 
-  // const redirectLogin = () => {
-  //   push(ROUTER.LOGIN.href);
-  // };
+  const redirectLogin = () => {
+    push(ROUTER.LOGIN.href);
+  };
 
   const handleMode = () => {
     dispatch(setAppMode());
@@ -82,25 +79,25 @@ const Header: React.FC<Props> = () => {
         {isDesktopOrLaptop && <Navbar mode={mode ? "true" : ""} />}
 
         <MenuActions>
-          {/* {isDesktopOrLaptop && !user && (
+          {isDesktopOrLaptop && !user && (
             <ButtonOutlined
               mode={mode ? "true" : ""}
               onClick={() => push("/join")}
             >
               bizə qoşul
             </ButtonOutlined>
-          )} */}
+          )}
           <ModeButton mode={mode ? "true" : ""} onClick={handleSearchBar}>
             <SearchIcon />
           </ModeButton>
           <ModeButton mode={mode ? "true" : ""} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
-          {/* {!user && (
-            <ModeButton mode={mode ? "true" : ""} onClick={()=>{}}>
+          {!user && (
+            <ModeButton mode={mode ? "true" : ""} onClick={() => {}}>
               <Login />
             </ModeButton>
-          )} */}
+          )}
           {isMobile && (
             <ModeButton mode={mode ? "true" : ""} onClick={handleClick}>
               <MenuIcon />
@@ -111,8 +108,7 @@ const Header: React.FC<Props> = () => {
               <Avatar name={user?.first_name} image={user?.image} />
             </ModeButton>
           )}
-          {/* <button onClick={()=>googleLogout()}>Logout</button> */}
-       
+          <button onClick={() => {}}>Logout</button>
         </MenuActions>
         <Drawer isOpen={open} setIsOpen={handleClick}>
           <NavbarMobile closeMenu={handleClick} />
