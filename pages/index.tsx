@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { getDataNews } from "../shared/services/MixNews";
+import { serverSideRequest } from "../shared/services/request";
 import {  NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps  = async ({ locale }) => {
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
 
-  let data = await getDataNews("mixdata", null);
+  let data = await serverSideRequest("mixdata");
 
   if (!data) {
     return {

@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { getDataNews } from "../../shared/services/MixNews";
+import {serverSideRequest } from "../../shared/services/request";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps } from "next";
@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
 
-  let data = await getDataNews("articles", null);
+  let data = await serverSideRequest("articles");
 
   if (!data) {
     return {

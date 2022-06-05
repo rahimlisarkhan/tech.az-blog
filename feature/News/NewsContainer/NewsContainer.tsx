@@ -1,14 +1,18 @@
 import { NewsContainerStyled, MoreNewsContent } from "./NewsContainer.styled";
 import NewsCard from "../components/NewsCard";
-import { getDataNews } from "../../../shared/services/MixNews";
 import { useState } from "react";
-import { useSelector } from "../../../shared/hooks/useSelector";
-import ButtonOutlined from "../../../shared/components/ButtonOutlined";
+import { useSelector } from "shared/hooks/useSelector";
+import ButtonOutlined from "shared/components/ButtonOutlined";
 import Grow from "@mui/material/Grow";
 import { useRenderTypeName } from "shared/hooks/useRenderTypeName";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
 import { MobileCard } from "../components/MobileCard";
+import { parsePatch } from "shared/utils/parsePatch";
+import { apiPageContents } from "api/news";
+import { useRequest } from "shared/hooks/useRequest";
+import { isDesktopViewCard } from "shared/utils/isDesktopViewCard";
+import { isAppMode } from "shared/utils/isAppMode";
 
 export const NewsContainer = ({ newsData, nextPage }: any) => {
   const appMode = useSelector((state) => state.home.appMode);
@@ -17,18 +21,12 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
   const tagName = useRenderTypeName();
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
 
-  const onPage = async () => {
-    if (!nextPageUrl) {
-      return;
-    }
-
-    let res = await getDataNews(null, nextPageUrl?.split("api")[1]);
-
-    if (res) {
-      setData([...data, ...res.data.results]);
-      setNextPageUrl(res.data.next);
-    }
-  };
+  const { exc } = useRequest(() => apiPageContents(parsePatch(nextPageUrl)), {
+    onSuccess: ({ results, next }) => {
+      setData([...data, ...results]);
+      setNextPageUrl(next);
+    },
+  });
 
   return (
     <NewsContainerStyled>
@@ -44,16 +42,7 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
           );
         }
 
-        if (
-          index === 1 ||
-          index === 2 ||
-          index === 6 ||
-          index === 7 ||
-          index === 11 ||
-          index === 12 ||
-          index === 16 ||
-          index === 17
-        ) {
+        if (isDesktopViewCard(index)) {
           return isDesktopOrLaptop ? (
             <NewsCard
               key={`mixnews-id-${index}`}
@@ -91,8 +80,8 @@ export const NewsContainer = ({ newsData, nextPage }: any) => {
         <MoreNewsContent>
           <ButtonOutlined
             disabled={nextPageUrl ? false : true}
-            mode={appMode ? "true" : ""}
-            onClick={onPage}
+            mode={isAppMode(appMode)}
+            onClick={() => exc()}
           >
             {nextPageUrl ? `daha 30 ${tagName}` : `daha ${tagName} yoxdur`}
           </ButtonOutlined>

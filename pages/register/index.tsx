@@ -1,12 +1,12 @@
 import { GetStaticProps, NextPage } from "next";
 import dynamic from "next/dynamic";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import MetaSEO from "shared/components/Meta";
 import { Fragment } from "react";
 import { productURL } from "shared/utils/productURL";
 import { FORM } from "shared/constant/form";
 
 const LoginContainer = dynamic(() => import("feature/Login/LoginContainer"));
+const MetaSEO = dynamic(() => import("shared/components/Meta"));
 
 const RegisterPage: NextPage = () => {
   return (

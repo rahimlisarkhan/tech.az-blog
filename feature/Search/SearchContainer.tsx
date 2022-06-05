@@ -6,6 +6,7 @@ import { SearchContent } from "./components/SearchContent";
 import { useState } from "react";
 import ErrorBoundary from "shared/components/ErrorBoundary/ErrorBoundary";
 import { resultSearchApi } from "api/search";
+import { useRequest } from "shared/hooks/useRequest";
 
 export const SearchContainer = () => {
   const isOpen = useSelector((state) => state.home.openSearchBar);
@@ -17,14 +18,20 @@ export const SearchContainer = () => {
     setSearchData([]);
   };
 
-  const handleSearchData = async (title: string) => {
-    setSearchData(await resultSearchApi(title));
-  };
+  const { exc } = useRequest((params: string) => resultSearchApi(params), {
+    onSuccess: ({ results }) => {
+      let { articles, news, videos } = results;
+      setSearchData([...news, ...articles, ...videos]);
+    },
+  });
 
   return (
     <Modal isOpen={isOpen} close={handleSearchBar}>
       <ErrorBoundary>
-        <SearchContent searchData={searchData} search={handleSearchData} />
+        <SearchContent
+          searchData={searchData}
+          search={(title: string) => exc(title)}
+        />
       </ErrorBoundary>
     </Modal>
   );

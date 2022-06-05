@@ -1,28 +1,29 @@
 import {
   GetServerSideProps,
-  // GetStaticPaths,
-  // GetStaticProps,
   NextPage,
 } from "next";
 import dynamic from "next/dynamic";
-import { getDataNews, getNewsSlug } from "shared/services/MixNews";
+import {  serverSideRequest } from "shared/services/request";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 // import { GetStaticProps } from "next";
 import { Fragment, useEffect, useState } from "react";
-import { NewsResponseType, NewsType } from "types/news";
+// import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
-import { writeData } from "db/writeData";
+// import { writeData } from "db/writeData";
 // import { realTimeData } from "db/realTimeData";
 // import { onValue, ref } from "firebase/database";
 // import { db } from "config/firebase";
-import { createdAt } from "db/createdAt";
+// import { createdAt } from "db/createdAt";
 import { useRequest } from "shared/hooks/useRequest";
-import Loading from "shared/components/Loading";
 import { status_req } from "shared/constant/status";
+import { apiPageContents } from "api/news";
+import { apiPatch } from "shared/constant/patch";
+import { converSlug } from "shared/utils/converSlug";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 const Layout = dynamic(() => import("shared/components/Layout"));
+const Loading = dynamic(() => import("shared/components/Loading"));
 const DetailedContainer = dynamic(
   () => import("feature/Detailed/DetailedContainer")
 );
@@ -38,14 +39,14 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const { asPath } = useRouter();
   const [results, setResults] = useState(null);
 
-  const { exc, isStatus } = useRequest("mixdata", {
-    onSuccess: (res) => {
-      setResults(res?.results);
+  const { exc,isStatus } = useRequest(() => apiPageContents(apiPatch.mixdata), {
+    onSuccess: ({ results }) => {
+      setResults(results);
     },
   });
 
   useEffect(() => {
-    exc(null);
+    exc();
   }, []);
 
   //read data
@@ -139,7 +140,8 @@ export const getServerSideProps: GetServerSideProps = async ({
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
 
-  let res = await getNewsSlug(params.slug);
+  // let res = await getNewsSlug(params.slug);
+  let res = await serverSideRequest(converSlug(params.slug));
 
   if (!res) {
     return {

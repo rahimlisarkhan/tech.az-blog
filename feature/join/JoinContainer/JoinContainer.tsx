@@ -3,7 +3,7 @@ import { JoinContent, FormContent, Field } from "./JoinContainer.styled"
 import ButtonOutlined from "shared/components/ButtonOutlined"
 import { useSelector } from "shared/hooks/useSelector"
 import { useFormik } from "formik"
-import { addJoin } from "shared/services/MixNews"
+// import { addJoin } from "shared/services/request"
 
 
 export const JoinContainer = () => {
@@ -18,7 +18,7 @@ export const JoinContainer = () => {
         //     }
         // },
         onSubmit: (value, actions) => {
-            addJoin(value)
+            // addJoin(value)
             actions.resetForm()
         }
     })
