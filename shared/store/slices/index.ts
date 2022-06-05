@@ -1,6 +1,7 @@
-import homeSlice from "./home/homeSlices"
-
+import homeSlice from "./home/homeSlices";
+import userSlice  from "./user/userSlices";
 
 export const reducers = {
-    home:homeSlice
-} 
+  home: homeSlice,
+  user: userSlice,
+};

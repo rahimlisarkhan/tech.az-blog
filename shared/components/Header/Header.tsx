@@ -26,8 +26,8 @@ import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
 import SearchIcon from "@mui/icons-material/Search";
 import { Login } from "@mui/icons-material";
-import { Avatar } from "../Avatar";
-import { useSelector } from "shared/hooks/useSelector";
+// import { Avatar } from "../Avatar";
+// import { useSelector } from "shared/hooks/useSelector";
 // import { stateUser } from "shared/store/slices/user/userSlices";
 // import { useAccount } from "shared/hooks/useAccount";
 
@@ -53,9 +53,9 @@ const Header: React.FC<Props> = () => {
     dispatch(fillAppMode());
   }, []);
 
-  const redirectLogin = () => {
-    push(ROUTER.LOGIN.href);
-  };
+  // const redirectLogin = () => {
+  //   push(ROUTER.LOGIN.href);
+  // };
 
   const handleMode = () => {
     dispatch(setAppMode());
@@ -82,35 +82,35 @@ const Header: React.FC<Props> = () => {
         {isDesktopOrLaptop && <Navbar mode={mode ? "true" : ""} />}
 
         <MenuActions>
-          {isDesktopOrLaptop && !user && (
+          {/* {isDesktopOrLaptop && !user && (
             <ButtonOutlined
               mode={mode ? "true" : ""}
               onClick={() => push("/join")}
             >
               bizə qoşul
             </ButtonOutlined>
-          )}
+          )} */}
           <ModeButton mode={mode ? "true" : ""} onClick={handleSearchBar}>
             <SearchIcon />
           </ModeButton>
           <ModeButton mode={mode ? "true" : ""} onClick={handleMode}>
             {mode ? <NightsStayIcon /> : <Brightness4Icon />}
           </ModeButton>
-          {!user && (
-            <ModeButton mode={mode ? "true" : ""} onClick={redirectLogin}>
+          {/* {!user && (
+            <ModeButton mode={mode ? "true" : ""} onClick={()=>{}}>
               <Login />
             </ModeButton>
-          )}
+          )} */}
           {isMobile && (
             <ModeButton mode={mode ? "true" : ""} onClick={handleClick}>
               <MenuIcon />
             </ModeButton>
           )}
-          {user && (
+          {/* {user && (
             <ModeButton>
               <Avatar name={user?.first_name} image={user?.image} />
             </ModeButton>
-          )}
+          )} */}
           {/* <button onClick={()=>googleLogout()}>Logout</button> */}
        
         </MenuActions>
