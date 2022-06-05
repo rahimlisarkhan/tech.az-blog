@@ -6,13 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 // import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
-// import { writeData } from "db/writeData";
-// import { realTimeData } from "db/realTimeData";
-// import { onValue, ref } from "firebase/database";
-// import { db } from "config/firebase";
-// import { createdAt } from "db/createdAt";
 import { useRequest } from "shared/hooks/useRequest";
-import { status_req } from "shared/constant/status";
 import { apiPageContents } from "api/news";
 import { apiPatch } from "shared/constant/patch";
 import { converSlug } from "shared/utils/converSlug";
@@ -35,16 +29,18 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const { asPath } = useRouter();
   const [results, setResults] = useState(null);
 
-  const { exc } = useRequest(() => apiPageContents(apiPatch.mixdata), {
-    onSuccess: ({ results }) => {
-      setResults(results);
-    },
-  });
+  const { exc, isStatus } = useRequest(
+    () => apiPageContents(apiPatch.mixdata),
+    {
+      onSuccess: ({ results }) => {
+        setResults(results);
+      },
+    }
+  );
 
   useEffect(() => {
     exc();
   }, []);
-
 
   //Reply click
   // useEffect(() => {
@@ -90,7 +86,11 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
         ogUrl={`${productURL()}${asPath}`}
       />
       <Layout>
-        <DetailedContainer newsSlug={newsSlug} newsData={results} />
+        {isStatus === "isSuccess" ? (
+          <DetailedContainer newsSlug={newsSlug} newsData={results} />
+        ) : (
+          <Loading />
+        )}
       </Layout>
     </Fragment>
   );

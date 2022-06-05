@@ -31,7 +31,7 @@ export const CommentContent = ({ slug }) => {
     collection: firebasePatch.comments,
     onData(data) {
       let newsComments = Object.entries(data[slug])
-        .map((comment: any) => {
+        .map((comment: any[]) => {
           return {
             comment_id: comment[0],
             ...comment[1],
