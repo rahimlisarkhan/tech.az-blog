@@ -26,7 +26,7 @@ import ButtonOutlined from "../ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
 import SearchIcon from "@mui/icons-material/Search";
 import { Login } from "@mui/icons-material";
-// import { Avatar } from "../Avatar";
+import { Avatar } from "../Avatar";
 // import { useSelector } from "shared/hooks/useSelector";
 // import { stateUser } from "shared/store/slices/user/userSlices";
 // import { useAccount } from "shared/hooks/useAccount";
@@ -106,11 +106,11 @@ const Header: React.FC<Props> = () => {
               <MenuIcon />
             </ModeButton>
           )}
-          {/* {user && (
+          {user && (
             <ModeButton>
               <Avatar name={user?.first_name} image={user?.image} />
             </ModeButton>
-          )} */}
+          )}
           {/* <button onClick={()=>googleLogout()}>Logout</button> */}
        
         </MenuActions>
