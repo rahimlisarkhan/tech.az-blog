@@ -19,6 +19,8 @@ import {
   SubInfo,
   SubInfoContent,
 } from "./Comment.styled";
+import { useSelector } from "shared/hooks/useSelector";
+import { stateUser } from "shared/store/slices/user/userSlices";
 
 export const Comment = ({
   id: comment_id,
@@ -29,10 +31,11 @@ export const Comment = ({
   onReply,
   user: { id, first_name, last_name, image },
 }) => {
+  const user = useSelector(stateUser);
   const likesData = parseData(comment_like);
 
   const commentLike = useMemo(() => {
-    return likesData?.find((comment) => comment.user_id === id);
+    return likesData?.find((comment) => comment.user_id === user.id);
   }, [comment_like]);
 
   console.log(likesData, "likesData");
