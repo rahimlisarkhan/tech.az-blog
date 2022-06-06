@@ -57,7 +57,7 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
 
   return (
     <Fragment>
-      <Motion time={2000}>
+      <Motion>
         <NewsContentStyled>
           <TitleContent newsSlug={newsSlug} />
           <ImageContent>
