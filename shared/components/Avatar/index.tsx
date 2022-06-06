@@ -33,6 +33,7 @@ const sizes = {
   sm: { width: 20, height: 20, font: 14 },
   md: { width: 24, height: 24, font: 18 },
   lg: { width: 36, height: 36, font: 20 },
+  xl: { width: 48, height: 48, font: 22 },
 };
 
 
@@ -50,7 +51,6 @@ const UserAvatar = ({
     <AvatarStyled
       alt={name}
       src={image}
-      sx={{ width: 16, height: 16 }}
       {...sizes[size]}
       {...stringAvatar(name)}
     />

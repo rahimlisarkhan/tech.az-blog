@@ -35,15 +35,13 @@ export const Comment = ({
   const likesData = parseData(comment_like);
 
   const commentLike = useMemo(() => {
-    return likesData?.find((comment) => comment.user_id === user.id);
-  }, [comment_like]);
-
-  console.log(likesData, "likesData");
+    return likesData?.find((comment) => comment.user_id === user?.id);
+  }, [likesData]);
 
   const handleCommentLike = () => {
     onLike({
       comment_id,
-      user_id: commentLike ? null : id,
+      user_id: commentLike ? null : user.id,
       user_info: {
         first_name,
         last_name,
@@ -88,7 +86,7 @@ export const Comment = ({
             />
           </CommentHeaderUser>
         </CommentHeader>
-        <Typograph color="white" font="16" margin="0">
+        <Typograph color="white" font="16" margin="0" bold="true">
           {comment}
         </Typograph>
       </Content>

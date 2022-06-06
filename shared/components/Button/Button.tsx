@@ -3,6 +3,8 @@ import { ButtonStyled } from "./Button.styled";
 interface ButtonType {
   icon: any;
   radius: string;
+  width: string;
+  height: string;
   bg: string;
   color: string;
   padding: string;
@@ -25,6 +27,8 @@ export const Button = ({
   margin,
   text,
   cursor,
+  height,
+  width,
   onClick,
 }: Partial<ButtonType>) => {
   return (
@@ -32,6 +36,8 @@ export const Button = ({
       color={color}
       bg={bg}
       font={font}
+      width={width}
+      height={height}
       bold={bold}
       radius={radius}
       padding={padding}
