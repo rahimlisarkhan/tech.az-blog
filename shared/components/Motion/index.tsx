@@ -7,7 +7,7 @@ enum transformOriginMap {
   "center" = "center",
 }
 
-export const Motion = ({ children, time }: { children: any; time: number }) => {
+export const Motion = ({ children, time }: { children: any; time: number | undefined }) => {
   return (
     <Grow
       in={true}

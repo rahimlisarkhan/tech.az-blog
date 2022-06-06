@@ -46,10 +46,6 @@ const UserAvatar = ({
   size: string;
 }) => {
 
-
-  console.log(sizes[size],"size");
-  
-
   return (
     <AvatarStyled
       alt={name}
