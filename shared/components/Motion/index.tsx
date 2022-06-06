@@ -1,4 +1,5 @@
 import { Grow } from "@mui/material";
+import React from "react";
 
 enum transformOriginMap {
   "top" = "center top",
@@ -6,12 +7,12 @@ enum transformOriginMap {
   "center" = "center",
 }
 
-export const Motion = ({ children }) => {
+export const Motion = ({ children, time }: { children: any; time: number }) => {
   return (
     <Grow
       in={true}
       style={{ transformOrigin: transformOriginMap.center }}
-      timeout={2000}
+      timeout={time ?? 2000}
     >
       {children}
     </Grow>

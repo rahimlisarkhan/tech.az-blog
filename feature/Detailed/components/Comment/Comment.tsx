@@ -1,24 +1,112 @@
+import { useMemo } from "react";
+
+import ReplyAllIcon from "@mui/icons-material/ReplyAll";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import { Avatar } from "shared/components/Avatar";
+import { Button } from "shared/components/Button";
+import { Motion } from "shared/components/Motion";
+import Typograph from "shared/components/Typograph";
+
 import { convertNormalDate } from "shared/helper/timeConvert";
+import { parseData } from "shared/utils/parseData";
+
+import {
+  CommentContainer,
+  CommentHeader,
+  CommentHeaderUser,
+  Content,
+  SubInfo,
+  SubInfoContent,
+} from "./Comment.styled";
 
 export const Comment = ({
-  comment_id,
+  id: comment_id,
   created_at,
+  comment_like,
   comment,
-  user: { first_name, image },
+  onLike,
+  onReply,
+  user: { id, first_name, last_name, image },
 }) => {
+  const likesData = parseData(comment_like);
+
+  const commentLike = useMemo(() => {
+    return likesData?.find((comment) => comment.user_id === id);
+  }, [comment_like]);
+
+  console.log(likesData, "likesData");
+
+  const handleCommentLike = () => {
+    onLike({
+      comment_id,
+      user_id: commentLike ? null : id,
+      user_info: {
+        first_name,
+        last_name,
+        image: image ?? "",
+      },
+      like_id: commentLike?.id,
+    });
+  };
+
   return (
-    <>
-      <br />
-      <br />
-      <div>
-        <div style={{ display: "flex", alignItems: "center" }}>
+    <CommentContainer>
+      <Content>
+        <CommentHeader>
+          <CommentHeaderUser>
+            <Avatar name={first_name} size="lg" image={image} />
+            <Typograph color="white" font="16" margin="0 15px" bold="true">
+              {first_name} {last_name}
+            </Typograph>
+            <Typograph color="white" font="16" margin="0 20px">
+              {convertNormalDate(created_at)}
+            </Typograph>
+          </CommentHeaderUser>
+          <CommentHeaderUser>
+            <Button
+              text="bəyən"
+              color={commentLike ? "whiteGray" : "green"}
+              font="16"
+              bold="500"
+              margin="0 20px"
+              onClick={handleCommentLike}
+              cursor="true"
+              icon={<FavoriteIcon />}
+            />
+            <Button
+              text="cavabla"
+              color="green"
+              font="16"
+              bold="500"
+              cursor="true"
+              onClick={onReply}
+              icon={<ReplyAllIcon />}
+            />
+          </CommentHeaderUser>
+        </CommentHeader>
+        <Typograph color="white" font="16" margin="0">
+          {comment}
+        </Typograph>
+      </Content>
+      <SubInfoContent>
+        <SubInfo>
           <Avatar name={first_name} size="md" image={image} />
-          Sarkhan Rahimli <span>{convertNormalDate(created_at)}</span>
-        </div>
-        <p>{comment}</p>
-      </div>
-      <br />
-    </>
+          <Typograph color="white" font="14" margin="0 5px" bold="true">
+            133 cavab
+          </Typograph>
+        </SubInfo>
+        {likesData?.length && (
+          <Motion time={500}>
+            <SubInfo>
+              <FavoriteIcon />
+              <Typograph color="white" font="14" margin="0 5px" bold="true">
+                {likesData?.length}
+              </Typograph>
+            </SubInfo>
+          </Motion>
+        )}
+      </SubInfoContent>
+    </CommentContainer>
   );
 };

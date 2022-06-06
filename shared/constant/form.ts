@@ -35,9 +35,6 @@ export interface FormTypee {
       email: string;
       password: string;
       password2: string;
-      education: string;
-      position: string;
-      birtday: string;
     };
     inputs: InputType[];
   };
@@ -120,27 +117,27 @@ export const FORM: any = {
         type: "password",
         icon: LockIcon,
       },
-      {
-        id: "009",
-        label: "iş",
-        name: "position",
-        type: "text",
-        icon: WorkIcon,
-      },
-      {
-        id: "010",
-        label: "təhsil",
-        name: "education",
-        type: "text",
-        icon: SchoolIcon,
-      },
-      { 
-        id: "011",
-        label: "doğum tarixi",
-        name: "birthday",
-        type: "date",
-        icon: CakeIcon,
-      },
+      // {
+      //   id: "009",
+      //   label: "iş",
+      //   name: "position",
+      //   type: "text",
+      //   icon: WorkIcon,
+      // },
+      // {
+      //   id: "010",
+      //   label: "təhsil",
+      //   name: "education",
+      //   type: "text",
+      //   icon: SchoolIcon,
+      // },
+      // { 
+      //   id: "011",
+      //   label: "doğum tarixi",
+      //   name: "birthday",
+      //   type: "date",
+      //   icon: CakeIcon,
+      // },
     ],
   },
 };

@@ -1,4 +1,5 @@
 import { realTimeData } from "db/realTimeData";
+import { removeData } from "db/removeData";
 import { writeData } from "db/writeData";
 import { useEffect } from "react";
 import { useFirebaseConnect } from "./useFirebaseConnect";
@@ -10,11 +11,15 @@ export const useFirebase = ({ collection, unique, onData }: any) => {
     realTimeData(db, collection, (data: any) => {
       onData?.(data);
     });
-  }, []);
+  }, [collection]);
 
-  const fireRequest = (col:string, data: any) => {
+  const deleteRequest = (col, id:string) => {
+    removeData(db, col, id);
+  };
+
+  const fireRequest = (col: string, data: any) => {
     writeData(db, col, data, unique);
   };
 
-  return { fireRequest };
+  return { fireRequest,deleteRequest };
 };

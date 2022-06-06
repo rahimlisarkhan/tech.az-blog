@@ -40,7 +40,7 @@ export const TypographyText = styled(Typography).attrs(() => ({
       }
     }} !important;
     font-size: ${font ? `${font}px` : theme.font.size.medium} !important;
-    margin: ${margin ? `${margin}px 2px` : "10px 3px"} !important;
+    margin: ${margin ? margin : "10px 3px"} !important;
     font-weight: ${bold && `bold`} !important;
     line-height: 1.5 !important;
     text-transform: ${text ? "lowercase" : "normal"}!important;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
+import { AvatarStyled } from "./Avatar.styled";
 
 function stringToColor(string: string) {
   let hash = 0;
@@ -29,11 +29,13 @@ function stringAvatar(name: string) {
 }
 
 const sizes = {
-  xs: { width: 16, height: 16 },
-  sm: { width: 20, height: 20 },
-  md: { width: 24, height: 24 },
-  lg: { width: 56, height: 56 },
+  xs: { width: 16, height: 16, font: 12 },
+  sm: { width: 20, height: 20, font: 14 },
+  md: { width: 24, height: 24, font: 18 },
+  lg: { width: 36, height: 36, font: 20 },
 };
+
+
 const UserAvatar = ({
   name,
   image,
@@ -43,7 +45,20 @@ const UserAvatar = ({
   image: string;
   size: string;
 }) => {
-  return <Avatar src={image} sx={sizes[size]} {...stringAvatar(name)} />;
+
+
+  console.log(sizes[size],"size");
+  
+
+  return (
+    <AvatarStyled
+      alt={name}
+      src={image}
+      sx={{ width: 16, height: 16 }}
+      {...sizes[size]}
+      {...stringAvatar(name)}
+    />
+  );
 };
 
 export { UserAvatar as Avatar };
