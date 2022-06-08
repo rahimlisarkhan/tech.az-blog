@@ -8,7 +8,6 @@ import {
 } from "./NewsContent.styled";
 import { Image } from "shared/components/Image";
 import TypographyText from "shared/components/Typograph";
-import ReactPlayer from "react-player";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
 import { Grid } from "@mui/material";
@@ -24,6 +23,7 @@ import dynamic from "next/dynamic";
 import { MobileCard } from "feature/News/components/MobileCard";
 import { IconButton } from "shared/components/IconButton";
 import { firebasePatch } from "shared/constant/patch";
+// import ReactPlayer from "react-player";
 
 const NewsImageSlider = dynamic(
   () => import("../../components/NewsImageSlider")
@@ -104,7 +104,7 @@ export const NewsContent = ({
           </TypographyText>
           {newsSlug?.video_link && (
             <VideoContent>
-              <ReactPlayer url={newsSlug?.video_link} playing loop controls />
+              {/* <ReactPlayer url={newsSlug?.video_link} playing loop controls /> */}
             </VideoContent>
           )}
           <TypographyText font="18" color={colorMode()} innerHTML>

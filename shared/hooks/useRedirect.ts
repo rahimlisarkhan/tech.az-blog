@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { ROUTER } from "shared/constant/route";
 import { stateUser } from "shared/store/slices/user/userSlices";

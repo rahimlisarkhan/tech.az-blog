@@ -2,13 +2,10 @@ import { GetServerSideProps, NextPage } from "next";
 import dynamic from "next/dynamic";
 import { serverSideRequest } from "shared/services/request";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 // import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
-import { useRequest } from "shared/hooks/useRequest";
-import { apiPageContents } from "api/news";
-import { apiPatch } from "shared/constant/patch";
 import { converSlug } from "shared/utils/converSlug";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
@@ -23,24 +20,8 @@ const DetailedContainer = dynamic(
 //   newsSlug: NewsType;
 // }
 
-// news: { results }
-
 const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const { asPath } = useRouter();
-  const [results, setResults] = useState(null);
-
-  const { exc, isStatus } = useRequest(
-    () => apiPageContents(apiPatch.mixdata),
-    {
-      onSuccess: ({ results }) => {
-        setResults(results);
-      },
-    }
-  );
-
-  useEffect(() => {
-    exc();
-  }, []);
 
   //Reply click
   // useEffect(() => {
@@ -86,11 +67,7 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
         ogUrl={`${productURL()}${asPath}`}
       />
       <Layout>
-        {isStatus === "isSuccess" ? (
-          <DetailedContainer newsSlug={newsSlug} newsData={results} />
-        ) : (
-          <Loading />
-        )}
+        <DetailedContainer newsSlug={newsSlug} />
       </Layout>
     </Fragment>
   );

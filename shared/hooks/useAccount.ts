@@ -73,7 +73,7 @@ export const useAccount = ({
   );
 
   useEffect(() => {
-    userExc();
+    // userExc();
   }, []);
 
   return { defaultSignIn, googleSignIn, googleLogout };

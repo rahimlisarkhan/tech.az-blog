@@ -10,10 +10,8 @@ const LoginContainer = dynamic(() => import("feature/Login/LoginContainer"));
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 
 const RegisterPage: NextPage = () => {
-  const { isAccessPage } = useRedirect();
 
   return (
-    !isAccessPage && (
       <Fragment>
         <MetaSEO
           title={`Qeydiyyat | tech.az`}
@@ -31,7 +29,7 @@ const RegisterPage: NextPage = () => {
         />
         <LoginContainer {...FORM.REGISTER} />
       </Fragment>
-    )
+    
   );
 };
 

@@ -17,11 +17,17 @@ import Typograph from "shared/components/Typograph";
 import LoginImage from "public/image/loginnft.png";
 import RegisterImage from "public/image/registernft.png";
 import { Motion } from "shared/components/Motion";
-import { Form } from "./container/Form/Form";
+import Form from "./container/Form/Form";
+import { useRedirect } from "shared/hooks";
 
-export const LoginContainer = ({ title, initialValues, inputs }) => {
+const LoginContainer = ({ title, initialValues, inputs }) => {
   let mode = useSelector((state) => state.home.appMode);
   let { push, asPath } = useRouter();
+  // const { isAccessPage } :any = useRedirect();
+
+  // if (isAccessPage) {
+  //   return "";
+  // }
 
   return (
     <Container>
@@ -66,3 +72,5 @@ export const LoginContainer = ({ title, initialValues, inputs }) => {
     </Container>
   );
 };
+
+export  default LoginContainer

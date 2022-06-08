@@ -7,13 +7,13 @@ import { FORM } from "shared/constant/form";
 import { useRedirect } from "shared/hooks/useRedirect";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
-const LoginContainer = dynamic(() => import("feature/Login/LoginContainer"));
+const LoginContainer = dynamic(() => import("feature/Login/LoginContainer"),{ssr:false});
 
 const LoginPage: NextPage = () => {
-  const { isAccessPage } = useRedirect();
+  // const { isAccessPage } = useRedirect();
 
   return (
-   !isAccessPage && <Fragment>
+   <Fragment>
       <MetaSEO
         title={`Daxil ol | tech.az`}
         description={

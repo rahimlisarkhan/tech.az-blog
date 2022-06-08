@@ -11,7 +11,7 @@ import { useAccount } from "shared/hooks/useAccount";
 import { Image } from "shared/components/Image";
 import GoogleLogo from "public/image/google-logo.png";
 
-export const Form = ({ initialValues, inputs }) => {
+ const Form = ({ initialValues, inputs }) => {
   let mode = useSelector((state) => state.home.appMode);
 
   let { push, asPath } = useRouter();
@@ -123,3 +123,5 @@ export const Form = ({ initialValues, inputs }) => {
     </form>
   );
 };
+
+export default Form

@@ -1,23 +1,42 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { DetailedContainerStyled as Container } from "./DetailedContainer.styled";
 
-import dynamic from "next/dynamic";
 import { NewsType } from "types/news";
-import { useDispatch, useFirebase, useSelector } from "shared/hooks";
-import { CommentType } from "types/comment";
+import {
+  useDispatch,
+  useFirebase,
+  useRequest,
+  useSelector,
+} from "shared/hooks";
+// import { CommentType } from "types/comment";
 import { stateUser } from "shared/store/slices/user/userSlices";
-import { firebasePatch } from "shared/constant/patch";
+import { apiPatch, firebasePatch } from "shared/constant/patch";
 import { parseData } from "shared/utils/parseData";
 import { createdAt } from "db/createdAt";
 import { fillComments } from "shared/store/slices/comment/commentSlices";
 
+import dynamic from "next/dynamic";
+import { apiPageContents } from "api/news";
+
 const NewsContent = dynamic(() => import("../container/NewsContent"));
 const DetailedModals = dynamic(() => import("../container/DetailedModals"));
 
-export const DetailedContainer: React.FC<any> = ({ newsSlug, newsData }) => {
+export const DetailedContainer: React.FC<any> = ({ newsSlug }) => {
   const [newsReaction, setNewsReaction] = useState<any>([]);
   const dispatch = useDispatch();
   const slug = newsSlug.slug;
+
+  const [newsData, setNewsData] = useState(null);
+
+  const { exc } = useRequest(() => apiPageContents(apiPatch.mixdata), {
+    onSuccess: ({ results }) => {
+      setNewsData(results);
+    },
+  });
+
+  useEffect(() => {
+    exc();
+  }, []);
 
   const { id, first_name, last_name, image, email } =
     useSelector(stateUser) ?? {};
