@@ -36,17 +36,7 @@ const DetailedContainer = dynamic(
 
 const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const { asPath } = useRouter();
-  const [results, setResults] = useState(null);
 
-  const { exc, isStatus } = useRequest("mixdata", {
-    onSuccess: (res) => {
-      setResults(res?.results);
-    },
-  });
-
-  useEffect(() => {
-    exc();
-  }, []);
 
   //read data
   // useEffect(() => {
@@ -119,11 +109,9 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
         ogUrl={`${productURL()}${asPath}`}
       />
       <Layout>
-        {isStatus === status_req.isSuccess ? (
-          <DetailedContainer newsSlug={newsSlug} newsData={results} />
-        ) : (
-          <Loading />
-        )}
+      
+          <DetailedContainer newsSlug={newsSlug} />
+     
       </Layout>
     </Fragment>
   );
