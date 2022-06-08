@@ -2,38 +2,63 @@ import PersonIcon from "@mui/icons-material/Person";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import TypographyText from "../../../../shared/components/Typograph";
-import { Tag, TagContent, TitleContentStyled } from "./TitleContent.styled";
-import { convertNormalDate } from "../../../../shared/helper/timeConvert";
-import { useScreenMode } from "../../../../shared/hooks/useScreenMode";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export const TitleContent = ({ newsSlug }: any) => {
+import Typography from "shared/components/Typograph";
+import { Tag, TagContent, TitleContentStyled } from "./TitleContent.styled";
+import { convertNormalDate } from "shared/helper/timeConvert";
+import { useScreenMode } from "shared/hooks/useScreenMode";
+import { useMemo } from "react";
+
+export const TitleContent = ({ newsSlug, reactionCount }: any) => {
   let { colorMode } = useScreenMode();
+
+  const content = useMemo(
+    () => [
+      {
+        icon: <PersonIcon />,
+        title: newsSlug?.owner,
+      },
+      {
+        icon: <LocalOfferIcon />,
+        title: newsSlug?.tag?.map((item, index) => (
+          <Tag key={index}> {item.title}</Tag>
+        )),
+      },
+      {
+        icon: <EventNoteIcon />,
+        title: convertNormalDate(newsSlug?.created_at),
+      },
+      {
+        icon: <VisibilityIcon />,
+        title: `${newsSlug?.views} baxış`,
+      },
+      {
+        icon: <FavoriteIcon />,
+        title: `${reactionCount} bəyənən`,
+      },
+    ],
+    [newsSlug]
+  );
 
   return (
     <TitleContentStyled>
-      <TypographyText font="24" color={colorMode()} bold="true" as="h1">
+      <Typography font="24" color={colorMode()} bold="true" as="h1">
         {newsSlug?.title}
-      </TypographyText>
+      </Typography>
       <TagContent>
-        <TypographyText font="14" color={colorMode()}>
-          <PersonIcon />
-          {newsSlug?.owner}
-        </TypographyText>
-        <TypographyText font="14" color={colorMode()}>
-          <LocalOfferIcon />
-          {newsSlug?.tag?.map((item, index) => (
-            <Tag key={index}> {item.title}</Tag>
-          ))}
-        </TypographyText>
-        <TypographyText font="14" color={colorMode()}>
-          <EventNoteIcon />
-          {convertNormalDate(newsSlug?.created_at)}
-        </TypographyText>
-        <TypographyText font="14" color={colorMode()}>
-          <VisibilityIcon />
-          {newsSlug?.views} baxış
-        </TypographyText>
+        {content.map(({ icon, title }, index) => {
+          if (index === 4 && !reactionCount) {
+            return;
+          }
+
+          return (
+            <Typography font="14" color={colorMode()}>
+              {icon}
+              {title}
+            </Typography>
+          );
+        })}
       </TagContent>
     </TitleContentStyled>
   );

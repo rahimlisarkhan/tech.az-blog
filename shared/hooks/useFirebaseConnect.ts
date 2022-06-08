@@ -1,27 +1,24 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
-// import { fillConfig, stateConfig } from "shared/store/slices/user/userSlices";
-// import { useSelector } from "./useSelector";
 import { getAuth } from "firebase/auth";
-// import { useRequest } from "./useRequest";
-// import { apiConfig } from "api/config";
-// import { useDispatch } from "./useDispatch";
-// import { useEffect } from "react";
+import { useRequest } from "./useRequest";
+import { apiConfig } from "api/config";
+import { useEffect, useState } from "react";
 import { firebaseConfig } from "config/firebase";
 
 export const useFirebaseConnect = () => {
-  // const firebaseConfig = useSelector(stateConfig);
-  // const dispatch = useDispatch();
+  const [config, setConfig] = useState(null);
 
-  // const { exc: configExc } = useRequest(() => apiConfig(), {
-  //   onSuccess({ data: { config } }) {
-  //     dispatch(fillConfig(config));
-  //   },
-  // });
+  const { exc: configExc } = useRequest(() => apiConfig(), {
+    onSuccess(res) {
+      console.log(res);
+      // dispatch(fillConfig(config));
+    },
+  });
 
-  // useEffect(() => {
-  //   configExc();
-  // }, []);
+  useEffect(() => {
+    configExc();
+  }, []);
 
   // if (!firebaseConfig) return;
 

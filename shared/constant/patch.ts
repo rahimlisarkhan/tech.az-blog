@@ -8,9 +8,12 @@ export const apiPatch = {
     join: "join/",
     register: "user/register/",
     profile: "user/profile/",
-    config:"api/config"
+    config:"api/user/config/"
   };
 
   export const firebasePatch = {
-    comments:"all_content_comments/"
+    all_contens:"all_content",
+    comments:"comments",
+    connect_reactions:"info/reactions",
+    comment_like:"comment_like"
   }

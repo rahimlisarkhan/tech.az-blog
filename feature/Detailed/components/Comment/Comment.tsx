@@ -21,6 +21,7 @@ import {
 } from "./Comment.styled";
 import { useSelector } from "shared/hooks/useSelector";
 import { stateUser } from "shared/store/slices/user/userSlices";
+import { firebasePatch } from "shared/constant/patch";
 
 export const Comment = ({
   id: comment_id,
@@ -29,25 +30,21 @@ export const Comment = ({
   comment,
   onLike,
   onReply,
-  user: { id, first_name, last_name, image },
+  onReaction,
 }) => {
-  const user = useSelector(stateUser);
-  const likesData = parseData(comment_like);
+  const { id, first_name, last_name, image } = useSelector(stateUser);
+  const likesData = useMemo(() => parseData(comment_like), [comment_like]);
 
   const commentLike = useMemo(() => {
-    return likesData?.find((comment) => comment.user_id === user?.id);
+    return likesData?.find((comment) => comment.user_id === id);
   }, [likesData]);
 
   const handleCommentLike = () => {
     onLike({
       comment_id,
-      user_id: commentLike ? null : user.id,
-      user_info: {
-        first_name,
-        last_name,
-        image: image ?? "",
-      },
+      user_id: commentLike ? null : id,
       like_id: commentLike?.id,
+      collection:firebasePatch.comments
     });
   };
 
@@ -66,7 +63,7 @@ export const Comment = ({
           </CommentHeaderUser>
           <CommentHeaderUser>
             <Button
-              text="bəyən"
+              text={commentLike ? "bəyəndin" : "bəyən"}
               color={commentLike ? "whiteGray" : "green"}
               font="16"
               bold="500"
@@ -99,7 +96,7 @@ export const Comment = ({
         </SubInfo>
         {likesData?.length && (
           <Motion time={500}>
-            <SubInfo>
+            <SubInfo onClick={() => onReaction(likesData)}>
               <FavoriteIcon />
               <Typograph color="white" font="14" margin="0 5px" bold="true">
                 {likesData?.length}

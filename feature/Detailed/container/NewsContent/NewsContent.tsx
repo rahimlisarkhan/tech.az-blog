@@ -16,11 +16,14 @@ import { url } from "shared/utils/axios";
 import { useScreenMode } from "shared/hooks/useScreenMode";
 import { NewsType } from "types/news";
 import { Motion } from "shared/components/Motion";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { CommentContent } from "../CommentContent";
 
 import dynamic from "next/dynamic";
 import { MobileCard } from "feature/News/components/MobileCard";
+import { IconButton } from "shared/components/IconButton";
+import { firebasePatch } from "shared/constant/patch";
 
 const NewsImageSlider = dynamic(
   () => import("../../components/NewsImageSlider")
@@ -31,35 +34,53 @@ const NewsCard = dynamic(() => import("../../../News/components/NewsCard"));
 
 type Props = {
   newsData: NewsType[];
+  similarData: NewsType[];
   newsSlug: NewsType;
+  addRemoveLike: (data: any) => void;
+  addComment: (data: any) => void;
+  userID: string | number;
+  newsReaction: any;
 };
 
-export const NewsContent = ({ newsSlug, newsData }: Props) => {
+export const NewsContent = ({
+  newsSlug,
+  newsData,
+  similarData,
+  userID,
+  addRemoveLike,
+  newsReaction,
+  addComment,
+}: Props) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ minWidth: breakpoint.mobile });
 
   let { colorMode } = useScreenMode();
 
-  let similarData = useMemo(
-    () =>
-      newsData?.filter((item: NewsType) => {
-        if (
-          item?.tag.findIndex((x) => x?.title === newsSlug?.tag[0]?.title) !==
-            -1 &&
-          item?.id !== newsSlug?.id
-        ) {
-          return true;
-        }
-        return false;
-      }),
-    [newsSlug?.id, newsData]
-  );
+  const reaction = useMemo(() => {
+    return newsReaction?.find((news) => news.user_id === userID);
+  }, [newsReaction]);
+
+  const handleCommentLike = () => {
+    addRemoveLike({
+      news_id: newsSlug.slug,
+      user_id: reaction ? null : userID,
+      like_id: reaction?.id,
+      collection: firebasePatch.connect_reactions,
+    });
+
+    console.log({
+      news_id: newsSlug.slug,
+      user_id: reaction ? null : userID,
+      like_id: reaction?.id,
+      collection: firebasePatch.connect_reactions,
+    });
+  };
 
   return (
     <Fragment>
       <Motion>
         <NewsContentStyled>
-          <TitleContent newsSlug={newsSlug} />
+          <TitleContent newsSlug={newsSlug} reactionCount={newsReaction?.length} />
           <ImageContent>
             <Image
               src={url + newsSlug?.cover_image}
@@ -67,6 +88,16 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
               alt="news name"
               cover
             />
+            <IconButton
+              cursor
+              color={reaction ? "green" : "whiteGray"} 
+              content={reaction ? "bəyəndim" : "bəyən"} 
+              text={reaction ? "green" : "whiteGray"} 
+              margin="2px 10px"
+              onClick={handleCommentLike}
+            >
+              <FavoriteIcon />
+            </IconButton>
           </ImageContent>
           <TypographyText font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(0, 1800)}
@@ -91,7 +122,11 @@ export const NewsContent = ({ newsSlug, newsData }: Props) => {
           <TypographyText font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(3000)}
           </TypographyText>
-          <CommentContent slug={newsSlug?.slug} />
+          <CommentContent
+            slug={newsSlug?.slug}
+            addRemoveLike={addRemoveLike}
+            addComment={addComment}
+          />
         </NewsContentStyled>
       </Motion>
       {newsData && (

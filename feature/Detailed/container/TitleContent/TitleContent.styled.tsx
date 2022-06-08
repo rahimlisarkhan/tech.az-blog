@@ -5,7 +5,7 @@ export const TitleContentStyled = styled(Box)``;
 
 export const TagContent = styled(Box)`
   display: flex;
-  width: 80%;
+  width: 85%;
   flex-wrap: wrap;
   align-items: center;
   margin-top: 10px;

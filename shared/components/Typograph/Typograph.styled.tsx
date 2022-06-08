@@ -36,7 +36,7 @@ export const TypographyText = styled(Typography).attrs(() => ({
         case "lime":
           return theme.colors.green;
         default:
-          return theme.colors.textDark;
+          return theme.colors[color];
       }
     }} !important;
     font-size: ${font ? `${font}px` : theme.font.size.medium} !important;

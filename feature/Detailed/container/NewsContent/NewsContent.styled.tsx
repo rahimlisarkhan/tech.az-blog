@@ -44,6 +44,7 @@ export const ImageContent = styled(Box)`
   overflow: hidden;
   width: 100%;
   position: relative;
+  border-radius: 8px;
 
   & img {
     transition: all 2s;

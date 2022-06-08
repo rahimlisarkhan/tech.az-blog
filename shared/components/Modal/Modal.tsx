@@ -1,8 +1,9 @@
 import * as React from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
+import { Content } from "./Modal.styled";
 import { IconButtonStyled } from "./Modal.styled";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 export const TechModal = ({ isOpen, close, children }: any) => {
   return (
@@ -17,12 +18,12 @@ export const TechModal = ({ isOpen, close, children }: any) => {
         timeout: 500,
       }}
     >
-      <>
+      <Content>
         {children}
         <IconButtonStyled onClick={close}>
           <CloseIcon />
         </IconButtonStyled>
-      </>
+      </Content>
     </Modal>
   );
 };
