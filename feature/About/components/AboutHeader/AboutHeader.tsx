@@ -29,14 +29,14 @@ export const AboutHeader = () => {
           {/* <TypographyText
             font={renderFont()}
             color={appMode ? "black" : "green"}
-            bold="true"
+            bold
             text="true"
           >
           </TypographyText> */}
           <TypographyText
             font={renderFont()}
             color={appMode ? "black" : "white"}
-            bold="true"
+            bold
             text="true"
           >
             {/* tech.az */}

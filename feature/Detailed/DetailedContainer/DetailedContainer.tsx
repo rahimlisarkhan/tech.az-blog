@@ -13,7 +13,10 @@ import { stateUser } from "shared/store/slices/user/userSlices";
 import { apiPatch, firebasePatch } from "shared/constant/patch";
 import { parseData } from "shared/utils/parseData";
 import { createdAt } from "db/createdAt";
-import { fillComments } from "shared/store/slices/comment/commentSlices";
+import {
+  fillAccessEmails,
+  fillComments,
+} from "shared/store/slices/comment/commentSlices";
 
 import dynamic from "next/dynamic";
 import { apiPageContents } from "api/news";
@@ -23,10 +26,19 @@ const DetailedModals = dynamic(() => import("../container/DetailedModals"));
 
 export const DetailedContainer: React.FC<any> = ({ newsSlug }) => {
   const [newsReaction, setNewsReaction] = useState<any>([]);
-  const dispatch = useDispatch();
-  const slug = newsSlug.slug;
-
   const [newsData, setNewsData] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const {
+    all_contens,
+    comments,
+    comment_like,
+    connect_reactions,
+    access_emails,
+  } = firebasePatch;
+  const slug = newsSlug.slug;
+  const newsSlugCollection = `${all_contens}/${slug}`;
 
   const { exc } = useRequest(() => apiPageContents(apiPatch.mixdata), {
     onSuccess: ({ results }) => {
@@ -41,31 +53,58 @@ export const DetailedContainer: React.FC<any> = ({ newsSlug }) => {
   const { id, first_name, last_name, image, email } =
     useSelector(stateUser) ?? {};
 
-  const { fireRequest, deleteRequest } = useFirebase({
-    collection: `${firebasePatch.all_contens}/${slug}`,
+  useFirebase({
+    collection: access_emails,
     onData(data: any) {
+      dispatch(fillAccessEmails(Object.values(data)));
+    },
+  });
+
+  const { fireRequest, deleteRequest } = useFirebase({
+    collection: newsSlugCollection,
+    unique: true,
+    onData(data: any) {
+      setNewsReaction(parseData(data?.info?.reactions));
       if (!data) return;
 
-      let convertComment = parseData(data.comments);
-      dispatch(fillComments(convertComment));
-      setNewsReaction(parseData(data?.info?.reactions));
+      dispatch(fillComments(parseData(data.comments)));
     },
-    unique: true,
   });
 
   const generateCollection = useCallback(
     (col, id) => {
-      const commentsCollection = `${firebasePatch.all_contens}/${slug}/${col}/${id}/${firebasePatch.comment_like}`;
-      const newsReactionsCollections = `${firebasePatch.all_contens}/${slug}/${col}/`;
-      return col === firebasePatch.comments
-        ? commentsCollection
-        : newsReactionsCollections;
+      const commentsCollection = `${all_contens}/${slug}/${col}/${id}/${comment_like}`;
+      const newsReactionsCollections = `${all_contens}/${slug}/${col}/`;
+
+      switch (col) {
+        case connect_reactions:
+          return newsReactionsCollections;
+        case comments:
+          return commentsCollection;
+        default:
+          return;
+      }
     },
-    [slug]
+    [slug, newsReaction]
+  );
+
+  const similarData = useMemo(
+    () =>
+      newsData?.filter((item: NewsType) => {
+        if (
+          item?.tag.findIndex((x) => x?.title === newsSlug?.tag[0]?.title) !==
+            -1 &&
+          item?.id !== newsSlug?.id
+        ) {
+          return true;
+        }
+        return false;
+      }),
+    [newsSlug?.id, newsData]
   );
 
   const addComment = (comment: string) => {
-    let newsSlugCollection = `${firebasePatch.all_contens}/${slug}/${firebasePatch.comments}`;
+    let newsSlugCollection = `${all_contens}/${slug}/${comments}`;
 
     let userComment = {
       user: {
@@ -100,22 +139,9 @@ export const DetailedContainer: React.FC<any> = ({ newsSlug }) => {
     deleteRequest(generateCollection(collection, id), like_id);
   };
 
-  const similarData = useMemo(
-    () =>
-      newsData?.filter((item: NewsType) => {
-        if (
-          item?.tag.findIndex((x) => x?.title === newsSlug?.tag[0]?.title) !==
-            -1 &&
-          item?.id !== newsSlug?.id
-        ) {
-          return true;
-        }
-        return false;
-      }),
-    [newsSlug?.id, newsData]
-  );
-
-  console.log(newsReaction);
+  const removeComment = (comment_id: string) => {
+    deleteRequest(newsSlugCollection + "/" + comments, comment_id);
+  };
 
   return (
     <Container>
@@ -128,6 +154,7 @@ export const DetailedContainer: React.FC<any> = ({ newsSlug }) => {
         newsData={newsData}
         addRemoveLike={addRemoveLike}
         addComment={addComment}
+        removeComment={removeComment}
       />
     </Container>
   );

@@ -9,8 +9,9 @@ import { Tag, TagContent, TitleContentStyled } from "./TitleContent.styled";
 import { convertNormalDate } from "shared/helper/timeConvert";
 import { useScreenMode } from "shared/hooks/useScreenMode";
 import { useMemo } from "react";
+import { IconButton } from "shared/components/IconButton";
 
-export const TitleContent = ({ newsSlug, reactionCount }: any) => {
+export const TitleContent = ({ newsSlug, reactionCount, onReaction }: any) => {
   let { colorMode } = useScreenMode();
 
   const content = useMemo(
@@ -38,12 +39,12 @@ export const TitleContent = ({ newsSlug, reactionCount }: any) => {
         title: `${reactionCount} bəyənən`,
       },
     ],
-    [newsSlug]
+    [newsSlug, reactionCount]
   );
 
   return (
     <TitleContentStyled>
-      <Typography font="24" color={colorMode()} bold="true" as="h1">
+      <Typography font="24" color={colorMode()} bold as="h1">
         {newsSlug?.title}
       </Typography>
       <TagContent>
@@ -52,8 +53,27 @@ export const TitleContent = ({ newsSlug, reactionCount }: any) => {
             return;
           }
 
+          if (index === 4) {
+            return (
+              <IconButton
+                cursor
+                onClick={onReaction}
+                key={`tag-name-id-${index}`}
+              >
+                <Typography font="14" color={colorMode()}>
+                  {icon}
+                  {title}
+                </Typography>
+              </IconButton>
+            );
+          }
+
           return (
-            <Typography font="14" color={colorMode()}>
+            <Typography
+              key={`tag-name-id-${index}`}
+              font="14"
+              color={colorMode()}
+            >
               {icon}
               {title}
             </Typography>

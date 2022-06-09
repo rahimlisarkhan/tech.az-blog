@@ -82,14 +82,14 @@ export const NewsCard: React.FC<Props> = ({
           <Image src={convertUrlLink(cover_image)} alt={title} cover />
           <CardTitleContent col={col}>
             <CardTitle>
-              <TypographyText color="white" font={"13"} bold="true">
+              <TypographyText color="white" font={"13"} bold>
                 {renderTypeName()} • {convertNormalDate(created_at)}
               </TypographyText>
               <TypographyText
                 color="white"
                 margin="0"
                 font={dynamicFont()}
-                bold="true"
+                bold
               >
                 {title}
                 {/* {`${title?.slice(

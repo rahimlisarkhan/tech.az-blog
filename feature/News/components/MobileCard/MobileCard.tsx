@@ -65,12 +65,12 @@ export const MobileCard: React.FC<Props> = ({
           />
           <CardTitleContent>
             <CardTitle>
-              <TypographyText color={!appMode ? "white" : "darkGray"} font="10" bold="true">
+              <TypographyText color={!appMode ? "white" : "darkGray"} font="10" bold>
                 {renderTypeName} • {convertNormalDate(created_at)}
               </TypographyText>
             </CardTitle>
 
-            <TypographyText color={!appMode ? "white" : "darkGray"} margin="0" font="13" bold="true">
+            <TypographyText color={!appMode ? "white" : "darkGray"} margin="0" font="13" bold>
               {title}
             </TypographyText>
           </CardTitleContent>

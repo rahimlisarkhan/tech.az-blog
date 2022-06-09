@@ -16,7 +16,7 @@ export const TechContent = () => {
     <TechContentStyled>
       <TechContentRow>
         <TechContentInfo lg="3">
-          <TypographyText font="65" color={colorMode()} bold="true" text="true">
+          <TypographyText font="65" color={colorMode()} bold text="true">
             tech.az media
           </TypographyText>
         </TechContentInfo>

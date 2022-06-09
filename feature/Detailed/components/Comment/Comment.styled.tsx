@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CommentContainer = styled.div`
-  max-width: 85%;
+  max-width: 90%;
   margin-bottom: 40px;
 `;
 

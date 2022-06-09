@@ -23,6 +23,10 @@ import dynamic from "next/dynamic";
 import { MobileCard } from "feature/News/components/MobileCard";
 import { IconButton } from "shared/components/IconButton";
 import { firebasePatch } from "shared/constant/patch";
+import { toast } from "react-toastify";
+import { useDispatch } from "shared/hooks";
+import { openReactionModal } from "shared/store/slices/modal/modalSlices";
+import { fillReactionUsers } from "shared/store/slices/comment/commentSlices";
 // import ReactPlayer from "react-player";
 
 const NewsImageSlider = dynamic(
@@ -38,6 +42,7 @@ type Props = {
   newsSlug: NewsType;
   addRemoveLike: (data: any) => void;
   addComment: (data: any) => void;
+  removeComment: (comment_id: string) => void;
   userID: string | number;
   newsReaction: any;
 };
@@ -50,25 +55,24 @@ export const NewsContent = ({
   addRemoveLike,
   newsReaction,
   addComment,
+  removeComment,
 }: Props) => {
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ minWidth: breakpoint.mobile });
-
+  const dispatch = useDispatch();
   let { colorMode } = useScreenMode();
 
   const reaction = useMemo(() => {
     return newsReaction?.find((news) => news.user_id === userID);
-  }, [newsReaction]);
+  }, [newsReaction, userID]);
 
   const handleCommentLike = () => {
-    addRemoveLike({
-      news_id: newsSlug.slug,
-      user_id: reaction ? null : userID,
-      like_id: reaction?.id,
-      collection: firebasePatch.connect_reactions,
-    });
+    if (!userID) {
+      toast.warning("Bəyənmək üçün qeydiyyat olun.");
+      return;
+    }
 
-    console.log({
+    addRemoveLike({
       news_id: newsSlug.slug,
       user_id: reaction ? null : userID,
       like_id: reaction?.id,
@@ -76,11 +80,20 @@ export const NewsContent = ({
     });
   };
 
+  const onReaction = () => {
+    dispatch(openReactionModal());
+    dispatch(fillReactionUsers(newsReaction));
+  };
+
   return (
     <Fragment>
       <Motion>
         <NewsContentStyled>
-          <TitleContent newsSlug={newsSlug} reactionCount={newsReaction?.length} />
+          <TitleContent
+            newsSlug={newsSlug}
+            onReaction={onReaction}
+            reactionCount={newsReaction?.length ?? 0}
+          />
           <ImageContent>
             <Image
               src={url + newsSlug?.cover_image}
@@ -90,9 +103,9 @@ export const NewsContent = ({
             />
             <IconButton
               cursor
-              color={reaction ? "green" : "whiteGray"} 
-              content={reaction ? "bəyəndim" : "bəyən"} 
-              text={reaction ? "green" : "whiteGray"} 
+              color={reaction ? "green" : "whiteGray"}
+              content={reaction ? "bəyəndim" : "bəyən"}
+              text={reaction ? "green" : "whiteGray"}
               margin="2px 10px"
               onClick={handleCommentLike}
             >
@@ -124,6 +137,7 @@ export const NewsContent = ({
           </TypographyText>
           <CommentContent
             slug={newsSlug?.slug}
+            removeComment={removeComment}
             addRemoveLike={addRemoveLike}
             addComment={addComment}
           />
@@ -132,7 +146,7 @@ export const NewsContent = ({
       {newsData && (
         <>
           <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
-            <TypographyText font="20" color={colorMode()} bold="true">
+            <TypographyText font="20" color={colorMode()} bold>
               Son yükləmələr
             </TypographyText>
             <Grid container={true}>
@@ -161,7 +175,7 @@ export const NewsContent = ({
           </SuggestedContentStyled>
           {similarData?.length && (
             <SimilarNewsContentStyled>
-              <TypographyText font="20" color={colorMode()} bold="true">
+              <TypographyText font="20" color={colorMode()} bold>
                 Oxşar yükləmələr
               </TypographyText>
               <SliderContent

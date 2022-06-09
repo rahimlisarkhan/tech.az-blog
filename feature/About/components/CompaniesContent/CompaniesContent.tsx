@@ -38,7 +38,7 @@ export const CompaniesContent = ({ data: { title, data }, reverse }: any) => {
             <TypographyText
               color={appMode ? "black" : "white"}
               font="40"
-              bold="true"
+              bold
               text="true"
             >
               {title}

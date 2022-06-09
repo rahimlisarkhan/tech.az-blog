@@ -13,7 +13,7 @@ export const useFirebase = ({ collection, unique, onData }: any) => {
     });
   }, [collection]);
 
-  const deleteRequest = (col, id:string) => {
+  const deleteRequest = (col: string, id: string) => {
     removeData(db, col, id);
   };
 
@@ -21,5 +21,5 @@ export const useFirebase = ({ collection, unique, onData }: any) => {
     writeData(db, col, data, unique);
   };
 
-  return { fireRequest,deleteRequest };
+  return { fireRequest, deleteRequest };
 };

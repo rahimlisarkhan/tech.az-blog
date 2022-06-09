@@ -11,7 +11,7 @@ export const NotFoundContainer = ({ serverError }: Props) => {
 
   return (
     <ErrorContent>
-      <TypographyText font="150" bold="true" color="green">
+      <TypographyText font="150" bold color="green">
         {serverError ? "500" : "404"}
       </TypographyText>
       <TypographyText font="40" color="white" text="true">

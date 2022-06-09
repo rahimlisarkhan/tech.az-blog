@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { MotionList } from "shared/components/MotionList";
 import { useDispatch, useSelector } from "shared/hooks";
 import {
   fillReactionUsers,
@@ -9,11 +8,20 @@ import {
   openReactionModal,
   openReplyModal,
 } from "shared/store/slices/modal/modalSlices";
+
+import { TransitionGroup } from "react-transition-group";
+import Collapse from "@mui/material/Collapse";
+
 import { CommentReactionType, CommentType } from "types/comment";
 import { Comment } from "../../components/Comment/Comment";
 import { CommentInput } from "../../components/CommentInput";
 
-export const CommentContent = ({ slug, addRemoveLike, addComment }) => {
+export const CommentContent = ({
+  slug,
+  addRemoveLike,
+  addComment,
+  removeComment,
+}) => {
   const comments: CommentType[] = useSelector(stateComments);
   const dispatch = useDispatch();
 
@@ -28,18 +36,19 @@ export const CommentContent = ({ slug, addRemoveLike, addComment }) => {
 
   const Comments = useMemo(() => {
     return (
-      <MotionList
-        data={comments}
-        key="user-comment"
-        component={(comment: any) => (
-          <Comment
-            onLike={addRemoveLike}
-            onReply={onReply}
-            onReaction={onReaction}
-            {...comment}
-          />
-        )}
-      />
+      <TransitionGroup>
+        {comments?.map((item: any) => (
+          <Collapse key={`user-comment--${item.user_id}--${item.id}`}>
+            <Comment
+              onLike={addRemoveLike}
+              onReply={onReply}
+              onReaction={onReaction}
+              onRemove={removeComment}
+              {...item}
+            />
+          </Collapse>
+        ))}
+      </TransitionGroup>
     );
   }, [comments, slug]);
 

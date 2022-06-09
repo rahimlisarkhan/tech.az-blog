@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "shared/hooks";
+import { fillReactionUsers } from "shared/store/slices/comment/commentSlices";
 import {
   openReactionModal,
   openReplyModal,
@@ -20,6 +21,7 @@ export const DetailedModals = () => {
 
   const onReaction = () => {
     dispatch(openReactionModal());
+    dispatch(fillReactionUsers(null))
   };
 
   return (

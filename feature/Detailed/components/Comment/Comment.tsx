@@ -2,6 +2,7 @@ import { useMemo } from "react";
 
 import ReplyAllIcon from "@mui/icons-material/ReplyAll";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 import { Avatar } from "shared/components/Avatar";
 import { Button } from "shared/components/Button";
@@ -22,6 +23,8 @@ import {
 import { useSelector } from "shared/hooks/useSelector";
 import { stateUser } from "shared/store/slices/user/userSlices";
 import { firebasePatch } from "shared/constant/patch";
+import { toast } from "react-toastify";
+import { stateAccess } from "shared/store/slices/comment/commentSlices";
 
 export const Comment = ({
   id: comment_id,
@@ -30,22 +33,36 @@ export const Comment = ({
   comment,
   onLike,
   onReply,
+  onRemove,
   onReaction,
+  user: { first_name, last_name, image },
 }) => {
-  const { id, first_name, last_name, image } = useSelector(stateUser);
+  const user = useSelector(stateUser);
+  const accessEmails = useSelector(stateAccess);
   const likesData = useMemo(() => parseData(comment_like), [comment_like]);
 
+  const isAccess = accessEmails.includes(user?.email);
+
   const commentLike = useMemo(() => {
-    return likesData?.find((comment) => comment.user_id === id);
+    return likesData?.find((comment) => comment.user_id === user?.id);
   }, [likesData]);
 
   const handleCommentLike = () => {
+    if (!user) {
+      toast.warning("Bəyənmək üçün qeydiyyat olun.");
+      return;
+    }
+
     onLike({
-      comment_id,
-      user_id: commentLike ? null : id,
+      id: comment_id,
+      user_id: commentLike ? null : user?.id,
       like_id: commentLike?.id,
-      collection:firebasePatch.comments
+      collection: firebasePatch.comments,
     });
+  };
+
+  const handleRemoveComment = () => {
+    onRemove(comment_id);
   };
 
   return (
@@ -54,7 +71,7 @@ export const Comment = ({
         <CommentHeader>
           <CommentHeaderUser>
             <Avatar name={first_name} size="lg" image={image} />
-            <Typograph color="white" font="16" margin="0 15px" bold="true">
+            <Typograph color="white" font="16" margin="0 15px" bold>
               {first_name} {last_name}
             </Typograph>
             <Typograph color="white" font="16" margin="0 20px">
@@ -69,7 +86,7 @@ export const Comment = ({
               bold="500"
               margin="0 20px"
               onClick={handleCommentLike}
-              cursor="true"
+              cursor
               icon={<FavoriteIcon />}
             />
             <Button
@@ -77,20 +94,31 @@ export const Comment = ({
               color="green"
               font="16"
               bold="500"
-              cursor="true"
+              margin="0 20px 0 0"
+              cursor
               onClick={onReply}
               icon={<ReplyAllIcon />}
             />
+            {isAccess && (
+              <Button
+                color="green"
+                font="16"
+                bold="500"
+                cursor
+                onClick={handleRemoveComment}
+                icon={<DeleteIcon />}
+              />
+            )}
           </CommentHeaderUser>
         </CommentHeader>
-        <Typograph color="white" font="16" margin="0" bold="true">
+        <Typograph color="white" font="16" margin="0" bold>
           {comment}
         </Typograph>
       </Content>
       <SubInfoContent>
         <SubInfo>
           <Avatar name={first_name} size="md" image={image} />
-          <Typograph color="white" font="14" margin="0 5px" bold="true">
+          <Typograph color="white" font="14" margin="0 5px" bold>
             133 cavab
           </Typograph>
         </SubInfo>
@@ -98,7 +126,7 @@ export const Comment = ({
           <Motion time={500}>
             <SubInfo onClick={() => onReaction(likesData)}>
               <FavoriteIcon />
-              <Typograph color="white" font="14" margin="0 5px" bold="true">
+              <Typograph color="white" font="14" margin="0 5px" bold>
                 {likesData?.length}
               </Typograph>
             </SubInfo>

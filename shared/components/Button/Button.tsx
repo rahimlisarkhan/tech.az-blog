@@ -1,3 +1,4 @@
+import { isAppMode } from "shared/utils/isAppMode";
 import { ButtonStyled } from "./Button.styled";
 
 interface ButtonType {
@@ -12,7 +13,7 @@ interface ButtonType {
   bold: string;
   margin: string;
   text: string;
-  cursor: string;
+  cursor: boolean;
   onClick: (e: Event) => void;
 }
 
@@ -42,7 +43,7 @@ export const Button = ({
       radius={radius}
       padding={padding}
       margin={margin}
-      cursor={cursor}
+      cursor={isAppMode(cursor)}
       onClick={onClick}
     >
       {icon}

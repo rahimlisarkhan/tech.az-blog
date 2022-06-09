@@ -1,3 +1,4 @@
+import { isAppMode } from "shared/utils/isAppMode";
 import { TypographyText } from "./Typograph.styled";
 
 interface TypographyProps {
@@ -12,7 +13,7 @@ interface TypographyProps {
   as?: React.ElementType;
   children?: React.ReactNode | string;
   innerHTML?: boolean;
-  bold?: "true";
+  bold?: boolean;
 }
 
 export const Typograph = ({
@@ -37,7 +38,7 @@ export const Typograph = ({
         margin={margin}
         color={color}
         center={center}
-        bold={bold}
+        bold={isAppMode(bold)}
         cursor={cursor}
         decaration={decaration}
         space={space}

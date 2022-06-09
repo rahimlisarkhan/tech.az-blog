@@ -5,6 +5,7 @@ import { ROUTER } from "../../constant/route";
 import ButtonOutlined from "../ButtonOutlined";
 import { NavbarMobileContent } from "./NavbarMobile.styled";
 import { MenuList, MenuItemStyle } from "./NavbarMobile.styled";
+import { isAppMode } from "shared/utils/isAppMode";
 
 type Props = {
   closeMenu: () => void;
@@ -28,7 +29,7 @@ export const NavbarMobile = ({ closeMenu }: Props) => {
   };
 
   return (
-    <NavbarMobileContent mode={mode ? "true" : ""}>
+    <NavbarMobileContent mode={isAppMode(mode)}>
       <MenuList>
         {Object.values(ROUTER.MENU).map((item) => {
           return (
