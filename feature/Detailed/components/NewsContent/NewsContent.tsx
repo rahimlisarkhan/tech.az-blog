@@ -7,7 +7,7 @@ import {
   SimilarNewsContentStyled,
 } from "./NewsContent.styled";
 import { Image } from "shared/components/Image";
-import TypographyText from "shared/components/Typograph";
+import Typography from "shared/components/Typograph";
 import ReactPlayer from "react-player";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
@@ -67,17 +67,17 @@ export const NewsContent = ({ newsSlug, newsData, isStatusData }: Props) => {
               cover
             />
           </ImageContent>
-          <TypographyText font="18" color={colorMode()} innerHTML>
+          <Typography font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(0, 1800)}
-          </TypographyText>
+          </Typography>
           {newsSlug?.video_link && (
             <VideoContent>
               <ReactPlayer url={newsSlug?.video_link} playing loop controls />
             </VideoContent>
           )}
-          <TypographyText font="18" color={colorMode()} innerHTML>
+          <Typography font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(1800, 3000)}
-          </TypographyText>
+          </Typography>
           {newsSlug?.news_images?.length ? (
             <NewsImageSlider
               imageSize={isDesktopOrLaptop ? 400 : 200}
@@ -87,18 +87,18 @@ export const NewsContent = ({ newsSlug, newsData, isStatusData }: Props) => {
           ) : (
             ""
           )}
-          <TypographyText font="18" color={colorMode()} innerHTML>
+          <Typography font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(3000)}
-          </TypographyText>
+          </Typography>
         </NewsContentStyled>
       </Motion>
 
       {isStatusData === "isSuccess" && (
         <>
           <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
-            <TypographyText font="20" color={colorMode()} bold="true">
+            <Typography font="20" color={colorMode()} bold>
               Son yükləmələr
-            </TypographyText>
+            </Typography>
             <Grid container={true}>
               {newsData
                 ?.filter((item) => item.id !== newsSlug.id)
@@ -126,9 +126,9 @@ export const NewsContent = ({ newsSlug, newsData, isStatusData }: Props) => {
 
           {similarData?.length && (
             <SimilarNewsContentStyled>
-              <TypographyText font="20" color={colorMode()} bold="true">
+              <Typography font="20" color={colorMode()} bold>
                 Oxşar yükləmələr
-              </TypographyText>
+              </Typography>
               <SliderContent
                 data={similarData}
                 slidesToShow={similarData.length <= 2 ? 1 : 3}
