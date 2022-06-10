@@ -1,33 +1,45 @@
-export const router = {
-  detailed: {
-    id: "010",
-    href: "/detailed",
-  },
-  menu: {
-    home: {
+export const ROUTER = {
+  MENU: {
+    HOME: {
       id: "001",
       title: "home",
       href: "/",
     },
-    news: {
+    NEWS: {
       id: "002",
       title: "news",
       href: "/news",
     },
-    video: {
+    VIDEO: {
       id: "003",
       title: "video",
       href: "/video",
     },
-    article: {
+    ARTICLE: {
       id: "004",
       title: "article",
       href: "/article",
     },
-    about: {
+    ABOUT: {
       id: "005",
       title: "about",
       href: "/about",
     },
+  },
+  DETAILED: {
+    id: "010",
+    href: "/detailed",
+  },
+  LOGIN: {
+    id: "011",
+    href: "/login",
+  },
+  REGISTER: {
+    id: "012",
+    href: "/register",
+  },
+  JOIN: {
+    id: "013",
+    href: "/join",
   },
 };

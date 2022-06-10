@@ -7,10 +7,7 @@ import {
 import { Image } from "shared/components/Image";
 import TypographyText from "shared/components/Typograph";
 import { useRouter } from "next/router";
-import { router } from "shared/constant/route";
 import { convertNormalDate } from "shared/helper/timeConvert";
-import { useMediaQuery } from "react-responsive";
-import { breakpoint } from "styles/breakpoint";
 import { Motion } from "shared/components/Motion";
 import { convertUrlLink } from "shared/utils/convertUrlLink";
 import { useMemo } from "react";
@@ -30,14 +27,11 @@ type Props = {
 };
 
 export const MobileCard: React.FC<Props> = ({
-  sm,
   height,
   col,
   cover_image,
-  content,
   title,
   slug,
-  mobilemargin,
   type,
   created_at,
 }) => {
@@ -71,12 +65,12 @@ export const MobileCard: React.FC<Props> = ({
           />
           <CardTitleContent>
             <CardTitle>
-              <TypographyText color={!appMode ? "white" : "darkGray"} font="10" bold="true">
+              <TypographyText color={!appMode ? "white" : "darkGray"} font="10" bold>
                 {renderTypeName} • {convertNormalDate(created_at)}
               </TypographyText>
             </CardTitle>
 
-            <TypographyText color={!appMode ? "white" : "darkGray"} margin="0" font="13" bold="true">
+            <TypographyText color={!appMode ? "white" : "darkGray"} margin="0" font="13" bold>
               {title}
             </TypographyText>
           </CardTitleContent>

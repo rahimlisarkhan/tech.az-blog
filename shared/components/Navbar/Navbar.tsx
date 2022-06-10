@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { MenuList, MenuItemStyle } from "./Navbar.styled";
-import { router } from "../../constant/route";
+import { ROUTER } from "../../constant/route";
 import { useTranslation } from "next-i18next";
 
 type Props = {
@@ -21,7 +21,7 @@ export const Navbar: React.FC<Props> = ({ mode }) => {
   //
   return (
     <MenuList>
-      {Object.values(router.menu).map((item) => {
+      {Object.values(ROUTER.MENU).map((item) => {
         return (
           <MenuItemStyle
             mode={mode}

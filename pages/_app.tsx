@@ -24,19 +24,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           name="description"
           content="yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
         />
-        <Head>
-          <meta
-            property="og:title"
-            content="tech az. blog platformasi. technologiyalarla bagli xeberler. en son xeberler"
-          />
-          <meta
-            property="og:description"
-            content="yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
-          />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content="/static/images/techaz.jpg" />
-          <meta property="og:url" content="https://www.tech.az" />
-        </Head>
+        <meta
+          property="og:title"
+          content="tech az. blog platformasi. technologiyalarla bagli xeberler. en son xeberler"
+        />
+        <meta
+          property="og:description"
+          content="yerli startap və texnologiya ekosisteminə beynəlxalq təcrübə və təcrübə gətirən texnologiya mediası və tədbir platforması."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/static/images/techaz.jpg" />
+        <meta property="og:url" content="https://www.tech.az" />
         <meta name="page-topic" content="Media" />
         <meta name="page-type" content="Blogging" />
         <meta name="audience" content="Everyone" />

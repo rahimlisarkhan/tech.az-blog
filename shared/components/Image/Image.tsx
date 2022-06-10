@@ -9,7 +9,7 @@ export type ImageType = {
   height?: string;
   cover?: boolean | undefined;
   isNotLoading?:boolean;
-  src?: string;
+  src?: string | StaticImageData;
   alt?: string;
   radius?: string;
   onClick?: () => void;

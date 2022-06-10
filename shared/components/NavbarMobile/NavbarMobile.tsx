@@ -1,10 +1,11 @@
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useSelector } from "../../hooks/useSelector";
-import { router } from "../../constant/route";
+import { ROUTER } from "../../constant/route";
 import ButtonOutlined from "../ButtonOutlined";
 import { NavbarMobileContent } from "./NavbarMobile.styled";
 import { MenuList, MenuItemStyle } from "./NavbarMobile.styled";
+import { isAppMode } from "shared/utils/isAppMode";
 
 type Props = {
   closeMenu: () => void;
@@ -28,9 +29,9 @@ export const NavbarMobile = ({ closeMenu }: Props) => {
   };
 
   return (
-    <NavbarMobileContent mode={mode ? "true" : ""}>
+    <NavbarMobileContent mode={isAppMode(mode)}>
       <MenuList>
-        {Object.values(router.menu).map((item) => {
+        {Object.values(ROUTER.MENU).map((item) => {
           return (
             <MenuItemStyle
               mode={mode}

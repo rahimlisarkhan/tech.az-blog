@@ -1,28 +1,16 @@
-import {
-  GetServerSideProps,
-  // GetStaticPaths,
-  // GetStaticProps,
-  NextPage,
-} from "next";
+import { GetServerSideProps, NextPage } from "next";
 import dynamic from "next/dynamic";
-import { getDataNews, getNewsSlug } from "shared/services/MixNews";
+import { serverSideRequest } from "shared/services/request";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-// import { GetStaticProps } from "next";
-import { Fragment, useEffect, useState } from "react";
-import { NewsResponseType, NewsType } from "types/news";
+import { Fragment } from "react";
+// import { NewsResponseType, NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { productURL } from "shared/utils/productURL";
-import { writeData } from "db/writeData";
-// import { realTimeData } from "db/realTimeData";
-// import { onValue, ref } from "firebase/database";
-// import { db } from "config/firebase";
-import { createdAt } from "db/createdAt";
-import { useRequest } from "shared/hooks/useRequest";
-import Loading from "shared/components/Loading";
-import { status_req } from "shared/constant/status";
+import { converSlug } from "shared/utils/converSlug";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 const Layout = dynamic(() => import("shared/components/Layout"));
+const Loading = dynamic(() => import("shared/components/Loading"));
 const DetailedContainer = dynamic(
   () => import("feature/Detailed/DetailedContainer")
 );
@@ -32,38 +20,8 @@ const DetailedContainer = dynamic(
 //   newsSlug: NewsType;
 // }
 
-// news: { results }
-
 const DetailedPage: NextPage = ({ newsSlug }: any) => {
   const { asPath } = useRouter();
-
-
-  //read data
-  // useEffect(() => {
-  //   realTimeData("/all_content_comments", (data: any) => {
-  //     console.log(data, "Data");
-  //   });
-  // }, []);
-
-  //create comments comments
-
-  // useEffect(() => {
-  //   writeData(
-  //     `all_content_comments/${newsSlug.slug}`,
-  //     {
-  //       user: {
-  //         user_id: "",
-  //         full_name: "Cemil",
-  //         last_name: "Huseynzade",
-  //         image: "url",
-  //       },
-  //       content: "Ela Xeberdir",
-  //       created_at: createdAt(),
-  //       reply: "",
-  //     },
-  //     true
-  //   );
-  // }, [newsSlug.slug]);
 
   //Reply click
   // useEffect(() => {
@@ -109,9 +67,7 @@ const DetailedPage: NextPage = ({ newsSlug }: any) => {
         ogUrl={`${productURL()}${asPath}`}
       />
       <Layout>
-      
-          <DetailedContainer newsSlug={newsSlug} />
-     
+        <DetailedContainer newsSlug={newsSlug} />
       </Layout>
     </Fragment>
   );
@@ -127,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     ...(await serverSideTranslations(locale, ["common", "menu"])),
   };
 
-  let res = await getNewsSlug(params.slug);
+  let res = await serverSideRequest(converSlug(params.slug));
 
   if (!res) {
     return {
@@ -142,38 +98,3 @@ export const getServerSideProps: GetServerSideProps = async ({
     },
   };
 };
-
-// export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-//   let languages = {
-//     ...(await serverSideTranslations(locale, ["common", "menu"])),
-//   };
-
-//   let data = await getDataNews("mixdata", null);
-
-//   let res = await getNewsSlug(params.slug);
-
-//   if (!data || !res) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: {
-//       ...languages,
-//       news: data.data,
-//       newsSlug: res.data,
-//     },
-//     // revalidate: 1,
-//   };
-// };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const news = await getDataNews("alldata", null);
-
-//   const paths = news?.data?.map((item: any) => ({
-//     params: { slug: `${item.type}=${item.slug}` },
-//   }));
-
-//   return { paths, fallback: false };
-// };

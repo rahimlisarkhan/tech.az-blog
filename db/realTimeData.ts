@@ -1,14 +1,9 @@
-import { db } from "config/firebase";
-import { ref, onValue } from "firebase/database";
+import { ref, onValue,query,orderByChild } from "firebase/database";
 
-export const realTimeData = (collection: string, onSuccess: any): any => {
+export const realTimeData = (db:any,collection: string, onSuccess: any): any => {
   let data = null;
-  const listeningRef = ref(db, collection);
+  const listeningRef = query(ref(db, collection),orderByChild("created_at"))
   onValue(listeningRef, (snapshot) => {
-    // data = Object.entries(snapshot.val()).map((item) => ({
-    //   id: item[0],
-    //   ...item[1],
-    // }));
     data = snapshot.val()
     onSuccess?.(data);
   });

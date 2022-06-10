@@ -46,7 +46,7 @@ export const SearchCard = ({
       <SearchCardContent onClick={handleRouter}>
         <Image width="300" cover src={cover_image} alt={title} />
         <InfoContent>
-          <Typograph font={renderFont()} color="black" bold="true">
+          <Typograph font={renderFont()} color="black" bold>
             <HighlighterContent
               text={isDesktopOrLaptop ? title : shortText(title, 35)}
               searchWord={searchWord}

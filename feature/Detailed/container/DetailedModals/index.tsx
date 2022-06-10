@@ -1,0 +1,1 @@
+export { DetailedModals as default } from "./DetailedModals"

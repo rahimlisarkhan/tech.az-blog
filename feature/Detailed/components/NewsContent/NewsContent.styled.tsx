@@ -1,4 +1,3 @@
-import { Box } from "@material-ui/core";
 import { Grid } from "@mui/material";
 import mediaQueries from "styles/media-queries";
 
@@ -29,26 +28,23 @@ export const SimilarNewsContentStyled = styled(Grid).attrs(() => ({
   padding: 0 10px;
 `;
 
-export const VideoContent = styled(Box)`
+export const VideoContent = styled.div`
   margin: 50px 0;
   div {
     width: 100% !important;
-
     ${mediaQueries.greaterThan("xl")`
       height: 450px !important;
     `};
   }
 `;
-export const ImageContent = styled(Box)`
+export const ImageContent = styled.div`
   margin: 30px 0;
   overflow: hidden;
   width: 100%;
   position: relative;
-
   & img {
     transition: all 2s;
   }
-
   &:hover img {
     transform: scale(1.2);
   }

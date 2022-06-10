@@ -7,6 +7,7 @@ import {
 } from "./TechContent.styled";
 import { Image } from "shared/components/Image";
 import { useScreenMode } from "shared/hooks/useScreenMode";
+import { isAppMode } from "shared/utils/isAppMode";
 
 export const TechContent = () => {
   let { mode: appMode, colorMode } = useScreenMode();
@@ -15,12 +16,12 @@ export const TechContent = () => {
     <TechContentStyled>
       <TechContentRow>
         <TechContentInfo lg="3">
-          <TypographyText font="65" color={colorMode()} bold="true" text="true">
+          <TypographyText font="65" color={colorMode()} bold text="true">
             tech.az media
           </TypographyText>
         </TechContentInfo>
         <TechContentInfo lg="9">
-          <TechCard mode={appMode ? "true" : ""}>
+          <TechCard mode={isAppMode(appMode)}>
             <Image
               width="100"
               height="110"
@@ -31,7 +32,7 @@ export const TechContent = () => {
               trend texnologiyası və startap xəbərləri
             </TypographyText>
           </TechCard>
-          <TechCard mode={appMode ? "true" : ""}>
+          <TechCard mode={isAppMode(appMode)}>
             <Image
               width="100"
               height="110"
@@ -42,7 +43,7 @@ export const TechContent = () => {
               ən son gadget rəyləri
             </TypographyText>
           </TechCard>
-          <TechCard mode={appMode ? "true" : ""}>
+          <TechCard mode={isAppMode(appMode)}>
             <Image
               width="100"
               height="110"
@@ -53,7 +54,7 @@ export const TechContent = () => {
               beynəlxalq texnologiya hadisələrindən canlı yayımlar
             </TypographyText>
           </TechCard>
-          <TechCard mode={appMode ? "true" : ""}>
+          <TechCard mode={isAppMode(appMode)}>
             <Image
               width="100"
               height="110"
