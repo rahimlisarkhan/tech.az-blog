@@ -24,7 +24,7 @@ const NewsImageSlider = dynamic(
   () => import("../../components/NewsImageSlider")
 );
 const SliderContent = dynamic(() => import("shared/components/Slider"));
-const TitleContent = dynamic(() => import("../../components/TitleContent"));
+const TitleContent = dynamic(() => import("../../container/TitleContent"));
 const NewsCard = dynamic(() => import("../../../News/components/NewsCard"));
 
 type Props = {
