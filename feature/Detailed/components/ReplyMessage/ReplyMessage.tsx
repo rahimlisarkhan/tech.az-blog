@@ -1,18 +1,18 @@
-import { Avatar } from "shared/components/Avatar";
-import Typograph from "shared/components/Typograph";
+import { Avatar } from "ui/Avatar";
+import Typograph from "ui/Typograph";
 import { isAppMode } from "shared/utils/isAppMode";
 import { Content, Message, MessageSub } from "./ReplyMessage.styled";
 
-export const ReplyMessage = ({ small }: any) => {
+export const ReplyMessage = ({ small, isUser }: any) => {
   return (
-    <Content>
-      <Message width={isAppMode(small)}>
+    <Content user={isAppMode(isUser)}>
+      <Message user={isAppMode(isUser)} width={isAppMode(small)}>
         <Typograph color="whiteGray" font={small ? "14" : "16"} space="1">
           Mən təklif edərdimki siz ən çox kosmosla bağlı paylaşımda edərsiz.Biz
           bunu çox sevirik
         </Typograph>
       </Message>
-      <MessageSub>
+      <MessageSub user={isAppMode(isUser)}>
         <Typograph
           margin="0 25px"
           color="whiteGray"

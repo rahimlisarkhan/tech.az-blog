@@ -1,12 +1,12 @@
 import { InputGroup, Input, InputContent } from "./CommentInput.styled";
 import { useRef, useState } from "react";
-import { Avatar } from "shared/components/Avatar";
+import { Avatar } from "ui/Avatar";
 import { useSelector } from "shared/hooks/useSelector";
 import { stateUser } from "shared/store/slices/user/userSlices";
 import TagFacesIcon from "@mui/icons-material/TagFaces";
 import { IconButton } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { Button } from "shared/components/Button";
+import { Button } from "ui/Button";
 import { toast } from "react-toastify";
 import { isAppMode } from "shared/utils/isAppMode";
 

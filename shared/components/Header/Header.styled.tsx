@@ -9,10 +9,7 @@ export const HeaderStyled: any = styled.header`
     background: ${({ theme, mode }: any) =>
       mode ? theme.colors.white : theme.colors.blackGrey}};
     margin-bottom: 20px;
-`
-
-
-
+`;
 
 export const HeaderContainer: any = styled(Container).attrs(() => ({
   maxWidth: "lg",
@@ -20,20 +17,23 @@ export const HeaderContainer: any = styled(Container).attrs(() => ({
   display: flex !important;
   height: 80px;
   justify-content: space-between !important;
-  border-bottom:${({ theme, mode }: any) => (mode ?`1px solid ${theme.colors.whiteGray}` : "none")} !important;
+  border-bottom: ${({ theme, mode }: any) =>
+    mode ? `1px solid ${theme.colors.whiteGray}` : "none"} !important;
   align-items: center !important;
 `;
 
 export const ModeButton: any = styled(Button).attrs((props: any) => ({
   variant: "text",
 }))`
+position: relative;
+text-transform: none !important;
     min-width: 0 !important;
     svg{
-      margin-left: 5px;
         fill: ${({ theme, mode }: any) =>
           mode ? theme.colors.dark : theme.colors.green}};
     }
-`
+`;
 
 export const MenuActions = styled.div`
+position: relative;
 `;

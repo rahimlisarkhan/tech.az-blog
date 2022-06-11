@@ -1,4 +1,4 @@
-import { Motion } from "shared/components/Motion";
+import { Motion } from "ui/Motion";
 import { InputGroup, InputIcon, Input } from "./InputField.styled";
 
 export const InputField = ({

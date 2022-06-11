@@ -1,7 +1,7 @@
 import { FooterStyled, FooterContainer } from "./Footer.styled";
 import React from "react";
-import { Image } from "../Image";
-import TypographyText from "../Typograph";
+import { Image } from "ui/Image";
+import Typography from "ui/Typograph";
 
 type Props = {};
 
@@ -10,9 +10,9 @@ const Footer: React.FC<Props> = () => {
     <FooterStyled>
       <FooterContainer>
         <Image src="/image/logo.png" width="70" height="70" cover isNotLoading />
-        <TypographyText color="white" font="14" text="lower">
+        <Typography color="white" font="14" text="lower">
           © copyright 2022 | tech.az
-        </TypographyText>
+        </Typography>
       </FooterContainer>
     </FooterStyled>
   );

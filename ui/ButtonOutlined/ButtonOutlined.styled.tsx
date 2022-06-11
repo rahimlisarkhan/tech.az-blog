@@ -7,12 +7,12 @@ export const ButtonOutlined: any = styled.button`
     mode ? theme.colors.dark : theme.colors.green};
   text-transform: lowercase;
   font-size: 18px;
-  margin: 0 10px;
+  /* margin: 0 10px; */
   background: transparent;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s;
-  padding: 5px 15px;
+  padding: ${({ padding }: any) => padding ?? "5px 15px"};
 
   &:hover {
     background-color: ${({ theme, mode }: any) =>

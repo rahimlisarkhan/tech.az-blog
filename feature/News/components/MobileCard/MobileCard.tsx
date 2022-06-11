@@ -4,11 +4,11 @@ import {
   CardTitleContent,
   CardTitle,
 } from "./MobileCard.styled";
-import { Image } from "shared/components/Image";
-import TypographyText from "shared/components/Typograph";
+import { Image } from "ui/Image";
+import Typography from "ui/Typograph";
 import { useRouter } from "next/router";
 import { convertNormalDate } from "shared/helper/timeConvert";
-import { Motion } from "shared/components/Motion";
+import { Motion } from "ui/Motion";
 import { convertUrlLink } from "shared/utils/convertUrlLink";
 import { useMemo } from "react";
 import { useSelector } from "shared/hooks/useSelector";
@@ -65,14 +65,14 @@ export const MobileCard: React.FC<Props> = ({
           />
           <CardTitleContent>
             <CardTitle>
-              <TypographyText color={!appMode ? "white" : "darkGray"} font="10" bold>
+              <Typography color={!appMode ? "white" : "darkGray"} font="10" bold>
                 {renderTypeName} • {convertNormalDate(created_at)}
-              </TypographyText>
+              </Typography>
             </CardTitle>
 
-            <TypographyText color={!appMode ? "white" : "darkGray"} margin="0" font="13" bold>
+            <Typography color={!appMode ? "white" : "darkGray"} margin="0" font="13" bold>
               {title}
-            </TypographyText>
+            </Typography>
           </CardTitleContent>
         </Card>
       </NewsCardStyled>

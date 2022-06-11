@@ -1,13 +1,13 @@
-import TypographyText from "../../../../shared/components/Typograph";
+import Typography from "ui/Typograph";
 import {
   AboutHeaderContent,
   AboutRow,
   AboutHeaderInfo,
   AboutHeaderButton,
 } from "./AboutHeader.styled";
-import { Image } from "../../../../shared/components/Image";
-import { useSelector } from "../../../../shared/hooks/useSelector";
-import { breakpoint } from "../../../../styles/breakpoint";
+import { Image } from "ui/Image";
+import { useSelector } from "shared/hooks/useSelector";
+import { breakpoint } from "styles/breakpoint";
 import { useMediaQuery } from "react-responsive";
 import { isAppMode } from "shared/utils/isAppMode";
 
@@ -26,14 +26,14 @@ export const AboutHeader = () => {
     <AboutHeaderContent>
       <AboutRow>
         <AboutHeaderInfo>
-          {/* <TypographyText
+          {/* <Typography
             font={renderFont()}
             color={appMode ? "black" : "green"}
             bold
             text="true"
           >
-          </TypographyText> */}
-          <TypographyText
+          </Typography> */}
+          <Typography
             font={renderFont()}
             color={appMode ? "black" : "white"}
             bold
@@ -41,7 +41,7 @@ export const AboutHeader = () => {
           >
             {/* tech.az */}
             hər şey tech.az ilə bağlıdır
-          </TypographyText>
+          </Typography>
           <AboutHeaderButton mode={isAppMode(appMode)}>
             {/* learn more */}
             daha ətraflı

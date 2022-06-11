@@ -1,10 +1,9 @@
-import { Typograph } from "shared/components/Typograph/Typograph";
+import { Typograph } from "ui/Typograph/Typograph";
 import {
   InfoContent,
   SearchCardContent,
-  SearchImageContent,
 } from "./SearchCard.styled";
-import { Image } from "shared/components/Image";
+import { Image } from "ui/Image";
 import { NewsType } from "types/news";
 import { useRouter } from "next/router";
 import { useDispatch } from "shared/hooks/useDispatch";
@@ -13,7 +12,7 @@ import { Grow } from "@mui/material";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
 import { shortText } from "shared/utils/shortText";
-import { HighlighterContent } from "shared/components/Highlighter";
+import { HighlighterContent } from "ui/Highlighter";
 
 type Props = {
   searchWord: string;

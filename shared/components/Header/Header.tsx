@@ -5,10 +5,15 @@ import {
   MenuActions,
 } from "./Header.styled";
 import React, { useEffect, useState } from "react";
-import { Image } from "../Image";
+import { Image } from "ui/Image";
 import Navbar from "../Navbar";
+
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import MenuIcon from "@mui/icons-material/Menu";
+import Login from "@mui/icons-material/Login";
+
 import {
   fillAppMode,
   setAppMode,
@@ -19,34 +24,34 @@ import { useRouter } from "next/router";
 import { ROUTER } from "shared/constant/route";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
-import MenuIcon from "@mui/icons-material/Menu";
 import NavbarMobile from "../NavbarMobile";
-import Drawer from "../Drawer";
-import ButtonOutlined from "../ButtonOutlined";
+import Drawer from "ui/Drawer";
+import ButtonOutlined from "ui/ButtonOutlined";
 import { useScreenMode } from "../../hooks/useScreenMode";
 import SearchIcon from "@mui/icons-material/Search";
-import Login from "@mui/icons-material/Login";
-import { Avatar } from "../Avatar";
+import { Avatar } from "../../../ui/Avatar";
 import { useSelector } from "shared/hooks/useSelector";
 import { stateUser } from "shared/store/slices/user/userSlices";
 import { useAccount } from "shared/hooks/useAccount";
 import { isAppMode } from "shared/utils/isAppMode";
+import { UserDropCard } from "../UserDropCard";
 
 type Props = {};
 
 const Header: React.FC<Props> = () => {
-  let { googleLogout } = useAccount();
+  const { googleLogout } = useAccount();
 
   const isDesktopOrLaptop = useMediaQuery({ minWidth: breakpoint.laptop });
   const isMobile = useMediaQuery({ maxWidth: breakpoint.laptop });
 
   const user = useSelector(stateUser);
 
-  let [open, setOpen] = useState(false);
-  let { mode } = useScreenMode();
+  const [open, setOpen] = useState(false);
+  const [dropdownShow, setDropdownShow] = useState(false);
+  const { mode } = useScreenMode();
 
-  let dispatch = useDispatch();
-  let { push } = useRouter();
+  const dispatch = useDispatch();
+  const { push } = useRouter();
 
   useEffect(() => {
     dispatch(fillAppMode());
@@ -106,11 +111,18 @@ const Header: React.FC<Props> = () => {
             </ModeButton>
           )}
           {user && (
-            <ModeButton>
+            <ModeButton onClick={() => setDropdownShow((prev) => !prev)}>
               <Avatar name={user?.first_name} size="lg" image={user?.image} />
+              <ArrowDropDownIcon />
             </ModeButton>
           )}
-          <button onClick={() => googleLogout()}>Logout</button>
+          {/* <button onClick={() => googleLogout()}>Logout</button> */}
+          {dropdownShow && (
+            <UserDropCard
+              onClose={()=>setDropdownShow(false)}
+              infoData={[]}
+            />
+          )}
         </MenuActions>
         <Drawer isOpen={open} setIsOpen={handleClick}>
           <NavbarMobile closeMenu={handleClick} />

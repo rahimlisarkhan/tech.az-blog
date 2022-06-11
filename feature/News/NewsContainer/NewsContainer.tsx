@@ -2,7 +2,7 @@ import { NewsContainerStyled, MoreNewsContent } from "./NewsContainer.styled";
 import NewsCard from "../components/NewsCard";
 import { useState } from "react";
 import { useSelector } from "shared/hooks/useSelector";
-import ButtonOutlined from "shared/components/ButtonOutlined";
+import ButtonOutlined from "ui/ButtonOutlined";
 import Grow from "@mui/material/Grow";
 import { useRenderTypeName } from "shared/hooks/useRenderTypeName";
 import { useMediaQuery } from "react-responsive";

@@ -1,9 +1,9 @@
-import { IconButton } from "shared/components/IconButton";
-import { Modal } from "shared/components/Modal";
-import Typograph from "shared/components/Typograph";
+import { IconButton } from "ui/IconButton";
+import { Modal } from "ui/Modal";
+import Typograph from "ui/Typograph";
 import { ModalBody, ModalHeader } from "./ReactionModal.styled";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { InfoCard } from "feature/Detailed/components/InfoCard";
+import { InfoCard } from "shared/components/InfoCard";
 import { useSelector } from "shared/hooks";
 import { stateReactionUsers } from "shared/store/slices/comment/commentSlices";
 
@@ -11,7 +11,13 @@ export const ReactionModal = ({ isOpen, onOpenClose }) => {
   const users = useSelector(stateReactionUsers);
 
   return (
-    <Modal isOpen={isOpen} close={onOpenClose}>
+    <Modal
+      isOpen={isOpen}
+      isContent
+      contentWidth="552"
+      contentHeight="576"
+      close={onOpenClose}
+    >
       <ModalHeader>
         <Typograph font="25" color="whiteGray">
           Bəyənənlər

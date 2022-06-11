@@ -1,8 +1,14 @@
-import { IconButton } from "shared/components/IconButton";
-import Typograph from "shared/components/Typograph";
+import { IconButton } from "ui/IconButton";
+import Typograph from "ui/Typograph";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { Content, ContentHeader, ContentBody, MessageBox } from "./ReplyContent.styled";
+import {
+  Content,
+  ContentHeader,
+  ContentBody,
+  MessageBox,
+  MessageInput,
+} from "./ReplyContent.styled";
 import { ReplyMessage } from "feature/Detailed/components/ReplyMessage";
 import { CommentInput } from "feature/Detailed/components/CommentInput";
 
@@ -20,13 +26,17 @@ export const ReplyContent = ({ closeMenu }: any) => {
       <ReplyMessage />
 
       <ContentBody>
-        <CommentInput reply />
-
         <MessageBox>
+          <ReplyMessage isUser small />
+          <ReplyMessage  small />
+          <ReplyMessage small />
           <ReplyMessage small />
           <ReplyMessage small />
           <ReplyMessage small />
         </MessageBox>
+        <MessageInput>
+          <CommentInput reply />
+        </MessageInput>
       </ContentBody>
     </Content>
   );

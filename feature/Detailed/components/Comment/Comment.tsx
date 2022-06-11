@@ -4,10 +4,10 @@ import ReplyAllIcon from "@mui/icons-material/ReplyAll";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { Avatar } from "shared/components/Avatar";
-import { Button } from "shared/components/Button";
-import { Motion } from "shared/components/Motion";
-import Typograph from "shared/components/Typograph";
+import { Avatar } from "ui/Avatar";
+import { Button } from "ui/Button";
+import { Motion } from "ui/Motion";
+import Typograph from "ui/Typograph";
 
 import { convertNormalDate } from "shared/helper/timeConvert";
 import { parseData } from "shared/utils/parseData";
@@ -116,7 +116,7 @@ export const Comment = ({
         </Typograph>
       </Content>
       <SubInfoContent>
-        <SubInfo>
+        <SubInfo onClick={onReply}>
           <Avatar name={first_name} size="md" image={image} />
           <Typograph color="white" font="14" margin="0 5px" bold>
             133 cavab

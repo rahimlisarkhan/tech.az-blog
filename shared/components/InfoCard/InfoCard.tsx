@@ -1,5 +1,5 @@
-import { Avatar } from "shared/components/Avatar";
-import Typograph from "shared/components/Typograph";
+import { Avatar } from "ui/Avatar";
+import Typograph from "ui/Typograph";
 import { Content } from "./InfoCard.styled";
 
 interface InfoType {

@@ -4,14 +4,14 @@ import {
   CardTitleContent,
   CardTitle,
 } from "./NewsCard.styled";
-import { Image } from "shared/components/Image";
-import TypographyText from "shared/components/Typograph";
+import { Image } from "ui/Image";
+import Typography from "ui/Typograph";
 import { useRouter } from "next/router";
 import { ROUTER } from "shared/constant/route";
 import { convertNormalDate } from "shared/helper/timeConvert";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
-import { Motion } from "shared/components/Motion";
+import { Motion } from "ui/Motion";
 import { convertUrlLink } from "shared/utils/convertUrlLink";
 
 type Props = {
@@ -82,10 +82,10 @@ export const NewsCard: React.FC<Props> = ({
           <Image src={convertUrlLink(cover_image)} alt={title} cover />
           <CardTitleContent col={col}>
             <CardTitle>
-              <TypographyText color="white" font={"13"} bold>
+              <Typography color="white" font={"13"} bold>
                 {renderTypeName()} • {convertNormalDate(created_at)}
-              </TypographyText>
-              <TypographyText
+              </Typography>
+              <Typography
                 color="white"
                 margin="0"
                 font={dynamicFont()}
@@ -96,7 +96,7 @@ export const NewsCard: React.FC<Props> = ({
                   0,
                   pathname === router.detailed.href ? 40 : 60
                 )}...`} */}
-              </TypographyText>
+              </Typography>
             </CardTitle>
           </CardTitleContent>
         </Card>

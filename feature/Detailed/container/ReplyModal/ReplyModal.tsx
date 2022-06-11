@@ -1,5 +1,4 @@
-import Drawer from "shared/components/Drawer";
-import NavbarMobile from "shared/components/NavbarMobile";
+import Drawer from "ui/Drawer";
 import { ReplyContent } from "../ReplyContent";
 
 export const ReplyModal = ({ isOpen, onOpenClose }) => {

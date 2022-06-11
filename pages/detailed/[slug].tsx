@@ -10,7 +10,7 @@ import { converSlug } from "shared/utils/converSlug";
 
 const MetaSEO = dynamic(() => import("shared/components/Meta"));
 const Layout = dynamic(() => import("shared/components/Layout"));
-const Loading = dynamic(() => import("shared/components/Loading"));
+const Loading = dynamic(() => import("ui/Loading"));
 const DetailedContainer = dynamic(
   () => import("feature/Detailed/DetailedContainer")
 );

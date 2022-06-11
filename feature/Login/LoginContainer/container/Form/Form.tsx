@@ -1,14 +1,14 @@
-import Typograph from "shared/components/Typograph";
+import Typograph from "ui/Typograph";
 import { InputType } from "shared/constant/form";
 import { InputField } from "../../components/InputField";
-import { Motion } from "shared/components/Motion";
+import { Motion } from "ui/Motion";
 import { useSelector } from "shared/hooks/useSelector";
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import { SubmitButton } from "./Form.styled";
 import { ROUTER } from "shared/constant/route";
 import { useAccount } from "shared/hooks/useAccount";
-import { Image } from "shared/components/Image";
+import { Image } from "ui/Image";
 import GoogleLogo from "public/image/google-logo.png";
 
  const Form = ({ initialValues, inputs }) => {

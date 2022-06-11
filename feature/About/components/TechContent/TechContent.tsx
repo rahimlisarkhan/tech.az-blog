@@ -1,11 +1,11 @@
-import TypographyText from "shared/components/Typograph";
+import Typography from "ui/Typograph";
 import {
   TechContentStyled,
   TechContentRow,
   TechContentInfo,
   TechCard,
 } from "./TechContent.styled";
-import { Image } from "shared/components/Image";
+import { Image } from "ui/Image";
 import { useScreenMode } from "shared/hooks/useScreenMode";
 import { isAppMode } from "shared/utils/isAppMode";
 
@@ -16,9 +16,9 @@ export const TechContent = () => {
     <TechContentStyled>
       <TechContentRow>
         <TechContentInfo lg="3">
-          <TypographyText font="65" color={colorMode()} bold text="true">
+          <Typography font="65" color={colorMode()} bold text="true">
             tech.az media
-          </TypographyText>
+          </Typography>
         </TechContentInfo>
         <TechContentInfo lg="9">
           <TechCard mode={isAppMode(appMode)}>
@@ -28,9 +28,9 @@ export const TechContent = () => {
               src="/image/icons_graphics/Asset6.png"
               alt="techaz"
             />
-            <TypographyText font="25" color={colorMode()} text="true">
+            <Typography font="25" color={colorMode()} text="true">
               trend texnologiyası və startap xəbərləri
-            </TypographyText>
+            </Typography>
           </TechCard>
           <TechCard mode={isAppMode(appMode)}>
             <Image
@@ -39,9 +39,9 @@ export const TechContent = () => {
               src="/image/icons_graphics/Asset9.png"
               alt="techaz"
             />
-            <TypographyText font="25" color={colorMode()} text="true">
+            <Typography font="25" color={colorMode()} text="true">
               ən son gadget rəyləri
-            </TypographyText>
+            </Typography>
           </TechCard>
           <TechCard mode={isAppMode(appMode)}>
             <Image
@@ -50,9 +50,9 @@ export const TechContent = () => {
               src="/image/icons_graphics/Asset7.png"
               alt="techaz"
             />
-            <TypographyText font="25" color={colorMode()} text="true">
+            <Typography font="25" color={colorMode()} text="true">
               beynəlxalq texnologiya hadisələrindən canlı yayımlar
-            </TypographyText>
+            </Typography>
           </TechCard>
           <TechCard mode={isAppMode(appMode)}>
             <Image
@@ -61,9 +61,9 @@ export const TechContent = () => {
               src="/image/icons_graphics/Asset8.png"
               alt="techaz"
             />
-            <TypographyText font="25" color={colorMode()} text="true">
+            <Typography font="25" color={colorMode()} text="true">
               yeniliklərə dair xüsusi məqalələr
-            </TypographyText>
+            </Typography>
           </TechCard>
         </TechContentInfo>
       </TechContentRow>
