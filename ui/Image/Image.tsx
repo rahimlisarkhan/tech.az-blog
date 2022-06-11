@@ -2,7 +2,6 @@ import { ImageContent } from "./Image.styled";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Typography from "../Typograph";
-import { Skeleton } from "@mui/material";
 
 export type ImageType = {
   width?: string;
@@ -39,7 +38,7 @@ export const ImageTag = ({
     >
       {/* {imageLoading && <Skeleton variant="rectangular" width={width} height={height} />} */}
       {imageLoading && !isNotLoading && (
-        <Typography center="true" color="gray">
+        <Typography color="gray">
           Loading...
         </Typography>
       )}

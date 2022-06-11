@@ -4,7 +4,7 @@ import { TypographyText } from "./Typograph.styled";
 interface TypographyProps {
   font?: string;
   color?: string;
-  center?: string;
+  center?: boolean;
   text?: string;
   cursor?: boolean;
   decaration?: string;
@@ -37,7 +37,7 @@ export const Typograph = ({
         text={text}
         margin={margin}
         color={color}
-        center={center}
+        center={isAppMode(center)}
         bold={isAppMode(bold)}
         cursor={isAppMode(cursor)}
         decaration={decaration}

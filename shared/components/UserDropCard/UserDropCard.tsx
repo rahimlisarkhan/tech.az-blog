@@ -5,7 +5,7 @@ import { Content } from "./UserDropCard.styled";
 import Typography from "ui/Typograph";
 import { useEffect, useRef } from "react";
 
-export const UserDropCard = ({ isShow, onLogout,onClose }) => {
+export const UserDropCard = ({ isShow, onLogout, onClose }) => {
   const dropRef = useRef<any>();
   let user = {
     name: "Sarkhan",
@@ -13,18 +13,18 @@ export const UserDropCard = ({ isShow, onLogout,onClose }) => {
     email: "rahimlisarkhan@gmail.com",
   };
 
-//   useEffect(() => {
-    window.addEventListener("click", function (e: any) {
-      if (dropRef && dropRef?.current?.contains(e.target)) {
-        // Clicked in box
-        console.log("click box");
-      } else {
-        // Clicked outside the box
-        console.log("click out box");
-        // dropRef.current && onClose()
-      }
-    });
-//   }, []);
+  //   useEffect(() => {
+  window.addEventListener("click", function (e: any) {
+    if (dropRef && dropRef?.current?.contains(e.target)) {
+      // Clicked in box
+      console.log("click box");
+    } else {
+      // Clicked outside the box
+      console.log("click out box");
+      // dropRef.current && onClose()
+    }
+  });
+  //   }, []);
 
   return (
     <Content ref={dropRef} onBlur={() => console.log("kenar")}>
@@ -41,7 +41,7 @@ export const UserDropCard = ({ isShow, onLogout,onClose }) => {
         >
           Hesabım
         </Typography>
-        <Typography font="16" color="whiteGray" decaration="true" cursor margin="15px 0">
+        <Typography font="16" color="whiteGray" cursor margin="15px 0">
           profil
         </Typography>
         <Typography font="16" color="whiteGray" cursor margin="15px 0">
