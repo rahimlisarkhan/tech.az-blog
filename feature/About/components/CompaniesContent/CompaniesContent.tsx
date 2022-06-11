@@ -5,8 +5,8 @@ import {
   CompaniesCard,
   CompaniesTexts,
 } from "./CompaniesContent.styled";
-import { Image } from "shared/components/Image";
-import TypographyText from "shared/components/Typograph";
+import { Image } from "ui/Image";
+import Typography from "ui/Typograph";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
 import { useSelector } from "shared/hooks/useSelector";
@@ -35,14 +35,14 @@ export const CompaniesContent = ({ data: { title, data }, reverse }: any) => {
         </CompaniesInfo>
         <CompaniesTexts>
           <Box>
-            <TypographyText
+            <Typography
               color={appMode ? "black" : "white"}
               font="40"
               bold
               text="true"
             >
               {title}
-            </TypographyText>
+            </Typography>
           </Box>
         </CompaniesTexts>
       </CompaniesRow>

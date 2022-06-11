@@ -1,10 +1,9 @@
 import { useSelector } from "shared/hooks/useSelector";
-import { Modal } from "shared/components/Modal";
+import { Modal } from "ui/Modal";
 import { useDispatch } from "shared/hooks/useDispatch";
 import { setIsOpenSearch } from "shared/store/slices/home/homeSlices";
 import { SearchContent } from "./components/SearchContent";
 import { useState } from "react";
-import ErrorBoundary from "shared/components/ErrorBoundary/ErrorBoundary";
 import { resultSearchApi } from "api/search";
 import { useRequest } from "shared/hooks/useRequest";
 
@@ -26,13 +25,11 @@ export const SearchContainer = () => {
   };
 
   return (
-    <Modal isOpen={isOpen} close={handleSearchBar}>
-      <ErrorBoundary>
-        <SearchContent
-          searchData={searchData}
-          search={(title: string) => exc(title)}
-        />
-      </ErrorBoundary>
+    <Modal isOpen={isOpen} close={handleSearchBar} isShowClose>
+      <SearchContent
+        searchData={searchData}
+        search={(title: string) => exc(title)}
+      />
     </Modal>
   );
 };

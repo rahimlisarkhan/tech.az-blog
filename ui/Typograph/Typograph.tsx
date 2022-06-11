@@ -6,7 +6,7 @@ interface TypographyProps {
   color?: string;
   center?: string;
   text?: string;
-  cursor?: string;
+  cursor?: boolean;
   decaration?: string;
   space?: string;
   margin?: string;
@@ -39,7 +39,7 @@ export const Typograph = ({
         color={color}
         center={center}
         bold={isAppMode(bold)}
-        cursor={cursor}
+        cursor={isAppMode(cursor)}
         decaration={decaration}
         space={space}
       >

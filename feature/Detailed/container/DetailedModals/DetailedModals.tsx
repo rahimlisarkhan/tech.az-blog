@@ -26,7 +26,7 @@ export const DetailedModals = () => {
 
   return (
     <Fragment>
-      <ReplyModal isOpen={isOpenReplyModal} onOpenClose={onReply} />
+      <ReplyModal isOpen={isOpenReplyModal} onOpenClose={onReply}  />
       <ReactionModal isOpen={isOpenReactionModal} onOpenClose={onReaction} />
     </Fragment>
   );

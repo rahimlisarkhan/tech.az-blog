@@ -4,12 +4,12 @@ import EventNoteIcon from "@mui/icons-material/EventNote";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-import Typography from "shared/components/Typograph";
+import Typography from "ui/Typograph";
 import { Tag, TagContent, TitleContentStyled } from "./TitleContent.styled";
 import { convertNormalDate } from "shared/helper/timeConvert";
 import { useScreenMode } from "shared/hooks/useScreenMode";
 import { useMemo } from "react";
-import { IconButton } from "shared/components/IconButton";
+import { IconButton } from "ui/IconButton";
 
 export const TitleContent = ({ newsSlug, reactionCount, onReaction }: any) => {
   let { colorMode } = useScreenMode();

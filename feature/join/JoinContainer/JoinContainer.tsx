@@ -1,6 +1,6 @@
-import TypographyText from "shared/components/Typograph";
+import Typography from "ui/Typograph";
 import { JoinContent, FormContent, Field } from "./JoinContainer.styled";
-import ButtonOutlined from "shared/components/ButtonOutlined";
+import ButtonOutlined from "ui/ButtonOutlined";
 import { useSelector } from "shared/hooks/useSelector";
 import { useFormik } from "formik";
 import { useRequest } from "shared/hooks/useRequest";
@@ -36,9 +36,9 @@ export const JoinContainer = () => {
   return (
     <JoinContent>
       <FormContent mode={mode ? "true" : ""}>
-        <TypographyText font="30" color={mode ? "dark" : "green"}>
+        <Typography font="30" color={mode ? "dark" : "green"}>
           Bizə qoşulun
-        </TypographyText>
+        </Typography>
         <form onSubmit={formik.handleSubmit}>
           <Field
             label="Ad"

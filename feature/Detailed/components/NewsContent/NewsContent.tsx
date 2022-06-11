@@ -6,8 +6,8 @@ import {
   ImageContent,
   SimilarNewsContentStyled,
 } from "./NewsContent.styled";
-import { Image } from "shared/components/Image";
-import Typography from "shared/components/Typograph";
+import { Image } from "ui/Image";
+import Typography from "ui/Typograph";
 import ReactPlayer from "react-player";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
@@ -15,7 +15,7 @@ import { Grid } from "@mui/material";
 import { url } from "shared/utils/axios";
 import { useScreenMode } from "shared/hooks/useScreenMode";
 import { NewsType } from "types/news";
-import { Motion } from "shared/components/Motion";
+import { Motion } from "ui/Motion";
 
 import dynamic from "next/dynamic";
 import { MobileCard } from "feature/News/components/MobileCard";
@@ -23,7 +23,7 @@ import { MobileCard } from "feature/News/components/MobileCard";
 const NewsImageSlider = dynamic(
   () => import("../../components/NewsImageSlider")
 );
-const SliderContent = dynamic(() => import("shared/components/Slider"));
+const SliderContent = dynamic(() => import("ui/Slider"));
 const TitleContent = dynamic(() => import("../../container/TitleContent"));
 const NewsCard = dynamic(() => import("../../../News/components/NewsCard"));
 

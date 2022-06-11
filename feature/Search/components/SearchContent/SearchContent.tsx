@@ -9,7 +9,7 @@ import {
 } from "./SearchContent.styled";
 import { SearchCard } from "../SearchCard";
 import { NewsType } from "types/news";
-import { Typograph } from "shared/components/Typograph/Typograph";
+import { Typograph } from "ui/Typograph/Typograph";
 interface SearchProps {
   search: (text: string) => void;
   searchData: NewsType[];

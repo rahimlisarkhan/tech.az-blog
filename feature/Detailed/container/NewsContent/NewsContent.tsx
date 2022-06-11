@@ -6,22 +6,22 @@ import {
   ImageContent,
   SimilarNewsContentStyled,
 } from "./NewsContent.styled";
-import { Image } from "shared/components/Image";
-import TypographyText from "shared/components/Typograph";
+import { Image } from "ui/Image";
+import Typography from "ui/Typograph";
 import { useMediaQuery } from "react-responsive";
 import { breakpoint } from "styles/breakpoint";
 import { Grid } from "@mui/material";
 import { url } from "shared/utils/axios";
 import { useScreenMode } from "shared/hooks/useScreenMode";
 import { NewsType } from "types/news";
-import { Motion } from "shared/components/Motion";
+import { Motion } from "ui/Motion";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { CommentContent } from "../CommentContent";
 
 import dynamic from "next/dynamic";
 import { MobileCard } from "feature/News/components/MobileCard";
-import { IconButton } from "shared/components/IconButton";
+import { IconButton } from "ui/IconButton";
 import { firebasePatch } from "shared/constant/patch";
 import { toast } from "react-toastify";
 import { useDispatch } from "shared/hooks";
@@ -32,7 +32,7 @@ import { fillReactionUsers } from "shared/store/slices/comment/commentSlices";
 const NewsImageSlider = dynamic(
   () => import("../../components/NewsImageSlider")
 );
-const SliderContent = dynamic(() => import("shared/components/Slider"));
+const SliderContent = dynamic(() => import("ui/Slider"));
 const TitleContent = dynamic(() => import("../TitleContent"));
 const NewsCard = dynamic(() => import("../../../News/components/NewsCard"));
 
@@ -61,6 +61,10 @@ export const NewsContent = ({
   const isMobile = useMediaQuery({ minWidth: breakpoint.mobile });
   const dispatch = useDispatch();
   let { colorMode } = useScreenMode();
+
+  const handleYoutubeURL = newsSlug?.video_link
+  console.log(handleYoutubeURL);
+  
 
   const reaction = useMemo(() => {
     return newsReaction?.find((news) => news.user_id === userID);
@@ -112,17 +116,22 @@ export const NewsContent = ({
               <FavoriteIcon />
             </IconButton>
           </ImageContent>
-          <TypographyText font="18" color={colorMode()} innerHTML>
+          <Typography font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(0, 1800)}
-          </TypographyText>
+          </Typography>
           {newsSlug?.video_link && (
             <VideoContent>
               {/* <ReactPlayer url={newsSlug?.video_link} playing loop controls /> */}
+              <iframe
+                width="420"
+                height="315"
+                src="https://www.youtube.com/embed/tgbNymZ7vqY"
+              ></iframe>
             </VideoContent>
           )}
-          <TypographyText font="18" color={colorMode()} innerHTML>
+          <Typography font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(1800, 3000)}
-          </TypographyText>
+          </Typography>
           {newsSlug?.news_images?.length ? (
             <NewsImageSlider
               imageSize={isDesktopOrLaptop ? 400 : 200}
@@ -132,9 +141,9 @@ export const NewsContent = ({
           ) : (
             ""
           )}
-          <TypographyText font="18" color={colorMode()} innerHTML>
+          <Typography font="18" color={colorMode()} innerHTML>
             {newsSlug?.content.slice(3000)}
-          </TypographyText>
+          </Typography>
           <CommentContent
             slug={newsSlug?.slug}
             removeComment={removeComment}
@@ -146,9 +155,9 @@ export const NewsContent = ({
       {newsData && (
         <>
           <SuggestedContentStyled desktop={isDesktopOrLaptop ? "true" : ""}>
-            <TypographyText font="20" color={colorMode()} bold>
+            <Typography font="20" color={colorMode()} bold>
               Son yükləmələr
-            </TypographyText>
+            </Typography>
             <Grid container={true}>
               {newsData
                 ?.filter((item) => item.id !== newsSlug.id)
@@ -175,9 +184,9 @@ export const NewsContent = ({
           </SuggestedContentStyled>
           {similarData?.length && (
             <SimilarNewsContentStyled>
-              <TypographyText font="20" color={colorMode()} bold>
+              <Typography font="20" color={colorMode()} bold>
                 Oxşar yükləmələr
-              </TypographyText>
+              </Typography>
               <SliderContent
                 data={similarData}
                 slidesToShow={similarData.length <= 2 ? 1 : 3}

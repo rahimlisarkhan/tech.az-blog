@@ -1,14 +1,14 @@
 import { ImageContent } from "./Image.styled";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { TypographyText } from "../Typograph/Typograph.styled";
+import Typography from "../Typograph";
 import { Skeleton } from "@mui/material";
 
 export type ImageType = {
   width?: string;
   height?: string;
   cover?: boolean | undefined;
-  isNotLoading?:boolean;
+  isNotLoading?: boolean;
   src?: string | StaticImageData;
   alt?: string;
   radius?: string;
@@ -38,7 +38,11 @@ export const ImageTag = ({
       radius={radius}
     >
       {/* {imageLoading && <Skeleton variant="rectangular" width={width} height={height} />} */}
-      {imageLoading && !isNotLoading && <TypographyText center="true" color="gray" >Loading...</TypographyText>}
+      {imageLoading && !isNotLoading && (
+        <Typography center="true" color="gray">
+          Loading...
+        </Typography>
+      )}
       <Image
         layout="fill"
         priority

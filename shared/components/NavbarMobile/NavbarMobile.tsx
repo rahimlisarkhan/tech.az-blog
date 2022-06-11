@@ -1,8 +1,8 @@
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
-import { useSelector } from "../../hooks/useSelector";
-import { ROUTER } from "../../constant/route";
-import ButtonOutlined from "../ButtonOutlined";
+import { useSelector } from "shared/hooks";
+import { ROUTER } from "shared/constant/route";
+import ButtonOutlined from "ui/ButtonOutlined";
 import { NavbarMobileContent } from "./NavbarMobile.styled";
 import { MenuList, MenuItemStyle } from "./NavbarMobile.styled";
 import { isAppMode } from "shared/utils/isAppMode";
