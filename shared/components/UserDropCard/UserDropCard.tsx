@@ -5,7 +5,7 @@ import { Content } from "./UserDropCard.styled";
 import Typography from "ui/Typograph";
 import { useEffect, useRef } from "react";
 
-export const UserDropCard = ({ isShow, onLogout, onClose }) => {
+export const UserDropCard = ({ isShow, onLogout, onClose }:any) => {
   const dropRef = useRef<any>();
   let user = {
     name: "Sarkhan",
