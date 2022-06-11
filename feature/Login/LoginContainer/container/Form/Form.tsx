@@ -111,7 +111,7 @@ import GoogleLogo from "public/image/google-logo.png";
           <Typograph
             font="18"
             decaration="underline"
-            cursor="true"
+            cursor
             color={!mode ? "white" : "black"}
           >
             {isLogin
