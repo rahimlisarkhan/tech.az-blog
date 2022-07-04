@@ -11,7 +11,7 @@ const Footer: React.FC<Props> = () => {
       <FooterContainer>
         <Image src="/image/logo.png" width="70" height="70" cover isNotLoading />
         <TypographyText color="white" font="14" text="lower">
-          © copyright 2022 | tech.az
+          © copyright 2022 | tech.az | info@tech.az
         </TypographyText>
       </FooterContainer>
     </FooterStyled>
